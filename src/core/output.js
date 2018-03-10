@@ -8,7 +8,7 @@ export const Output = (audioContext) => {
       return analyzer
     },
     get input() {
-      return audioContext.destination
+      return analyzer
     },
   }
 }

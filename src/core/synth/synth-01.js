@@ -8,7 +8,7 @@ export const Synth01 = (audioContext) => {
     noteOn(value, time = audioContext.currentTime) {
       if (!oscs[value]) {
         const osc = audioContext.createOscillator()
-        osc.type = 'sawtooth'
+        osc.type = 'triangle'
         const frequency = midiToFrequency(440, value)
         osc.frequency.setValueAtTime(frequency, time)
         osc.connect(output)

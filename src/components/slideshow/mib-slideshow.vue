@@ -26,6 +26,10 @@
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut'>
+      <mib-snippets01></mib-snippets01>
+    </slide>
+
+    <slide enter='bounceInRight' leave='fadeOut'>
       <mib-demo01></mib-demo01>
     </slide>
   </div>
@@ -35,6 +39,7 @@
   import eagle from 'eagle.js'
   import MibTitle from './slides/mib-tile.vue'
   import MibHistory from './slides/mib-history.vue'
+  import MibSnippets01 from './slides/mib-snippets01.vue'
   import MibDemo01 from './slides/mib-demo01.vue'
 
   export default {
@@ -44,6 +49,7 @@
     components: {
       MibTitle,
       MibHistory,
+      MibSnippets01,
       MibDemo01,
     },
   }
