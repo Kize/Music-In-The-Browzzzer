@@ -24,6 +24,10 @@
     <slide enter='bounceInRight' leave='fadeOut'>
       <mib-history></mib-history>
     </slide>
+
+    <slide enter='bounceInRight' leave='fadeOut'>
+      <mib-demo01></mib-demo01>
+    </slide>
   </div>
 </template>
 
@@ -31,6 +35,7 @@
   import eagle from 'eagle.js'
   import MibTitle from './slides/mib-tile.vue'
   import MibHistory from './slides/mib-history.vue'
+  import MibDemo01 from './slides/mib-demo01.vue'
 
   export default {
     mixins: [
@@ -39,6 +44,7 @@
     components: {
       MibTitle,
       MibHistory,
+      MibDemo01,
     },
   }
 </script>
