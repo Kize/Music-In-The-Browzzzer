@@ -25,23 +25,37 @@ export const Keyboard = ({ noteOn, noteOff }) => {
               R.not
             )
           )
+          .filter(
+            R.pipe(
+              R.prop('key'),
+              R.flip(R.contains)(keyMapping)
+            )
+          )
           .do(({ key }) => keyPressed.push(key))
-          .subscribe(R.cond([
-            [
-              R.pipe(R.prop('key'), R.flip(R.contains)(keyMapping)),
-              R.pipe(R.prop('key'), R.flip(R.indexOf)(keyMapping), R.add(12 * octave), noteOn),
-            ],
-          ]))
+          .subscribe(
+            R.pipe(
+              R.prop('key'),
+              R.flip(R.indexOf)(keyMapping),
+              R.add(12 * octave),
+              noteOn
+            )
+          )
       )
       subscriptions.push(
         DOM.keyup(document)
+          .filter(
+            R.pipe(
+              R.prop('key'),
+              R.flip(R.contains)(keyMapping)
+            )
+          )
           .do(({ key }) => keyPressed.splice(keyPressed.indexOf(key, 1)))
-          .subscribe(R.cond([
-            [
-              R.pipe(R.prop('key'), R.flip(R.contains)(keyMapping)),
-              R.pipe(R.prop('key'), R.flip(R.indexOf)(keyMapping), R.add(12 * octave), noteOff),
-            ],
-          ]))
+          .subscribe(
+            R.pipe(
+              R.prop('key'),
+              R.flip(R.indexOf)(keyMapping),
+              R.add(12 * octave), noteOff)
+          )
       )
     },
     destroy() {
