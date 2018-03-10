@@ -16,6 +16,7 @@ export const Keyboard = ({ noteOn, noteOff }) => {
       octave = value <= 8 ? value : 8
     },
     init() {
+      /* Key down event triggers noteOn if key is mapped and not already pressed */
       subscriptions.push(
         DOM.keydown(document)
           .filter(
@@ -41,6 +42,7 @@ export const Keyboard = ({ noteOn, noteOff }) => {
             )
           )
       )
+      /* Key up event triggers noteOff if key is mapped */
       subscriptions.push(
         DOM.keyup(document)
           .filter(
