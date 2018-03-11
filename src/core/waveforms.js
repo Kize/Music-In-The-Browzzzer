@@ -3,4 +3,5 @@ export const WaveForms = Object.freeze({
   TRIANGLE: 'triangle',
   SQUARE: 'square',
   SAWTOOTH: 'sawtooth',
+  RANDOM: 'random',
 })

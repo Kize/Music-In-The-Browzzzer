@@ -3,30 +3,40 @@
   @import '../../assets/styles/buttons.scss';
 
   .spin-box {
-    display: flex;
+    @import '../../assets/styles/ui.scss';
 
-    input[type="text"] {
-      color: $text-primary;
-      width: 160px;
-      text-align: center;
-      border: none;
+    display: block;
+
+    .control {
+      display: flex;
+
+      input[type="text"] {
+        color: $text-primary;
+        width: 160px;
+        text-align: center;
+        border: none;
+      }
     }
   }
+
 </style>
 
 <template>
   <div class="spin-box">
-    <button @click.stop="onArrowClicked(-1)"><i class="material-icons">keyboard_arrow_left</i></button>
-    <input type ="text"
-           v-model.number="value"
-           ref="input"
-           name=""
-           :min="min"
-           :max="max"
-           :step="step"
-           :values="values"
-           @input="onChange" />
-    <button @click.stop="onArrowClicked(1)"><i class="material-icons">keyboard_arrow_right</i></button>
+    <span class="label">Waveform:</span>
+    <div class="control">
+      <button @click.stop="onArrowClicked(-1)"><i class="material-icons">keyboard_arrow_left</i></button>
+      <input type="text" readonly
+             v-model.number="value"
+             ref="input"
+             name=""
+             :min="min"
+             :max="max"
+             :step="step"
+             :values="values"
+             @input="onChange" />
+      <button @click.stop="onArrowClicked(1)"><i class="material-icons">keyboard_arrow_right</i></button>
+    </div>
   </div>
 </template>
 

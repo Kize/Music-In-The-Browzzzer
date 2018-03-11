@@ -1,4 +1,4 @@
-import { isNil } from 'ramda'
+import { isNil, times } from 'ramda'
 
 export const pitchClasses = Object.freeze(['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'])
 
@@ -76,3 +76,9 @@ export const symbolToFrequency = (pitchClass, octave) =>
  * @param {number} frequency - Octave value for note
  */
 export const frequencyToSymbol = frequency => midiToSymbol(frequencyToMidi(440, frequency))
+
+export const randomWaveForm = (audioContext) => {
+  const i = Float32Array.from(times(() => Math.round(Math.random()), 8))
+  const r = Float32Array.from(times(() => Math.round(Math.random()), 8))
+  return audioContext.createPeriodicWave(r, i)
+}
