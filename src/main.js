@@ -10,6 +10,8 @@ import 'eagle.js/dist/eagle.css'
 import 'animate.css'
 // highlight.js style
 import 'highlight.js/styles/github.css'
+// material icons
+import 'material-design-icons/iconfont/material-icons.css'
 
 Vue.config.productionTip = false
 

@@ -1,0 +1,39 @@
+@import './colors';
+
+@mixin button-bg($bg) {
+  background: $bg;
+  &:hover {
+    background:darken($bg,8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background:darken($bg,25%);
+  }
+}
+
+button {
+  color: $ui-primary;
+  background-color: $ui-bg;
+  text-decoration:none;
+  font-family: 'regular', sans-serif;
+  font-size:1em;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn:hover {
+  box-shadow: 0 8px 16px 0 $button_box_shadow, 0 6px 20px 0 $button_box_shadow;
+}
+
+.btn:active {
+  transform: translateY(4px);
+  &.btn-small {
+    min-width: 20px;
+  }
+}
+
+.btn-primary {
+  @include button-bg($ui-bg);
+}

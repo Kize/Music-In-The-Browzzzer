@@ -1,8 +1,10 @@
-<style scoped lang="scss">
+<style lang="scss" scoped>
+  @import '../../assets/styles/colors.scss';
+
   .eg-slideshow {
-    background-color: whitesmoke;
+    background-color: $bg-primary;
     .eg-slide {
-      background-color: whitesmoke;
+      background-color: $bg-primary;
       .eg-slide-content {
         .demo-slideshow {
           position: relative;

@@ -1,15 +1,29 @@
-import { midiToFrequency } from '../utils'
+import { midiToFrequency, randomWaveForm } from '../utils'
+import { WaveForms } from '@/core/waveforms'
 
 export const Synth01 = (audioContext) => {
   const output = audioContext.createGain()
   const oscs = {}
+  let waveForm = WaveForms.TRIANGLE
+  let detune = 0
+
+  const setWaveForm = (osc) => {
+    if (waveForm === WaveForms.RANDOM) {
+      osc.setPeriodicWave(randomWaveForm(audioContext))
+    } else {
+      osc.type = waveForm
+    }
+  }
+
+  output.gain.value = 0.3
 
   return {
     noteOn(value, time = audioContext.currentTime) {
       if (!oscs[value]) {
         const osc = audioContext.createOscillator()
-        osc.type = 'triangle'
         const frequency = midiToFrequency(440, value)
+        setWaveForm(osc)
+        osc.detune.setValueAtTime(detune, time)
         osc.frequency.setValueAtTime(frequency, time)
         osc.connect(output)
         osc.start(time)
@@ -24,6 +38,25 @@ export const Synth01 = (audioContext) => {
     },
     connect({ input }) {
       output.connect(input)
+    },
+    get waveForms() {
+      return Object.values(WaveForms)
+    },
+    get waveForm() {
+      return waveForm
+    },
+    set waveForm(value) {
+      waveForm = value
+      Object.values(oscs)
+        .forEach(setWaveForm)
+    },
+    get detune() {
+      return detune
+    },
+    set detune(value) {
+      detune = value
+      Object.values(oscs)
+        .forEach(osc => { osc.detune.value = detune })
     },
   }
 }
