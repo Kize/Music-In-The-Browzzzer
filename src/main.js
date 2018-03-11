@@ -8,6 +8,8 @@ import App from './App'
 import 'eagle.js/dist/eagle.css'
 // import animate.css for slide transition
 import 'animate.css'
+// highlight.js style
+import 'highlight.js/styles/github.css'
 
 Vue.config.productionTip = false
 
