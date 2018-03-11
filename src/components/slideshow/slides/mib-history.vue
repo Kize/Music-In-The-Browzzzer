@@ -1,4 +1,4 @@
-<style lang="scss"  type="text/scss" scoped>
+<style lang="scss" scoped>
   .slide {
     h1 {
       color: black;
