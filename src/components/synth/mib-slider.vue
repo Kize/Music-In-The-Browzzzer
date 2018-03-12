@@ -70,12 +70,12 @@
 
 <template>
   <div class="slider">
-    <span class="label">Detune:</span>
+    <span class="label">{{ label }}:</span>
     <div class="control">
       <input type="range"
              v-model.number="value"
              @input="onChange"/>
-      <input type="text"
+      <input type="text" readonly
              v-model.number="value"/>
     </div>
   </div>
@@ -84,6 +84,9 @@
 <script>
   export default {
     props: {
+      label: {
+        type: String,
+      },
       min: {
         type: Number,
         default: -Infinity,

@@ -12,7 +12,6 @@
 
       input[type="text"] {
         color: $text-primary;
-        width: 160px;
         text-align: center;
         border: none;
       }
@@ -23,13 +22,14 @@
 
 <template>
   <div class="spin-box">
-    <span class="label">Waveform:</span>
+    <span class="label">{{ label }}:</span>
     <div class="control">
       <button @click.stop="onArrowClicked(-1)"><i class="material-icons">keyboard_arrow_left</i></button>
       <input type="text" readonly
              v-model.number="value"
              ref="input"
              name=""
+             :style="{ width }"
              :min="min"
              :max="max"
              :step="step"
@@ -43,6 +43,13 @@
 <script>
   export default {
     props: {
+      label: {
+        type: String,
+      },
+      width: {
+        type: String,
+        default: '160px',
+      },
       min: {
         type: Number,
         default: -Infinity,
