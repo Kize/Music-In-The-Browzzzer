@@ -34,6 +34,10 @@
     <slide enter='bounceInRight' leave='fadeOut'>
       <mib-demo01></mib-demo01>
     </slide>
+
+    <slide enter='bounceInRight' leave='fadeOut'>
+      <mib-demo02></mib-demo02>
+    </slide>
   </div>
 </template>
 
@@ -43,6 +47,7 @@
   import MibHistory from './slides/mib-history.vue'
   import MibSnippets01 from './slides/mib-snippets01.vue'
   import MibDemo01 from './slides/mib-demo01.vue'
+  import MibDemo02 from './slides/mib-demo02.vue'
 
   export default {
     mixins: [
@@ -53,6 +58,7 @@
       MibHistory,
       MibSnippets01,
       MibDemo01,
+      MibDemo02,
     },
   }
 </script>

@@ -37,7 +37,7 @@ export const Keyboard = ({ noteOn, noteOff }) => {
             R.pipe(
               R.prop('key'),
               R.flip(R.indexOf)(keyMapping),
-              R.add(12 * octave),
+              val => val + 12 * octave,
               noteOn
             )
           )
@@ -56,7 +56,9 @@ export const Keyboard = ({ noteOn, noteOff }) => {
             R.pipe(
               R.prop('key'),
               R.flip(R.indexOf)(keyMapping),
-              R.add(12 * octave), noteOff)
+              val => val + 12 * octave,
+              noteOff
+            )
           )
       )
     },

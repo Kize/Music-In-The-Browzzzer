@@ -1,11 +1,11 @@
-import { midiToFrequency, randomWaveForm } from '../utils'
+import { midiToFrequency, randomWaveForm } from '@/core/utils'
 import { WaveForms } from '@/core/waveforms'
 
 export const Synth01 = (audioContext) => {
   const output = audioContext.createGain()
-  const oscs = {}
   let waveForm = WaveForms.TRIANGLE
   let detune = 0
+  const oscs = {}
 
   const setWaveForm = (osc) => {
     if (waveForm === WaveForms.RANDOM) {
@@ -13,6 +13,7 @@ export const Synth01 = (audioContext) => {
     } else {
       osc.type = waveForm
     }
+    return osc
   }
 
   output.gain.value = 0.3

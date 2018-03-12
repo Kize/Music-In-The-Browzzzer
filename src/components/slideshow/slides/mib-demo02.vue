@@ -4,11 +4,10 @@
     h1 {
       color: black;
     }
-
     .synth {
-      width: 50%;
+      width:75%;
       margin: 0 auto;
-      
+
       .controls {
         display: flex;
         justify-content: space-between;
@@ -27,7 +26,7 @@
 
 <template>
   <div class="slide">
-    <h2>One Osc Synthesizer</h2>
+    <h2>Additive Synthesis</h2>
     <div class="synth">
       <div class="controls">
         <mib-spin-box class="control octave"
@@ -37,15 +36,26 @@
                       @change="updateOctave"></mib-spin-box>
 
         <mib-spin-box class="control"
-                      label="Waveform"
+                      label ="Waveform 2"
                       :values="synth.waveForms"
-                      :init="synth.waveForm"
-                      @change="updateWaveForm"></mib-spin-box>
+                      :init="synth.waveForm1"
+                      @change="updateWaveForm1"></mib-spin-box>
 
         <mib-slider class="control"
-                    label="Detune"
-                    :init="synth.detune"
-                    @change="updateDetune"></mib-slider>
+                    label ="Detune 1"
+                    :init="synth.detune1"
+                    @change="updateDetune1"></mib-slider>
+
+        <mib-spin-box class="control"
+                      label ="Waveform 2"
+                      :values="synth.waveForms"
+                      :init="synth.waveForm2"
+                      @change="updateWaveForm2"></mib-spin-box>
+
+        <mib-slider class="control"
+                    label ="Detune 2"
+                    :init="synth.detune2"
+                    @change="updateDetune2"></mib-slider>
       </div>
 
       <mib-visualizer class="visualizer"
@@ -58,7 +68,7 @@
 
 <script>
   import { Keyboard } from '@/core/keyboard'
-  import { Synth01 } from '@/core/synth/synth-01'
+  import { Synth02 } from '@/core/synth/synth-02'
   import { Output } from '@/core/output'
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
@@ -71,20 +81,25 @@
       MibSlider,
     },
     methods: {
-      updateWaveForm(value) {
-        this.synth.waveForm = value
+      updateWaveForm1(value) {
+        this.synth.waveForm1 = value
       },
-      updateDetune(value) {
-        this.synth.detune = value
+      updateDetune1(value) {
+        this.synth.detune1 = value
+      },
+      updateWaveForm2(value) {
+        this.synth.waveForm2 = value
+      },
+      updateDetune2(value) {
+        this.synth.detune2 = value
       },
       updateOctave(value) {
         this.keyboard.octave = value
-        console.log(this.keyboard.octave)
       },
     },
     computed: {
       width() {
-        return innerWidth * 0.5
+        return innerWidth * 0.75
       },
       height() {
         return innerHeight * 0.8
@@ -92,7 +107,7 @@
     },
     created() {
       this.audioContext = new AudioContext()
-      this.synth = Synth01(this.audioContext)
+      this.synth = Synth02(this.audioContext)
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
       this.keyboard = Keyboard(this.synth)

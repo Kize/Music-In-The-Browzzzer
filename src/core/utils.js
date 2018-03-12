@@ -78,7 +78,7 @@ export const symbolToFrequency = (pitchClass, octave) =>
 export const frequencyToSymbol = frequency => midiToSymbol(frequencyToMidi(440, frequency))
 
 export const randomWaveForm = (audioContext) => {
-  const i = Float32Array.from(times(() => Math.round(Math.random()), 8))
-  const r = Float32Array.from(times(() => Math.round(Math.random()), 8))
+  const i = Float32Array.from(times(Math.random, 8))
+  const r = Float32Array.from(times(Math.random, 8))
   return audioContext.createPeriodicWave(r, i)
 }
