@@ -1,5 +1,6 @@
 import { WaveForms } from '@/core/waveforms'
 import { Voice } from '@/core/voice'
+import { frequencyToMidi } from '@/core/utils'
 
 export const Synth02 = (audioContext) => {
   const output = audioContext.createGain()
@@ -16,7 +17,6 @@ export const Synth02 = (audioContext) => {
       if (!voices[value]) {
         const voice = Voice(audioContext)
         voices[value] = voice
-        console.log(waveForm1, waveForm2)
         voice.waveForm1 = waveForm1
         voice.waveForm2 = waveForm2
         voice.detune1 = detune1
@@ -30,6 +30,14 @@ export const Synth02 = (audioContext) => {
         voices[value].noteOff(time)
         delete voices[value]
       }
+    },
+    pitch(multiplier) {
+      Object.values(voices)
+        .forEach((voice) => {
+          const midValueChange = voice.pitch(multiplier)
+          delete voices[midValueChange.lastMidiValue]
+          voices[midValueChange.newMidiValue] = voice
+        })
     },
     connect({ input }) {
       output.connect(input)

@@ -41,6 +41,8 @@
 </template>
 
 <script>
+  import * as R from 'ramda'
+
   export default {
     props: {
       label: {
@@ -85,7 +87,11 @@
       },
       computeNextStepValue(direction) {
         const inc = direction * this.step
-        this.value = Number((inc + this.value).toFixed(this.precision))
+        this.value = R.clamp(
+          this.min,
+          this.max,
+          Number((inc + this.value).toFixed(this.precision))
+        )
         this.onChange()
       },
       computeNextListValue(direction) {
