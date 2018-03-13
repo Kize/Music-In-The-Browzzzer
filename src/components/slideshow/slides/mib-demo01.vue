@@ -8,7 +8,7 @@
     .synth {
       width: 50%;
       margin: 0 auto;
-      
+
       .controls {
         display: flex;
         justify-content: space-between;
@@ -34,6 +34,8 @@
                       label="Octave"
                       width="50px"
                       :init="keyboard.octave"
+                      :min="1"
+                      :max="8"
                       @change="updateOctave"></mib-spin-box>
 
         <mib-spin-box class="control"
@@ -79,7 +81,6 @@
       },
       updateOctave(value) {
         this.keyboard.octave = value
-        console.log(this.keyboard.octave)
       },
     },
     computed: {

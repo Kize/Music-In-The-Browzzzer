@@ -1,4 +1,4 @@
-import { midiToFrequency, randomWaveForm } from '@/core/utils'
+import { frequencyToMidi, midiToFrequency, randomWaveForm } from '@/core/utils'
 import { WaveForms } from '@/core/waveforms'
 
 export const Synth01 = (audioContext) => {
@@ -36,6 +36,22 @@ export const Synth01 = (audioContext) => {
         oscs[value].stop(time)
         delete oscs[value]
       }
+    },
+    pitch(multiplier) {
+      Object.values(oscs)
+        .forEach((osc) => {
+          /* retrieve midi note value from actual frequency */
+          const lastMidiValue = Math.round(frequencyToMidi(440, osc.frequency.value))
+          /* pitch actual frequency */
+          const newFrequencyValue = osc.frequency.value * multiplier
+          /* get midi note value back from pitched frequency */
+          const newMidiValue = Math.round(frequencyToMidi(440, newFrequencyValue))
+          /* apply new frequency */
+          osc.frequency.value = newFrequencyValue
+          /* associate oscillator to its new midi note value */
+          delete oscs[lastMidiValue]
+          oscs[newMidiValue] = osc
+        })
     },
     connect({ input }) {
       output.connect(input)

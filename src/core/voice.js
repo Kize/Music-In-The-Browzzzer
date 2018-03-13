@@ -1,5 +1,6 @@
+import * as R from 'ramda'
 import { WaveForms } from '@/core/waveforms'
-import { midiToFrequency, randomWaveForm } from '@/core/utils'
+import { frequencyToMidi, midiToFrequency, randomWaveForm } from '@/core/utils'
 
 export const Voice = (audioContext) => {
   let osc1
@@ -50,6 +51,22 @@ export const Voice = (audioContext) => {
     noteOff(time) {
       osc1.stop(time)
       osc2.stop(time)
+    },
+    pitch(multiplier) {
+      let newMidiValue, lastMidiValue
+      [osc1, osc2]
+        .filter(R.identity)
+        .forEach((osc) => {
+          /* retrieve midi note value from actual frequency */
+          lastMidiValue = Math.round(frequencyToMidi(440, osc.frequency.value))
+          /* pitch actual frequency */
+          const newFrequencyValue = osc.frequency.value * multiplier
+          /* get midi note value back from pitched frequency */
+          newMidiValue = Math.round(frequencyToMidi(440, newFrequencyValue))
+          /* apply new frequency */
+          osc.frequency.value = newFrequencyValue
+        })
+      return { lastMidiValue, newMidiValue }
     },
     connect({ input }) {
       output.connect(input)

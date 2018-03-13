@@ -33,6 +33,8 @@
                       label="Octave"
                       width="50px"
                       :init="keyboard.octave"
+                      :min="1"
+                      :max="8"
                       @change="updateOctave"></mib-spin-box>
 
         <mib-spin-box class="control"
