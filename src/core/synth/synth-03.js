@@ -1,15 +1,22 @@
 import { WaveForms } from '@/core/waveforms'
+import { FilterTypes } from '@/core/filter-types'
 import { Voice } from '@/core/voice'
 
 export const Synth02 = (audioContext) => {
   const output = audioContext.createGain()
+  const filter = audioContext.createBiquadFilter()
   const voices = {}
   let waveForm1 = WaveForms.TRIANGLE
   let waveForm2 = WaveForms.SAWTOOTH
   let detune1 = 0
   let detune2 = 0
+  let filterType = FilterTypes.LOW_PASS
 
   output.gain.value = 0.3
+
+  filter.type = filterType
+  filter.frequency = 22000
+  filter.Q = 0
 
   return {
     noteOn(value, time = audioContext.currentTime) {
@@ -75,6 +82,28 @@ export const Synth02 = (audioContext) => {
       detune2 = value
       Object.values(voices)
         .forEach(voice => { voice.detune2 = detune2 })
+    },
+    get filterTypes() {
+      return Object.values(FilterTypes)
+    },
+    get filterType() {
+      return filterType
+    },
+    set filterType(value) {
+      filterType = value
+      filter.type = filterType
+    },
+    get filterFrequency() {
+      return filter.frequency.value
+    },
+    set filterFrequency(value) {
+      filter.frequency.value = value
+    },
+    get filterQFactor() {
+      return filter.Q.value
+    },
+    set filterQFactor(value) {
+      filter.Q.value = value
     },
   }
 }
