@@ -1,8 +1,12 @@
 import { WaveForms } from '@/core/waveforms'
 import { Voice } from '@/core/voice'
+import { frequencyToMidi } from '@/core/utils'
+import { FilterTypes } from "@/core/filter-types"
 
-export const Synth02 = (audioContext) => {
+export const Synth03 = (audioContext) => {
   const output = audioContext.createGain()
+  const filter = audioContext.createBiquadFilter();
+  filter.connect(output);
   const voices = {}
   let waveForm1 = WaveForms.TRIANGLE
   let waveForm2 = WaveForms.SAWTOOTH
@@ -10,6 +14,8 @@ export const Synth02 = (audioContext) => {
   let detune2 = 0
 
   output.gain.value = 0.3
+  filter.type = FilterTypes.LOW_PASS
+  filter.frequency.value = 500
 
   return {
     noteOn(value, time = audioContext.currentTime) {
@@ -20,7 +26,7 @@ export const Synth02 = (audioContext) => {
         voice.waveForm2 = waveForm2
         voice.detune1 = detune1
         voice.detune2 = detune2
-        voice.connect({ input: output })
+        voice.connect({ input: filter })
         voice.noteOn(value, time)
       }
     },
@@ -75,6 +81,27 @@ export const Synth02 = (audioContext) => {
       detune2 = value
       Object.values(voices)
         .forEach(voice => { voice.detune2 = detune2 })
+    },
+    get filterTypes() {
+      return Object.values(FilterTypes)
+    },
+    get filterType() {
+      return filter.type
+    },
+    set filterType(value) {
+      filter.type = value
+    },
+    get frequency() {
+      return filter.frequency.value
+    },
+    set frequency(value) {
+      filter.frequency.setTargetAtTime(value, audioContext.currentTime, .1)
+    },
+    get qualityFactor() {
+      return filter.Q.value
+    },
+    set qualityFactor(value) {
+      filter.Q.setTargetAtTime(value, audioContext.currentTime, .05)
     },
   }
 }

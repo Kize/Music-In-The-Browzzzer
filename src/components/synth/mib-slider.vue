@@ -9,12 +9,11 @@
 
     .control {
       display: flex;
-      max-width: 160px;
 
       input[type=range] {
         -webkit-appearance: none;
         width: 100%;
-        margin: 0px 0;
+        margin: 0;
       }
       input[type=range]:focus {
         outline: none;
@@ -24,16 +23,16 @@
         height: 100%;
         cursor: pointer;
         background: $ui-bg;
-        border-radius: 0px;
+        border-radius: 0;
       }
       input[type=range]::-webkit-slider-thumb {
         height: 100%;
         width: 20%;
-        border-radius: 0px;
+        border-radius: 0;
         background: $ui-primary;
         cursor: pointer;
         -webkit-appearance: none;
-        margin-top: 0px;
+        margin-top: 0;
       }
       input[type=range]:focus::-webkit-slider-runnable-track {
         background: $ui-bg-active;
@@ -42,14 +41,14 @@
         width: 100%;
         cursor: pointer;
         background: $ui-bg;
-        border-radius: 0px;
+        border-radius: 0;
         outline: none;
       }
       input[type=range]::-moz-range-thumb {
         height: 32px;
         width: 17px;
         border: none;
-        border-radius: 0px;
+        border-radius: 0;
         background: $ui-primary;
         cursor: pointer;
       }
@@ -71,10 +70,14 @@
 <template>
   <div class="slider">
     <span class="label">{{ label }}:</span>
-    <div class="control">
+    <div class="control"
+         :style="{ width }">
       <input type="range"
              v-model.number="value"
-             @input="onChange"/>
+             @input="onChange"
+             :min="min"
+             :max="max"
+             :step="step"/>
       <input type="text" readonly
              v-model.number="value"/>
     </div>
@@ -107,6 +110,10 @@
         type: Number,
         default: 1,
       },
+      width: {
+        type: String,
+        default: '160px',
+      }
     },
     data() {
       return {
