@@ -1,9 +1,10 @@
 import * as R from 'ramda'
 import { DOM } from 'rx-dom'
+
 /* keeping track of previous attached listeners */
 const subscriptions = []
 
-export const Keyboard = ({ noteOn, noteOff }) => {
+export const Keyboard = ({ noteOn, noteOff, pitch }) => {
   const keyMapping = ['q', 'z', 'd', 'r', 'g', 'h', 'u', 'k', 'o', 'm']
   const keyPressed = []
   let octave = 5
@@ -13,7 +14,17 @@ export const Keyboard = ({ noteOn, noteOff }) => {
       return octave
     },
     set octave(value) {
-      octave = value <= 8 ? value : 8
+      const last = octave
+      octave = R.clamp(1, 8, value)
+      if (last !== octave) {
+        pitch(
+          R.ifElse(
+            value => value > 0,
+            R.identity,
+            value => -1 / value
+          )((octave - last) * 2)
+        )
+      }
     },
     init() {
       /* Key down event triggers noteOn if key is mapped and not already pressed */
@@ -37,7 +48,7 @@ export const Keyboard = ({ noteOn, noteOff }) => {
             R.pipe(
               R.prop('key'),
               R.flip(R.indexOf)(keyMapping),
-              R.add(12 * octave),
+              val => val + 12 * octave,
               noteOn
             )
           )
@@ -56,7 +67,9 @@ export const Keyboard = ({ noteOn, noteOff }) => {
             R.pipe(
               R.prop('key'),
               R.flip(R.indexOf)(keyMapping),
-              R.add(12 * octave), noteOff)
+              val => val + 12 * octave,
+              noteOff
+            )
           )
       )
     },
