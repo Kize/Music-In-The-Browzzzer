@@ -2,6 +2,18 @@
 
 > technozaure@lille, 2018-03-21
 
+# Plan
+
+- [ ] Abstract
+- [ ] History of synthesis
+- [ ] Web Audio API
+- [ ] Demo
+- [ ] What's Next ?
+- [ ] Conclusion
+
+to put somewhere:
+- [ ] Is it debuggable ?
+
 ## Build Setup
 
 ``` bash
