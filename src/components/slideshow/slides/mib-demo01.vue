@@ -17,9 +17,6 @@
           margin-right: 5px;
         }
       }
-      .visualizer {
-
-      }
     }
   }
 
@@ -71,7 +68,7 @@
       MibVisualizer,
       MibSpinBox,
       MibSlider,
-    },
+      },
     methods: {
       updateWaveForm(value) {
         this.synth.waveForm = value

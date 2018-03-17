@@ -75,5 +75,28 @@ export const Synth01 = (audioContext) => {
       Object.values(oscs)
         .forEach(osc => { osc.detune.value = detune })
     },
+    get osc() {
+      return {
+        get waveForms() {
+          return Object.values(WaveForms)
+        },
+        get waveForm() {
+          return waveForm
+        },
+        set waveForm(value) {
+          waveForm = value
+          Object.values(oscs)
+            .forEach(setWaveForm)
+        },
+        get detune() {
+          return detune
+        },
+        set detune(value) {
+          detune = value
+          Object.values(oscs)
+            .forEach(osc => { osc.detune.value = detune })
+        },
+      }
+    },
   }
 }

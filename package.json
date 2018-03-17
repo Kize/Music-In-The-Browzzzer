@@ -15,6 +15,7 @@
     "@types/webaudioapi": "^0.0.27",
     "eagle.js": "^0.1.5",
     "material-design-icons": "^3.0.1",
+    "qwerty-hancock": "^0.6.0",
     "ramda": "^0.25.0",
     "rx-dom": "^7.0.3",
     "rxjs": "^5.5.6",

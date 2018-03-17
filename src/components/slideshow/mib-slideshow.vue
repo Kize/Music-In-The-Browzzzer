@@ -3,6 +3,10 @@
 
   .eg-slideshow {
     background-color: $bg-primary;
+    height: 99%;
+    width: 99%;
+    overflow: hidden;
+
     .eg-slide {
       background-color: $bg-primary;
       .eg-slide-content {
@@ -19,7 +23,7 @@
 
 <template>
   <div class="eg-slideshow">
-    <slide>
+    <slide  :mouseNavigation="false">
       <mib-title></mib-title>
     </slide>
 
@@ -31,16 +35,20 @@
       <mib-snippets01></mib-snippets01>
     </slide>
 
-    <slide enter='bounceInRight' leave='fadeOut'>
+    <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
       <mib-demo01></mib-demo01>
     </slide>
 
-    <slide enter='bounceInRight' leave='fadeOut'>
+    <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
       <mib-demo02></mib-demo02>
     </slide>
 
-    <slide enter='bounceInRight' leave='fadeOut'>
+    <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
       <mib-demo03></mib-demo03>
+    </slide>
+
+    <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
+      <mib-demo04></mib-demo04>
     </slide>
   </div>
 </template>
@@ -53,6 +61,7 @@
   import MibDemo01 from './slides/mib-demo01.vue'
   import MibDemo02 from './slides/mib-demo02.vue'
   import MibDemo03 from './slides/mib-demo03.vue'
+  import MibDemo04 from './slides/mib-demo04.vue'
 
   export default {
     mixins: [
@@ -65,6 +74,7 @@
       MibDemo01,
       MibDemo02,
       MibDemo03,
+      MibDemo04,
     },
   }
 </script>

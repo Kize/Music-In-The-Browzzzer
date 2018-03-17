@@ -51,6 +51,8 @@ export const Voice = (audioContext) => {
     noteOff(time) {
       osc1.stop(time)
       osc2.stop(time)
+      osc1.disconnect(gain1)
+      osc2.disconnect(gain2)
     },
     pitch(multiplier) {
       let newMidiValue, lastMidiValue

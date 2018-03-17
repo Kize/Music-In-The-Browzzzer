@@ -24,7 +24,7 @@
 
 <template>
   <div class="slide">
-    <h2>Substractive Synthesis</h2>
+    <h2>Envelopes</h2>
     <div class="synth">
       <div class="controls">
         <mib-spin-box class="control octave"
@@ -87,19 +87,39 @@
                     @change="updateFilterDetune"></mib-slider>
       </div>
 
+      <div class="controls">
+        <mib-slider class="control"
+                    label ="Attack"
+                    :init="synth.envelope.attack"
+                    :min="0"
+                    :max="1"
+                    :step="0.01"
+                    @change="updateAttack"></mib-slider>
+
+        <mib-slider class="control"
+                    label ="Accent"
+                    :init="synth.envelope.accent"
+                    :min="0"
+                    :max="8000"
+                    width="300px"
+                    valueWidth="120px"
+                    @change="updateAccent"></mib-slider>
+      </div>
+
       <mib-visualizer class="visualizer"
                       :width="width"
                       :height="height * 0.75"
                       :analyzer="output.analyzer"></mib-visualizer>
 
     </div>
+
   </div>
 </template>
 
 <script>
   import { Keyboard } from '@/core/keyboard'
   import { Output } from '@/core/output'
-  import { Synth03 } from '@/core/synth/synth-03'
+  import { Synth04 } from '@/core/synth/synth-04'
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
   import MibSlider from '@/components/synth/mib-slider.vue'
@@ -138,6 +158,12 @@
       updateFilterDetune(value) {
         this.synth.filterDetune = value
       },
+      updateAttack(value) {
+        this.synth.envelope.attack = value
+      },
+      updateAccent(value) {
+        this.synth.envelope.accent = value
+      },
     },
     computed: {
       width() {
@@ -148,16 +174,14 @@
       },
     },
     created() {
-      console.log('created')
       this.audioContext = new AudioContext()
-      this.synth = Synth03(this.audioContext)
+      this.synth = Synth04(this.audioContext)
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
       this.keyboard = Keyboard(this.synth)
       this.keyboard.init()
     },
     destroyed() {
-      console.log('destroyed')
       this.keyboard.destroy()
       this.audioContext.close()
     },

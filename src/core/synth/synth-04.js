@@ -1,20 +1,27 @@
 import { WaveForms } from '@/core/waveforms'
 import { Voice } from '@/core/voice'
 import { FilterTypes } from '@/core/filter-types'
+import { Envelope } from '@/core/envelope'
 
-export const Synth03 = (audioContext) => {
+export const Synth04 = (audioContext) => {
   const output = audioContext.createGain()
   const filter = audioContext.createBiquadFilter()
-  filter.connect(output)
+  const envelope = Envelope(filter.frequency)
   const voices = {}
   let waveForm1 = WaveForms.TRIANGLE
   let waveForm2 = WaveForms.SAWTOOTH
   let detune1 = 0
   let detune2 = 0
 
+  filter.connect(output)
+
   output.gain.value = 0.3
   filter.type = FilterTypes.LOW_PASS
   filter.frequency.value = 33000
+  envelope.accent = 1200
+  envelope.attack = 0
+  envelope.sustain = filter.frequency.value
+  envelope.decay = 1
 
   return {
     noteOn(value, time = audioContext.currentTime) {
@@ -27,10 +34,12 @@ export const Synth03 = (audioContext) => {
         voice.detune2 = detune2
         voice.connect({ input: filter })
         voice.noteOn(value, time)
+        envelope.noteOn(time)
       }
     },
     noteOff(value, time = audioContext.currentTime) {
       if (voices[value]) {
+        envelope.noteOff(filter.frequency.value, time)
         voices[value].noteOff(time)
         delete voices[value]
       }
@@ -100,6 +109,7 @@ export const Synth03 = (audioContext) => {
       return filter.frequency.value
     },
     set frequency(value) {
+      envelope.sustain = value
       filter.frequency.setTargetAtTime(value, audioContext.currentTime, 0.1)
     },
     get qualityFactor() {
@@ -107,6 +117,9 @@ export const Synth03 = (audioContext) => {
     },
     set qualityFactor(value) {
       filter.Q.setTargetAtTime(value, audioContext.currentTime, 0.05)
+    },
+    get envelope() {
+      return envelope
     },
   }
 }
