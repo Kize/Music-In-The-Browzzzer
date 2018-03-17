@@ -4,7 +4,7 @@ import { DOM } from 'rx-dom'
 /* keeping track of previous attached listeners */
 const subscriptions = []
 export const Keyboard = ({ noteOn, noteOff, pitch }) => {
-  const keyMapping = ['q', 'a', 's', 'z', 'd', 'f', 'e', 'g', 'r', 'h', 'tss', 'j']
+  const keyMapping = ['q', 'a', 's', 'z', 'd', 'f', 'e', 'g', 'r', 'h', 't', 'j']
   const keyPressed = []
   let octave = 5
 

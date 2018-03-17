@@ -148,7 +148,6 @@
       },
     },
     created() {
-      console.log('created')
       this.audioContext = new AudioContext()
       this.synth = Synth03(this.audioContext)
       this.output = Output(this.audioContext)
@@ -157,7 +156,6 @@
       this.keyboard.init()
     },
     destroyed() {
-      console.log('destroyed')
       this.keyboard.destroy()
       this.audioContext.close()
     },
