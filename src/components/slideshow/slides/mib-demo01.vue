@@ -6,10 +6,11 @@
     }
 
     .synth {
-      width: 50%;
+      width: 600px;
       margin: 0 auto;
 
       .controls {
+        width: 100%;
         display: flex;
         justify-content: space-between;
 
@@ -44,12 +45,13 @@
         <mib-slider class="control"
                     label="Detune"
                     :init="synth.detune"
+                    width="200px"
                     @change="updateDetune"></mib-slider>
       </div>
 
       <mib-visualizer class="visualizer"
-                      :width="width"
-                      :height="height * 0.75"
+                      :width="600"
+                      :height="400"
                       :analyzer="output.analyzer"></mib-visualizer>
     </div>
   </div>

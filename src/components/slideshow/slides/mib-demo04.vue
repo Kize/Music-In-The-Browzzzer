@@ -100,10 +100,20 @@
                     label ="Accent"
                     :init="synth.envelope.accent"
                     :min="0"
-                    :max="8000"
+                    :max="15000"
                     width="300px"
                     valueWidth="120px"
                     @change="updateAccent"></mib-slider>
+
+        <mib-slider class="control"
+                    label ="Decay"
+                    :init="synth.envelope.decay"
+                    :min="0.1"
+                    :max="1"
+                    width="300px"
+                    :step="0.1"
+                    valueWidth="120px"
+                    @change="updateDecay"></mib-slider>
       </div>
 
       <mib-visualizer class="visualizer"
@@ -164,6 +174,9 @@
       updateAccent(value) {
         this.synth.envelope.accent = value
       },
+      updateDecay(value) {
+        this.synth.envelope.decay = value
+      },
     },
     computed: {
       width() {
@@ -179,6 +192,7 @@
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
       this.keyboard = Keyboard(this.synth)
+      this.keyboard.octave = 3
       this.keyboard.init()
     },
     destroyed() {

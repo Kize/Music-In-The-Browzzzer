@@ -13,25 +13,41 @@ export const Envelope = (parameter) => {
     },
     noteOn(time) {
       peakValue = sustainValue + accentValue
-      parameter.exponentialRampToValueAtTime(peakValue, time + attackTime)
-      setTimeout(() => {
-        parameter.linearRampToValueAtTime(sustainValue, time + attackTime + decayTime)
-      }, attackTime)
+      parameter.cancelScheduledValues(time)
+      parameter.setValueAtTime(sustainValue, time)
+      parameter.linearRampToValueAtTime(peakValue, time + attackTime)
+      parameter.exponentialRampToValueAtTime(sustainValue, time + attackTime + decayTime)
     },
     noteOff(value, time) {
       parameter.linearRampToValueAtTime(value, time + releaseTime)
     },
+    reset(time) {
+      parameter.setValueAtTime(sustainValue, time)
+      parameter.cancelScheduledValues(time)
+    },
     set accent(value) {
       accentValue = value
+    },
+    get accent() {
+      return accentValue
     },
     set attack(value) {
       attackTime = value
     },
+    get attack() {
+      return attackTime
+    },
     set decay(value) {
       decayTime = value
     },
+    get decay() {
+      return decayTime
+    },
     set sustain(value) {
       sustainValue = value
+    },
+    get sustain() {
+      return sustainValue
     },
     set release(value) {
       releaseTime = value

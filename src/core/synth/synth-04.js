@@ -4,24 +4,28 @@ import { FilterTypes } from '@/core/filter-types'
 import { Envelope } from '@/core/envelope'
 
 export const Synth04 = (audioContext) => {
+  const voices = {}
+
   const output = audioContext.createGain()
   const filter = audioContext.createBiquadFilter()
-  const envelope = Envelope(filter.frequency)
-  const voices = {}
-  let waveForm1 = WaveForms.TRIANGLE
-  let waveForm2 = WaveForms.SAWTOOTH
+
+  let waveForm1 = WaveForms.SQUARE
+  let waveForm2 = WaveForms.SQUARE
   let detune1 = 0
   let detune2 = 0
+
+  let envelope = Envelope(filter.frequency)
 
   filter.connect(output)
 
   output.gain.value = 0.3
   filter.type = FilterTypes.LOW_PASS
-  filter.frequency.value = 33000
-  envelope.accent = 1200
-  envelope.attack = 0
+  filter.frequency.value = 80
+  filter.Q.value = 15
+  envelope.accent = 5000
+  envelope.attack = 0.1
   envelope.sustain = filter.frequency.value
-  envelope.decay = 1
+  envelope.decay = 0.1
 
   return {
     noteOn(value, time = audioContext.currentTime) {
@@ -39,7 +43,7 @@ export const Synth04 = (audioContext) => {
     },
     noteOff(value, time = audioContext.currentTime) {
       if (voices[value]) {
-        envelope.noteOff(filter.frequency.value, time)
+        envelope.reset(time)
         voices[value].noteOff(time)
         delete voices[value]
       }
