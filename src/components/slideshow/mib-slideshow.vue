@@ -9,12 +9,13 @@
 
     .eg-slide {
       background-color: $bg-primary;
+
       .eg-slide-content {
-        .demo-slideshow {
-          position: relative;
-          width: 12em;
-          height: 8em;
-          margin: 0 auto;
+        .slide {
+          h2 {
+            font-size: 1em;
+          }
+
         }
       }
     }

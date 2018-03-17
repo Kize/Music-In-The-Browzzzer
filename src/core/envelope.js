@@ -5,6 +5,7 @@ export const Envelope = (parameter) => {
   let accentValue = 0
   let peakValue = parameter.value
   let sustainValue = parameter.value
+  let isActive = true
 
   return {
     connect({ getInput }) {
@@ -12,18 +13,30 @@ export const Envelope = (parameter) => {
       return getInput()
     },
     noteOn(time) {
-      peakValue = sustainValue + accentValue
-      parameter.cancelScheduledValues(time)
-      parameter.setValueAtTime(sustainValue, time)
-      parameter.linearRampToValueAtTime(peakValue, time + attackTime)
-      parameter.exponentialRampToValueAtTime(sustainValue, time + attackTime + decayTime)
+      if (isActive) {
+        peakValue = sustainValue + accentValue
+        parameter.cancelScheduledValues(time)
+        parameter.setValueAtTime(sustainValue, time)
+        parameter.linearRampToValueAtTime(peakValue, time + attackTime)
+        parameter.exponentialRampToValueAtTime(sustainValue, time + attackTime + decayTime)
+      }
     },
     noteOff(value, time) {
-      parameter.linearRampToValueAtTime(value, time + releaseTime)
+      if (isActive) {
+        parameter.linearRampToValueAtTime(value, time + releaseTime)
+      }
     },
     reset(time) {
-      parameter.setValueAtTime(sustainValue, time)
-      parameter.cancelScheduledValues(time)
+      if (isActive) {
+        parameter.setValueAtTime(sustainValue, time)
+        parameter.cancelScheduledValues(time)
+      }
+    },
+    get active() {
+      return isActive
+    },
+    set active(value) {
+      isActive = value
     },
     set accent(value) {
       accentValue = value

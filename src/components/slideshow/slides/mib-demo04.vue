@@ -59,7 +59,7 @@
       </div>
 
       <div class="controls">
-        <mib-spin-box label="filter type"
+        <mib-spin-box label="Filter type"
                       class="control"
                       :values="synth.filterTypes"
                       :init="synth.filterType"
@@ -81,6 +81,7 @@
                     :min="0"
                     :max="33"
                     @change="updatePeak"></mib-slider>
+
         <mib-slider class="control"
                     label ="Filter detune"
                     :init="synth.filterDetune"
@@ -88,11 +89,15 @@
       </div>
 
       <div class="controls">
+        <mib-toggle label="On/Off"
+                    :init="synth.envelope.active"
+                    @change="toggleFilterEnvelope"></mib-toggle>
+
         <mib-slider class="control"
                     label ="Attack"
                     :init="synth.envelope.attack"
                     :min="0"
-                    :max="1"
+                    :max="2"
                     :step="0.01"
                     @change="updateAttack"></mib-slider>
 
@@ -109,7 +114,7 @@
                     label ="Decay"
                     :init="synth.envelope.decay"
                     :min="0.1"
-                    :max="1"
+                    :max="2"
                     width="300px"
                     :step="0.1"
                     valueWidth="120px"
@@ -133,12 +138,14 @@
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
   import MibSlider from '@/components/synth/mib-slider.vue'
+  import MibToggle from '@/components/synth/mib-toggle.vue'
 
   export default {
     components: {
       MibVisualizer,
       MibSpinBox,
       MibSlider,
+      MibToggle,
     },
     methods: {
       updateWaveForm1(value) {
@@ -176,6 +183,9 @@
       },
       updateDecay(value) {
         this.synth.envelope.decay = value
+      },
+      toggleFilterEnvelope(value) {
+        this.synth.envelope.active = value
       },
     },
     computed: {
