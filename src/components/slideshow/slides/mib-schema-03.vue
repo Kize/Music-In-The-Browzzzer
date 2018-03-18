@@ -3,14 +3,18 @@
     h1 {
       color: black;
     }
+    img {
+      height: 600px;
+      width: auto;
+    }
   }
 
 </style>
 
 <template>
   <div class="slide">
-    <h2>Basic sythesis</h2>
-    <img src="../../../assets/img/basic-synthesis.svg" />
+    <h2>Substractive synthesis</h2>
+    <img src="../../../assets/img/substractive-synthesis.svg" />
   </div>
 </template>
 

@@ -11,25 +11,25 @@
 
 <template>
   <div class="slide">
-    <h2>Oscillators</h2>
+    <h2>Additive synthesis</h2>
 
     <div class="snippet">
       <eg-code-block lang="javascript">
-        const audioContext = new AudioContext()
-        let osc
+        let oscs = {}
 
-        function noteOn(frequency, time) {
-          osc = audioContext.createOscillator()
-          osc.frequency.value = frequency, 0.1
-          osc.type = 'triangle'
-          osc.connect(audioContext.destination)
+        function noteOn(frequency, time = audioContext.currentTime) {
+          const osc = audioContext.createOscillator()
+          osc.frequency.setTargetAtTime(frequency, time, 0.001)
+          osc.connect(output)
           osc.start(time)
+          oscs[frequency] = osc
         }
 
-        function noteOff(time) {
-          osc.stop(time)
+        function noteOff(frequency, time = audioContext.currentTime) {
+          oscs[frequency].stop(time)
         }
 
+        noteOn(440, audioContext.currentTime)
         noteOn(440, audioContext.currentTime)
         noteOff(audioContext.currentTime + 1)
       </eg-code-block>
