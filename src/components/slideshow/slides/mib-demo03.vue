@@ -153,14 +153,12 @@
       },
     },
     created() {
-      if (!this.audioContext) {
-        this.audioContext = new AudioContext()
-        this.synth = Synth03(this.audioContext)
-        this.output = Output(this.audioContext)
-        this.synth.connect(this.output)
-        this.keyboard = Keyboard(this.synth)
-        this.keyboard.init()
-      }
+      this.audioContext = new AudioContext()
+      this.synth = Synth03(this.audioContext)
+      this.output = Output(this.audioContext)
+      this.synth.connect(this.output)
+      this.keyboard = Keyboard(this.synth)
+      this.keyboard.init()
     },
     destroyed() {
       this.keyboard.destroy()
