@@ -4,8 +4,8 @@ import { Voice } from '@/core/voice'
 export const Synth02 = (audioContext) => {
   const output = audioContext.createGain()
   const voices = {}
-  let waveForm1 = WaveForms.TRIANGLE
-  let waveForm2 = WaveForms.SAWTOOTH
+  let waveForm1 = WaveForms.SINE
+  let waveForm2 = WaveForms.SQUARE
   let detune1 = 0
   let detune2 = 0
 

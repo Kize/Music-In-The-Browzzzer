@@ -1,6 +1,6 @@
 export const Output = (audioContext) => {
-  const analyzer = audioContext.createAnalyser()
-  const compressor = audioContext.createDynamicsCompressor()
+  let analyzer = audioContext.createAnalyser()
+  let compressor = audioContext.createDynamicsCompressor()
   analyzer.fftSize = 2048
 
   compressor
@@ -8,7 +8,7 @@ export const Output = (audioContext) => {
     .connect(audioContext.destination)
 
   compressor.threshold.value = -50
-  compressor.knee.value = 50
+  compressor.knee.value = 40
   compressor.ratio.value = 18
   compressor.attack.value = 0
   compressor.release.value = 0.25

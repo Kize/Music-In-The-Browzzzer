@@ -99,8 +99,10 @@
       this.keyboard.init()
     },
     destroyed() {
-      this.keyboard.destroy()
       this.audioContext.close()
+        .then(() => {
+          this.keyboard.destroy()
+        })
     },
   }
 </script>

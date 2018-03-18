@@ -1,0 +1,47 @@
+<style lang="scss" scoped>
+  .slide {
+
+    .eg-code-block {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+</style>
+
+<template>
+  <div class="slide">
+    <h2>Monophonic synthesis</h2>
+
+    <div class="snippet">
+      <eg-code-block lang="javascript">
+        const audioContext = new AudioContext()
+        const osc = audioContext.createOscillator()
+        const output = audioContext.createGain()
+
+        /* routing */
+        osc.connect(gain).connect(audioContext.destination)
+
+        osc.type = 'sawtooth'
+        output.gain.value = 0
+        osc.start(time)
+
+        function noteOn(frequency, time = audioContext.currentTime) {
+          osc.frequency.setValueAtTime(frequency, time)
+          output.gain.setValueAtTime(1, time)
+        }
+
+        function noteOff(time = audioContext.currentTime) {
+          output.gain.setValueAtTime(0, time)
+        }
+
+        noteOn(440, audioContext.currentTime)
+        noteOff(audioContext.currentTime + 1)
+      </eg-code-block>
+    </div>
+  </div>
+</template>
+
+<script>
+  export default {}
+</script>

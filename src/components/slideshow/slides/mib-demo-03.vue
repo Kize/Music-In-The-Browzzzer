@@ -24,7 +24,7 @@
 
 <template>
   <div class="slide">
-    <h2>Envelopes</h2>
+    <h2>Substractive Synthesis</h2>
     <div class="synth">
       <div class="controls">
         <mib-spin-box class="control octave"
@@ -43,6 +43,7 @@
 
         <mib-slider class="control"
                     label="Detune 1"
+                    width="180px"
                     :init="synth.detune1"
                     @change="updateDetune1"></mib-slider>
 
@@ -54,71 +55,41 @@
 
         <mib-slider class="control"
                     label="Detune 2"
+                    width="180px"
                     :init="synth.detune2"
                     @change="updateDetune2"></mib-slider>
       </div>
 
       <div class="controls">
-        <mib-spin-box label="Filter type"
+        <mib-spin-box label="filter type"
                       class="control"
                       :values="synth.filterTypes"
-                      :init="synth.filterType"
+                      :init="synth.filter.type"
                       width="190px"
                       @change="updateFilterType"></mib-spin-box>
 
         <mib-slider label="Frequency"
                     class="control"
-                    :init="synth.frequency"
+                    :init="synth.filter.frequency.value"
                     :min="33"
                     :max="22050"
-                    width="300px"
+                    width="280px"
                     valueWidth="120px"
-                    @change="updateFrequency"></mib-slider>
+                    @change="updateFilterFrequency"></mib-slider>
 
         <mib-slider label="Peak"
                     class="control"
-                    :init="synth.qualityFactor"
+                    :init="synth.filter.Q.value"
                     :min="0"
-                    :max="33"
-                    @change="updatePeak"></mib-slider>
-
+                    :max="29"
+                    :step="0.1"
+                    width="230px"
+                    @change="updateFilterPeak"></mib-slider>
         <mib-slider class="control"
                     label ="Filter detune"
-                    :init="synth.filterDetune"
+                    :init="synth.filter.detune.value"
+                    width="180px"
                     @change="updateFilterDetune"></mib-slider>
-      </div>
-
-      <div class="controls">
-        <mib-toggle label="On/Off"
-                    :init="synth.envelope.active"
-                    @change="toggleFilterEnvelope"></mib-toggle>
-
-        <mib-slider class="control"
-                    label ="Attack"
-                    :init="synth.envelope.attack"
-                    :min="0"
-                    :max="2"
-                    :step="0.01"
-                    @change="updateAttack"></mib-slider>
-
-        <mib-slider class="control"
-                    label ="Accent"
-                    :init="synth.envelope.accent"
-                    :min="0"
-                    :max="15000"
-                    width="300px"
-                    valueWidth="120px"
-                    @change="updateAccent"></mib-slider>
-
-        <mib-slider class="control"
-                    label ="Decay"
-                    :init="synth.envelope.decay"
-                    :min="0.1"
-                    :max="2"
-                    width="300px"
-                    :step="0.1"
-                    valueWidth="120px"
-                    @change="updateDecay"></mib-slider>
       </div>
 
       <mib-visualizer class="visualizer"
@@ -127,25 +98,22 @@
                       :analyzer="output.analyzer"></mib-visualizer>
 
     </div>
-
   </div>
 </template>
 
 <script>
   import { Keyboard } from '@/core/keyboard'
   import { Output } from '@/core/output'
-  import { Synth04 } from '@/core/synth/synth-04'
+  import { Synth03 } from '@/core/synth/synth-03'
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
   import MibSlider from '@/components/synth/mib-slider.vue'
-  import MibToggle from '@/components/synth/mib-toggle.vue'
 
   export default {
     components: {
       MibVisualizer,
       MibSpinBox,
       MibSlider,
-      MibToggle,
     },
     methods: {
       updateWaveForm1(value) {
@@ -164,28 +132,16 @@
         this.keyboard.octave = value
       },
       updateFilterType(value) {
-        this.synth.filterType = value
+        this.synth.filter.type = value
       },
-      updateFrequency(value) {
-        this.synth.frequency = value
+      updateFilterFrequency(value) {
+        this.synth.filter.frequency.value = value
       },
-      updatePeak(value) {
-        this.synth.qualityFactor = value
+      updateFilterPeak(value) {
+        this.synth.filter.Q.value = value
       },
       updateFilterDetune(value) {
-        this.synth.filterDetune = value
-      },
-      updateAttack(value) {
-        this.synth.envelope.attack = value
-      },
-      updateAccent(value) {
-        this.synth.envelope.accent = value
-      },
-      updateDecay(value) {
-        this.synth.envelope.decay = value
-      },
-      toggleFilterEnvelope(value) {
-        this.synth.envelope.active = value
+        this.synth.filter.detune.value = value
       },
     },
     computed: {
@@ -198,16 +154,18 @@
     },
     created() {
       this.audioContext = new AudioContext()
-      this.synth = Synth04(this.audioContext)
+      this.synth = Synth03(this.audioContext)
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
       this.keyboard = Keyboard(this.synth)
-      this.keyboard.octave = 3
       this.keyboard.init()
     },
     destroyed() {
       this.keyboard.destroy()
       this.audioContext.close()
+        .then(() => {
+          delete this.audioContext
+        })
     },
   }
 </script>

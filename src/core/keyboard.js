@@ -1,9 +1,8 @@
 import * as R from 'ramda'
 import { DOM } from 'rx-dom'
 
-/* keeping track of previous attached listeners */
-const subscriptions = []
 export const Keyboard = ({ noteOn, noteOff, pitch }) => {
+  const subscriptions = []
   const keyMapping = ['q', 'a', 's', 'z', 'd', 'f', 'e', 'g', 'r', 'h', 't', 'j']
   let octave = 5
 
