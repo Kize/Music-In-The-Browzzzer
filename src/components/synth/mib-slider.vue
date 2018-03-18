@@ -27,7 +27,7 @@
       }
       input[type=range]::-webkit-slider-thumb {
         height: 100%;
-        width: 20%;
+        width: 10px;
         border-radius: 0;
         background: $ui-primary;
         cursor: pointer;
@@ -45,8 +45,9 @@
         outline: none;
       }
       input[type=range]::-moz-range-thumb {
-        height: 32px;
-        width: 17px;
+        height: 100%;
+        height: 100%;
+        width: 10px;
         border: none;
         border-radius: 0;
         background: $ui-primary;
@@ -57,7 +58,6 @@
       }
       input[type="text"] {
         color: $text-primary;
-        width: 70px;
         text-align: center;
         border: none;
         border-left: 1px solid $ui-bg;
@@ -79,6 +79,7 @@
              :max="max"
              :step="step"/>
       <input type="text" readonly
+             :style = "{ width : valueWidth }"
              v-model.number="value"/>
     </div>
   </div>
@@ -113,7 +114,11 @@
       width: {
         type: String,
         default: '160px',
-      }
+      },
+      valueWidth: {
+        type: String,
+        default: '70px',
+      },
     },
     data() {
       return {

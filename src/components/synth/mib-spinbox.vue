@@ -50,7 +50,7 @@
       },
       width: {
         type: String,
-        default: '160px',
+        default: '175px',
       },
       min: {
         type: Number,

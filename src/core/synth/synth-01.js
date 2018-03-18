@@ -1,7 +1,7 @@
 import { frequencyToMidi, midiToFrequency, randomWaveForm } from '@/core/utils'
 import { WaveForms } from '@/core/waveforms'
 
-export const Synth01 = (audioContext) => {
+export const Synth00 = (audioContext) => {
   const output = audioContext.createGain()
   let waveForm = WaveForms.TRIANGLE
   let detune = 0
@@ -25,7 +25,7 @@ export const Synth01 = (audioContext) => {
         const frequency = midiToFrequency(440, value)
         setWaveForm(osc)
         osc.detune.setValueAtTime(detune, time)
-        osc.frequency.setValueAtTime(frequency, time)
+        osc.frequency.setTargetAtTime(frequency, time, 0.001)
         osc.connect(output)
         osc.start(time)
         oscs[value] = osc
