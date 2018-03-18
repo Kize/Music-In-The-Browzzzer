@@ -32,6 +32,14 @@
       <mib-history></mib-history>
     </slide>
 
+    <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
+      <mib-demo00></mib-demo00>
+    </slide>
+
+    <slide enter='bounceInRight' leave='fadeOut'>
+      <mib-schema1></mib-schema1>
+    </slide>
+
     <slide enter='bounceInRight' leave='fadeOut'>
       <mib-snippets01></mib-snippets01>
     </slide>
@@ -56,9 +64,11 @@
 
 <script>
   import eagle from 'eagle.js'
-  import MibTitle from './slides/mib-tile.vue'
+  import MibTitle from './slides/mib-title.vue'
   import MibHistory from './slides/mib-history.vue'
   import MibSnippets01 from './slides/mib-snippets01.vue'
+  import MibSchema1 from './slides/mib-schema01.vue'
+  import MibDemo00 from './slides/mib-demo00.vue'
   import MibDemo01 from './slides/mib-demo01.vue'
   import MibDemo02 from './slides/mib-demo02.vue'
   import MibDemo03 from './slides/mib-demo03.vue'
@@ -71,7 +81,9 @@
     components: {
       MibTitle,
       MibHistory,
+      MibSchema1,
       MibSnippets01,
+      MibDemo00,
       MibDemo01,
       MibDemo02,
       MibDemo03,

@@ -5,7 +5,6 @@ import { DOM } from 'rx-dom'
 const subscriptions = []
 export const Keyboard = ({ noteOn, noteOff, pitch }) => {
   const keyMapping = ['q', 'a', 's', 'z', 'd', 'f', 'e', 'g', 'r', 'h', 't', 'j']
-  const keyPressed = []
   let octave = 5
 
   const getShiftedNote = (key, octave) => keyMapping.indexOf(key) + 12 * octave
@@ -31,9 +30,8 @@ export const Keyboard = ({ noteOn, noteOff, pitch }) => {
       /* Key down event triggers noteOn if key is mapped and not already pressed */
       subscriptions.push(
         DOM.keydown(document)
-          .filter(({key}) => keyPressed.indexOf(key) === -1 && keyMapping.indexOf(key) !== -1)
+          .filter(({key}) => keyMapping.indexOf(key) !== -1)
           .subscribe(({ key }) => {
-            keyPressed.push(key)
             noteOn(getShiftedNote(key, octave))
           })
       )
@@ -42,7 +40,6 @@ export const Keyboard = ({ noteOn, noteOff, pitch }) => {
         DOM.keyup(document)
           .filter(({key}) => keyMapping.indexOf(key) !== -1)
           .subscribe(({ key }) => {
-            keyPressed.splice(keyPressed.indexOf(key, 1))
             noteOff(getShiftedNote(key, octave))
           })
       )

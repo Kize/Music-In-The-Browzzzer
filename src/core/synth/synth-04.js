@@ -31,6 +31,7 @@ export const Synth04 = (audioContext) => {
   return {
     noteOn(value, time = audioContext.currentTime) {
       if (!voices[value]) {
+        envelope.reset(time)
         const voice = Voice(audioContext)
         voices[value] = voice
         voice.waveForm1 = waveForm1

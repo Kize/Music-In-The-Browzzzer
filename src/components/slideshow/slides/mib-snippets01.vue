@@ -20,7 +20,7 @@
 
         function noteOn(frequency, time) {
           osc = audioContext.createOscillator()
-          osc.frequency = frequency
+          osc.frequency.value = frequency, 0.1
           osc.type = 'triangle'
           osc.connect(audioContext.destination)
           osc.start(time)

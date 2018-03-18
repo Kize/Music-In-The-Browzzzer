@@ -32,7 +32,7 @@
       draw() {
         const sliceWidth = this.width * 1.0 / this.analyzer.fftSize
         this.analyzer.getByteTimeDomainData(this.buffer)
-        this.canvasContext.fillStyle = 'rgb(245, 245, 245)'
+        this.canvasContext.fillStyle = 'rgb(255, 255, 255)'
         this.canvasContext.fillRect(0, 0, this.width, this.height)
         this.canvasContext.lineWidth = 2
         this.canvasContext.strokeStyle = '#42b983'
