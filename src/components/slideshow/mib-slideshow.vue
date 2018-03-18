@@ -56,8 +56,11 @@
       <mib-demo03></mib-demo03>
     </slide>
 
-    <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
+    <slide enter='bounceInRight' :mouseNavigation="false">
       <mib-demo04></mib-demo04>
+    </slide>
+    <slide leave='fadeOut' :mouseNavigation="false">
+      <mib-demo0401></mib-demo0401>
     </slide>
   </div>
 </template>
@@ -73,6 +76,7 @@
   import MibDemo02 from './slides/mib-demo02.vue'
   import MibDemo03 from './slides/mib-demo03.vue'
   import MibDemo04 from './slides/mib-demo04.vue'
+  import MibDemo0401 from './slides/mib-demo04-01.vue'
 
   export default {
     mixins: [
@@ -88,6 +92,7 @@
       MibDemo02,
       MibDemo03,
       MibDemo04,
+      MibDemo0401,
     },
   }
 </script>

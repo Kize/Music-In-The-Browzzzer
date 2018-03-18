@@ -178,6 +178,7 @@
   import { Keyboard } from '@/core/keyboard'
   import { Output } from '@/core/output'
   import { Synth04 } from '@/core/synth/synth-04'
+  import { FilterTypes } from '@/core/filter-types'
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
   import MibSlider from '@/components/synth/mib-slider.vue'
@@ -259,8 +260,16 @@
       this.synth = Synth04(this.audioContext)
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
+      this.synth.waveForm1 = this.synth.waveForms.SINE
+      this.synth.waveForm2 = this.synth.waveForms.SINE
+      this.synth.voiceEnvelope.attack = 0.1
+      this.synth.voiceEnvelope.release = 0.6
+      this.synth.filterEnvelope.active = false
+      this.synth.filter.type = FilterTypes.HIGH_PASS
+      this.synth.filter.frequency.value = 2500
+      this.synth.filter.Q.value = 0
       this.keyboard = Keyboard(this.synth)
-      this.keyboard.octave = 3
+      this.keyboard.octave = 6
       this.keyboard.init()
     },
     destroyed() {

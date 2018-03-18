@@ -43,6 +43,7 @@
 
         <mib-slider class="control"
                     label="Detune 1"
+                    width="180px"
                     :init="synth.detune1"
                     @change="updateDetune1"></mib-slider>
 
@@ -54,6 +55,7 @@
 
         <mib-slider class="control"
                     label="Detune 2"
+                    width="180px"
                     :init="synth.detune2"
                     @change="updateDetune2"></mib-slider>
       </div>
@@ -62,28 +64,31 @@
         <mib-spin-box label="filter type"
                       class="control"
                       :values="synth.filterTypes"
-                      :init="synth.filterType"
+                      :init="synth.filter.type"
                       width="190px"
                       @change="updateFilterType"></mib-spin-box>
 
         <mib-slider label="Frequency"
                     class="control"
-                    :init="synth.frequency"
+                    :init="synth.filter.frequency.value"
                     :min="33"
                     :max="22050"
-                    width="300px"
+                    width="280px"
                     valueWidth="120px"
-                    @change="updateFrequency"></mib-slider>
+                    @change="updateFilterFrequency"></mib-slider>
 
         <mib-slider label="Peak"
                     class="control"
-                    :init="synth.qualityFactor"
+                    :init="synth.filter.Q.value"
                     :min="0"
-                    :max="33"
-                    @change="updatePeak"></mib-slider>
+                    :max="29"
+                    :step="0.1"
+                    width="230px"
+                    @change="updateFilterPeak"></mib-slider>
         <mib-slider class="control"
                     label ="Filter detune"
-                    :init="synth.filterDetune"
+                    :init="synth.filter.detune.value"
+                    width="180px"
                     @change="updateFilterDetune"></mib-slider>
       </div>
 
@@ -127,16 +132,16 @@
         this.keyboard.octave = value
       },
       updateFilterType(value) {
-        this.synth.filterType = value
+        this.synth.filter.type = value
       },
-      updateFrequency(value) {
-        this.synth.frequency = value
+      updateFilterFrequency(value) {
+        this.synth.filter.frequency.value = value
       },
-      updatePeak(value) {
-        this.synth.qualityFactor = value
+      updateFilterPeak(value) {
+        this.synth.filter.Q.value = value
       },
       updateFilterDetune(value) {
-        this.synth.filterDetune = value
+        this.synth.filter.detune.value = value
       },
     },
     computed: {
@@ -148,16 +153,21 @@
       },
     },
     created() {
-      this.audioContext = new AudioContext()
-      this.synth = Synth03(this.audioContext)
-      this.output = Output(this.audioContext)
-      this.synth.connect(this.output)
-      this.keyboard = Keyboard(this.synth)
-      this.keyboard.init()
+      if (!this.audioContext) {
+        this.audioContext = new AudioContext()
+        this.synth = Synth03(this.audioContext)
+        this.output = Output(this.audioContext)
+        this.synth.connect(this.output)
+        this.keyboard = Keyboard(this.synth)
+        this.keyboard.init()
+      }
     },
     destroyed() {
       this.keyboard.destroy()
       this.audioContext.close()
+        .then(() => {
+          delete this.audioContext
+        })
     },
   }
 </script>

@@ -3,7 +3,7 @@ import { WaveForms } from '@/core/waveforms'
 
 export const Synth00 = (audioContext) => {
   const output = audioContext.createGain()
-  let waveForm = WaveForms.TRIANGLE
+  let waveForm = WaveForms.SAWTOOTH
   let detune = 0
   const oscs = {}
 

@@ -46,6 +46,7 @@
         <mib-slider class="control"
                     label ="Detune 1"
                     :init="synth.detune1"
+                    width="180px"
                     @change="updateDetune1"></mib-slider>
 
         <mib-spin-box class="control"
@@ -57,6 +58,7 @@
         <mib-slider class="control"
                     label ="Detune 2"
                     :init="synth.detune2"
+                    width="180px"
                     @change="updateDetune2"></mib-slider>
       </div>
 
@@ -116,8 +118,10 @@
       this.keyboard.init()
     },
     destroyed() {
-      this.keyboard.destroy()
       this.audioContext.close()
+        .then(() => {
+          this.keyboard.destroy()
+        })
     },
   }
 </script>

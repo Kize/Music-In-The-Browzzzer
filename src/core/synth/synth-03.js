@@ -14,7 +14,7 @@ export const Synth03 = (audioContext) => {
 
   output.gain.value = 0.3
   filter.type = FilterTypes.LOW_PASS
-  filter.frequency.value = 33000
+  filter.frequency.value = 800
 
   return {
     noteOn(value, time = audioContext.currentTime) {
@@ -84,29 +84,8 @@ export const Synth03 = (audioContext) => {
     get filterTypes() {
       return Object.values(FilterTypes)
     },
-    get filterType() {
-      return filter.type
-    },
-    set filterType(value) {
-      filter.type = value
-    },
-    get filterDetune() {
-      return filter.detune.value
-    },
-    set filterDetune(value) {
-      filter.detune.value = value
-    },
-    get frequency() {
-      return filter.frequency.value
-    },
-    set frequency(value) {
-      filter.frequency.setTargetAtTime(value, audioContext.currentTime, 0.1)
-    },
-    get qualityFactor() {
-      return filter.Q.value
-    },
-    set qualityFactor(value) {
-      filter.Q.setTargetAtTime(value, audioContext.currentTime, 0.05)
+    get filter() {
+      return filter
     },
   }
 }

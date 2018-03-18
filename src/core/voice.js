@@ -51,8 +51,6 @@ export const Voice = (audioContext) => {
     noteOff(time) {
       osc1.stop(time)
       osc2.stop(time)
-      osc1.disconnect(gain1)
-      osc2.disconnect(gain2)
     },
     pitch(multiplier) {
       let newMidiValue, lastMidiValue
@@ -106,6 +104,9 @@ export const Voice = (audioContext) => {
     set waveForm2(value) {
       waveForm2 = value
       setWaveForm(waveForm2, osc2)
+    },
+    get output() {
+      return output
     },
   }
 }
