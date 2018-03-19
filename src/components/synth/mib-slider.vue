@@ -34,9 +34,6 @@
         -webkit-appearance: none;
         margin-top: 0;
       }
-      input[type=range]:focus::-webkit-slider-runnable-track {
-        background: $ui-bg-active;
-      }
       input[type=range]::-moz-range-track {
         width: 100%;
         cursor: pointer;
