@@ -1,4 +1,4 @@
-<style lang="scss" scoped>
+<style lang="scss">
   @import '../../assets/styles/colors.scss';
 
   .eg-slideshow {
@@ -12,8 +12,25 @@
 
       .eg-slide-content {
         .slide {
+          h1 {
+            font-size: 2.5em;
+            margin: 0.3em;
+          }
+
           h2 {
-            font-size: 1em;
+            font-size: 2em;
+            margin: 0.3em;
+          }
+
+          h3 {
+            font-size: 1.3em;
+          }
+
+          ul {
+            margin: auto;
+            text-align: left;
+            width: 40%;
+            max-width: 75%;
           }
 
         }
@@ -24,14 +41,37 @@
 
 <template>
   <div class="eg-slideshow">
-    <slide  :mouseNavigation="false">
+    <slide :mouseNavigation="false">
       <mib-title></mib-title>
     </slide>
 
+    <!--HISTORY-->
     <slide enter='bounceInRight' leave='fadeOut'>
       <mib-history></mib-history>
     </slide>
 
+    <!--WEB AUDIO API-->
+    <slide enter='bounceInRight' leave='fadeOut'>
+      <mib-web-audio-api00></mib-web-audio-api00>
+    </slide>
+
+    <slide enter='bounceInRight' leave='fadeOut'>
+      <mib-web-audio-api01></mib-web-audio-api01>
+    </slide>
+
+    <slide enter='bounceInRight' leave='fadeOut'>
+      <mib-web-audio-api02></mib-web-audio-api02>
+    </slide>
+
+    <slide enter='bounceInRight' leave='fadeOut'>
+      <mib-web-audio-api03></mib-web-audio-api03>
+    </slide>
+
+    <slide enter='bounceInRight' leave='fadeOut'>
+      <mib-web-audio-api04></mib-web-audio-api04>
+    </slide>
+
+    <!--DEMO-->
     <slide enter='bounceInRight' leave='fadeOut'>
       <mib-monophonic-graph></mib-monophonic-graph>
     </slide>
@@ -82,6 +122,11 @@
   import eagle from 'eagle.js'
   import MibTitle from './slides/mib-title.vue'
   import MibHistory from './slides/mib-history.vue'
+  import MibWebAudioApi00 from './slides/webAudioApi/mib-web-audio-api00'
+  import MibWebAudioApi01 from './slides/webAudioApi/mib-web-audio-api01'
+  import MibWebAudioApi02 from './slides/webAudioApi/mib-web-audio-api02'
+  import MibWebAudioApi03 from './slides/webAudioApi/mib-web-audio-api03'
+  import MibWebAudioApi04 from './slides/webAudioApi/mib-web-audio-api04'
   import MibMonophonicSnippet from './slides/monophonic-synthesis/snippet.vue'
   import MibMonophonicGraph from './slides/monophonic-synthesis/graph.vue'
   import MibMonophonicDemo from './slides/monophonic-synthesis/demo.vue'
@@ -102,6 +147,11 @@
     components: {
       MibTitle,
       MibHistory,
+      MibWebAudioApi00,
+      MibWebAudioApi01,
+      MibWebAudioApi02,
+      MibWebAudioApi03,
+      MibWebAudioApi04,
       MibMonophonicGraph,
       MibPolyphonicGraph,
       MibAdditiveGraph,
