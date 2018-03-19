@@ -5,7 +5,7 @@
 
 <template>
   <div class="slide">
-    <h2>Additive Synthesis</h2>
+    <h2>Synthèse additive</h2>
     <div class="synth">
       <div class="controls">
         <mib-spin-box class="control octave"

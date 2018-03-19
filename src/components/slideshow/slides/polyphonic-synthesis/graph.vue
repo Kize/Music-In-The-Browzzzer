@@ -5,7 +5,7 @@
 
 <template>
   <div class="slide">
-    <h2>Polyphonic synthesis</h2>
+    <h2>Synthèse polyphonique</h2>
     <div class="content">
       <img src="../../../../assets/img/polyphonic-synthesis.svg" />
     </div>

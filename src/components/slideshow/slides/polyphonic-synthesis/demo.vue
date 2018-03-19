@@ -10,7 +10,7 @@
 
 <template>
   <div class="slide">
-    <h2>Polyphonic Synthesis</h2>
+    <h2>Synthèse polyphonique</h2>
     <div class="synth">
       <div class="controls">
         <mib-spin-box class="control octave"

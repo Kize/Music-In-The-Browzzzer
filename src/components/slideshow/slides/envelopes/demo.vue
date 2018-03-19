@@ -5,7 +5,7 @@
 
 <template>
   <div class="slide">
-    <h2>Envelopes</h2>
+    <h2>Enveloppes</h2>
     <mib-preset01 v-if="step === 1"></mib-preset01>
     <mib-preset02 v-if="step === 2"></mib-preset02>
   </div>

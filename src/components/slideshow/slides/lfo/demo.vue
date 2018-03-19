@@ -5,7 +5,7 @@
 
 <template>
   <div class="slide">
-    <h2>LFO</h2>
+    <h2>Low Frequency Oscillators</h2>
     <mib-preset01 v-if="step === 1"></mib-preset01>
   </div>
 </template>

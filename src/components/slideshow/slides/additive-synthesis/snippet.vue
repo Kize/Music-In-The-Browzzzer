@@ -5,7 +5,7 @@
 
 <template>
   <div class="slide">
-    <h2>Additive synthesis</h2>
+    <h2>Synthèse additive</h2>
 
     <div class="snippet">
       <eg-code-block lang="javascript">

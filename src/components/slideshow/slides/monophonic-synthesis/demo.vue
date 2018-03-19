@@ -11,7 +11,7 @@
 
 <template>
   <div class="slide">
-    <h2>Monophonic Synthesis</h2>
+    <h2>Synthèse monophonique</h2>
     <div class="synth">
       <div class="controls">
         <mib-spin-box class="control octave"
