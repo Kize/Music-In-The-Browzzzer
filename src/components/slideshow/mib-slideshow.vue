@@ -30,7 +30,6 @@
             margin: auto;
             text-align: left;
             width: 40%;
-            max-width: 75%;
           }
 
         }
@@ -122,11 +121,11 @@
   import eagle from 'eagle.js'
   import MibTitle from './slides/mib-title.vue'
   import MibHistory from './slides/mib-history.vue'
-  import MibWebAudioApi00 from './slides/webAudioApi/mib-web-audio-api00'
-  import MibWebAudioApi01 from './slides/webAudioApi/mib-web-audio-api01'
-  import MibWebAudioApi02 from './slides/webAudioApi/mib-web-audio-api02'
-  import MibWebAudioApi03 from './slides/webAudioApi/mib-web-audio-api03'
-  import MibWebAudioApi04 from './slides/webAudioApi/mib-web-audio-api04'
+  import MibWebAudioApi00 from './slides/webAudioApi/mib-web-audio-api-00'
+  import MibWebAudioApi01 from './slides/webAudioApi/mib-web-audio-api-01'
+  import MibWebAudioApi02 from './slides/webAudioApi/mib-web-audio-api-02'
+  import MibWebAudioApi03 from './slides/webAudioApi/mib-web-audio-api-03'
+  import MibWebAudioApi04 from './slides/webAudioApi/mib-web-audio-api-04'
   import MibMonophonicSnippet from './slides/monophonic-synthesis/snippet.vue'
   import MibMonophonicGraph from './slides/monophonic-synthesis/graph.vue'
   import MibMonophonicDemo from './slides/monophonic-synthesis/demo.vue'

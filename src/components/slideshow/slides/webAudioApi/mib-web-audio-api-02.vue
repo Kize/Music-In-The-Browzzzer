@@ -13,9 +13,9 @@
     <h3>Les noeuds</h3>
 
     <ul>
-      <li>Plug'N'Play !</li>
-      <li>Oscillateur</li>
-      <li>Gain</li>
+      <li>Dépend de son contexte audio</li>
+      <li>Plu'N'Play</li>
+      <li>Exemple: Oscillateur, gain, filtre, etc...</li>
     </ul>
   </div>
 </template>

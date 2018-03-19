@@ -26,6 +26,7 @@
     <div class="snippet" v-if="step >= 5">
       <eg-code-block lang="javascript">
         const audioContext = new AudioContext()
+        const currentTime = audioContext.currentTime
         const osc = audioContext.createOscillator()
         audioContext.sampleRate
       </eg-code-block>
@@ -38,8 +39,8 @@
     props: {
       step: {
         type: Number,
-        default: 0,
-      }
-    }
+        default: 1,
+      },
+    },
   }
 </script>
