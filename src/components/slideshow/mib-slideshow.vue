@@ -55,8 +55,8 @@
       <mib-web-audio-api00></mib-web-audio-api00>
     </slide>
 
-    <slide enter='bounceInRight' leave='fadeOut'>
-      <mib-web-audio-api01></mib-web-audio-api01>
+    <slide enter='bounceInRight' leave='fadeOut' :steps="5">
+      <mib-web-audio-api01 :step="step"></mib-web-audio-api01>
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut'>

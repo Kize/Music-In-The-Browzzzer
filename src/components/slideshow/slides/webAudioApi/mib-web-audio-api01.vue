@@ -18,22 +18,28 @@
     <h3>Le contexte</h3>
 
     <ul>
-      <li>Element de départ pour utiliser l'API</li>
-      <li>Possède une liste de sorties (destination)</li>
-      <li>Fournit le temps</li>
+      <li v-if="step >= 2">Fournit le temps</li>
+      <li v-if="step >= 3">Permet de créer des noeuds audio</li>
+      <li v-if="step >= 4">Fournit la fréquence d'échantillonage</li>
     </ul>
 
-    <div class="snippet">
+    <div class="snippet" v-if="step >= 5">
       <eg-code-block lang="javascript">
         const audioContext = new AudioContext()
-        const destination = audioContext.destination
-
-        audioContext.currentTime
+        const osc = audioContext.createOscillator()
+        audioContext.sampleRate
       </eg-code-block>
     </div>
   </div>
 </template>
 
 <script>
-  export default {}
+  export default {
+    props: {
+      step: {
+        type: Number,
+        default: 0,
+      }
+    }
+  }
 </script>
