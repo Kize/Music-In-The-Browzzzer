@@ -24,7 +24,7 @@
 
 <template>
   <div class="slide">
-    <h2>Envelopes</h2>
+    <h2>Substractive Synthesis</h2>
     <div class="synth">
       <div class="controls">
         <mib-spin-box class="control octave"
@@ -43,6 +43,7 @@
 
         <mib-slider class="control"
                     label="Detune 1"
+                    width="180px"
                     :init="synth.detune1"
                     @change="updateDetune1"></mib-slider>
 
@@ -54,49 +55,9 @@
 
         <mib-slider class="control"
                     label="Detune 2"
+                    width="180px"
                     :init="synth.detune2"
                     @change="updateDetune2"></mib-slider>
-      </div>
-
-      <div class="controls">
-        <mib-toggle label="On/Off"
-                    :init="synth.voiceEnvelope.active"
-                    @change="toggleVoiceEnvelope"></mib-toggle>
-
-        <mib-slider class="control"
-                    label ="Attack"
-                    :init="synth.voiceEnvelope.attack"
-                    :min="0"
-                    :max="1"
-                    :step="0.1"
-                    width="200px"
-                    @change="updateVoiceAttack"></mib-slider>
-
-        <mib-slider class="control"
-                    label ="Decay"
-                    :init="synth.voiceEnvelope.decay"
-                    :min="0"
-                    :max="1"
-                    :step="0.1"
-                    width="200px"
-                    @change="updateVoiceDecay"></mib-slider>
-
-        <mib-slider class="control"
-                    label ="Sustain"
-                    :init="synth.voiceEnvelope.sustain"
-                    :min="0"
-                    :max="1"
-                    width="200px"
-                    :step="0.1"
-                    @change="updateVoiceSustain"></mib-slider>
-        <mib-slider class="control"
-                    label ="Release"
-                    :init="synth.voiceEnvelope.release"
-                    :min="0.1"
-                    :max="2"
-                    width="200px"
-                    :step="0.1"
-                    @change="updateVoiceRelease"></mib-slider>
       </div>
 
       <div class="controls">
@@ -131,64 +92,28 @@
                     @change="updateFilterDetune"></mib-slider>
       </div>
 
-      <div class="controls">
-        <mib-toggle label="On/Off"
-                    :init="synth.filterEnvelope.active"
-                    @change="toggleFilterEnvelope"></mib-toggle>
-
-        <mib-slider class="control"
-                    label ="Attack"
-                    :init="synth.filterEnvelope.attack"
-                    :min="0"
-                    :max="2"
-                    :step="0.01"
-                    @change="updateFilterAttack"></mib-slider>
-
-        <mib-slider class="control"
-                    label ="Accent"
-                    :init="synth.filterEnvelope.accent"
-                    :min="0"
-                    :max="15000"
-                    width="300px"
-                    valueWidth="120px"
-                    @change="updateFilterAccent"></mib-slider>
-
-        <mib-slider class="control"
-                    label ="Decay"
-                    :init="synth.filterEnvelope.decay"
-                    :min="0.1"
-                    :max="2"
-                    width="300px"
-                    :step="0.1"
-                    valueWidth="120px"
-                    @change="updateFilterDecay"></mib-slider>
-      </div>
-
       <mib-visualizer class="visualizer"
                       :width="width"
                       :height="height * 0.75"
                       :analyzer="output.analyzer"></mib-visualizer>
 
     </div>
-
   </div>
 </template>
 
 <script>
   import { Keyboard } from '@/core/keyboard'
   import { Output } from '@/core/output'
-  import { Synth04 } from '@/core/synth/synth-04'
+  import { SubstractiveSynth } from '@/core/synth/substractive-synth'
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
   import MibSlider from '@/components/synth/mib-slider.vue'
-  import MibToggle from '@/components/synth/mib-toggle.vue'
 
   export default {
     components: {
       MibVisualizer,
       MibSpinBox,
       MibSlider,
-      MibToggle,
     },
     methods: {
       updateWaveForm1(value) {
@@ -206,21 +131,6 @@
       updateOctave(value) {
         this.keyboard.octave = value
       },
-      updateVoiceAttack(value) {
-        this.synth.voiceEnvelope.attack = value
-      },
-      updateVoiceDecay(value) {
-        this.synth.voiceEnvelope.decay = value
-      },
-      updateVoiceSustain(value) {
-        this.synth.voiceEnvelope.sustain = value
-      },
-      updateVoiceRelease(value) {
-        this.synth.voiceEnvelope.release = value
-      },
-      toggleVoiceEnvelope(value) {
-        this.synth.voiceEnvelope.active = value
-      },
       updateFilterType(value) {
         this.synth.filter.type = value
       },
@@ -233,18 +143,6 @@
       updateFilterDetune(value) {
         this.synth.filter.detune.value = value
       },
-      updateFilterAttack(value) {
-        this.synth.filterEnvelope.attack = value
-      },
-      updateFilterAccent(value) {
-        this.synth.filterEnvelope.accent = value
-      },
-      updateFilterDecay(value) {
-        this.synth.filterEnvelope.decay = value
-      },
-      toggleFilterEnvelope(value) {
-        this.synth.filterEnvelope.active = value
-      },
     },
     computed: {
       width() {
@@ -256,17 +154,17 @@
     },
     created() {
       this.audioContext = new AudioContext()
-      this.synth = Synth04(this.audioContext)
+      this.synth = SubstractiveSynth(this.audioContext)
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
       this.keyboard = Keyboard(this.synth)
-      this.keyboard.octave = 3
       this.keyboard.init()
     },
     destroyed() {
+      this.keyboard.destroy()
       this.audioContext.close()
         .then(() => {
-          this.keyboard.destroy()
+          delete this.audioContext
         })
     },
   }

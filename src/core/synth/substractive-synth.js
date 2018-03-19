@@ -2,7 +2,7 @@ import { WaveForms } from '@/core/waveforms'
 import { Voice } from '@/core/voice'
 import { FilterTypes } from '@/core/filter-types'
 
-export const Synth03 = (audioContext) => {
+export const SubstractiveSynth = (audioContext) => {
   const output = audioContext.createGain()
   const filter = audioContext.createBiquadFilter()
   filter.connect(output)

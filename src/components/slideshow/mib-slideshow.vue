@@ -33,50 +33,47 @@
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut'>
-      <mib-schema00></mib-schema00>
+      <mib-monophonic-graph></mib-monophonic-graph>
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut'>
-      <mib-snippets00></mib-snippets00>
+      <mib-monophonic-snippet></mib-monophonic-snippet>
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
-      <mib-demo00></mib-demo00>
+      <mib-monophonic-demo></mib-monophonic-demo>
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut'>
-      <mib-schema01></mib-schema01>
+      <mib-polyphonic-snippet></mib-polyphonic-snippet>
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut'>
-      <mib-snippets01></mib-snippets01>
+      <mib-polyphonic-snippet></mib-polyphonic-snippet>
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
-      <mib-demo01></mib-demo01>
+      <mib-additive-graph></mib-additive-graph>
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut'>
-      <mib-schema02></mib-schema02>
+      <mib-additive-snippet></mib-additive-snippet>
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
-      <mib-demo02></mib-demo02>
+      <mib-additive-demo></mib-additive-demo>
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut'>
-      <mib-schema03></mib-schema03>
+      <mib-substractive-graph></mib-substractive-graph>
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
-      <mib-demo03></mib-demo03>
+      <mib-substractive-demo></mib-substractive-demo>
     </slide>
 
-    <slide enter='bounceInRight' :mouseNavigation="false">
-      <mib-demo04></mib-demo04>
-    </slide>
-    <slide leave='fadeOut' :mouseNavigation="false">
-      <mib-demo0401></mib-demo0401>
+    <slide enter='bounceInRight' :mouseNavigation="false" :steps="2">
+      <mib-envelopes-demo :step="step"></mib-envelopes-demo>
     </slide>
   </div>
 </template>
@@ -85,18 +82,18 @@
   import eagle from 'eagle.js'
   import MibTitle from './slides/mib-title.vue'
   import MibHistory from './slides/mib-history.vue'
-  import MibSnippets00 from './slides/mib-snippets-00.vue'
-  import MibSnippets01 from './slides/mib-snippets-01.vue'
-  import MibSchema00 from './slides/mib-schema-00.vue'
-  import MibSchema01 from './slides/mib-schema-01.vue'
-  import MibSchema02 from './slides/mib-schema-02.vue'
-  import MibSchema03 from './slides/mib-schema-03.vue'
-  import MibDemo00 from './slides/mib-demo-00.vue'
-  import MibDemo01 from './slides/mib-demo-01.vue'
-  import MibDemo02 from './slides/mib-demo-02.vue'
-  import MibDemo03 from './slides/mib-demo-03.vue'
-  import MibDemo04 from './slides/mib-demo-04.vue'
-  import MibDemo0401 from './slides/mib-demo-04-01.vue'
+  import MibMonophonicSnippet from './slides/monophonic-synthesis/snippet.vue'
+  import MibMonophonicGraph from './slides/monophonic-synthesis/graph.vue'
+  import MibMonophonicDemo from './slides/monophonic-synthesis/demo.vue'
+  import MibPolyphonicSnippet from './slides/polyphonic-synthesis/snippet.vue'
+  import MibPolyphonicGraph from './slides/polyphonic-synthesis/graph.vue'
+  import MibPolyphonicDemo from './slides/polyphonic-synthesis/demo.vue'
+  import MibAdditiveGraph from './slides/additive-synthesis/graph.vue'
+  import MibAdditiveSnippet from './slides/additive-synthesis/snippet.vue'
+  import MibAdditiveDemo from './slides/additive-synthesis/demo.vue'
+  import MibSubstractiveGraph from './slides/substractive-synthesis/graph.vue'
+  import MibSubstractiveDemo from './slides/substractive-synthesis/demo.vue'
+  import MibEnvelopesDemo from './slides/envelopes/demo.vue'
 
   export default {
     mixins: [
@@ -105,18 +102,18 @@
     components: {
       MibTitle,
       MibHistory,
-      MibSchema00,
-      MibSchema01,
-      MibSchema02,
-      MibSchema03,
-      MibSnippets00,
-      MibSnippets01,
-      MibDemo00,
-      MibDemo01,
-      MibDemo02,
-      MibDemo03,
-      MibDemo04,
-      MibDemo0401,
+      MibMonophonicGraph,
+      MibPolyphonicGraph,
+      MibAdditiveGraph,
+      MibSubstractiveGraph,
+      MibMonophonicSnippet,
+      MibPolyphonicSnippet,
+      MibAdditiveSnippet,
+      MibMonophonicDemo,
+      MibPolyphonicDemo,
+      MibAdditiveDemo,
+      MibSubstractiveDemo,
+      MibEnvelopesDemo,
     },
   }
 </script>

@@ -72,7 +72,7 @@
 
 <script>
   import { Keyboard } from '@/core/keyboard'
-  import { Synth02 } from '@/core/synth/synth-02'
+  import { AdditiveSynth } from '@/core/synth/additive-synth'
   import { Output } from '@/core/output'
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
@@ -111,7 +111,7 @@
     },
     created() {
       this.audioContext = new AudioContext()
-      this.synth = Synth02(this.audioContext)
+      this.synth = AdditiveSynth(this.audioContext)
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
       this.keyboard = Keyboard(this.synth)
