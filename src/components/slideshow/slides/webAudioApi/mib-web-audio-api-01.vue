@@ -18,7 +18,7 @@
     <h3>Le contexte</h3>
 
     <ul>
-      <li v-if="step >= 2">Fournit le temps</li>
+      <li v-if="step >= 2">Met à disposition une horloge</li>
       <li v-if="step >= 3">Permet de créer des noeuds audio</li>
       <li v-if="step >= 4">Fournit la fréquence d'échantillonage</li>
     </ul>

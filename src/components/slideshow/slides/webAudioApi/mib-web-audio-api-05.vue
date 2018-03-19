@@ -10,12 +10,13 @@
 <template>
   <div class="slide">
     <h2>Web Audio API</h2>
+    <h3>Debug ?</h3>
 
-    <ul>
-      <li v-if="step >= 2">API installée par défaut</li>
-      <li v-if="step >= 3">Génère et contrôle des données audio</li>
-      <li v-if="step >= 4">Possède son propre temps</li>
-    </ul>
+    <p v-if="step >= 2">Compliqué avec le <b>fire-and-forget</b></p>
+
+    <p v-if="step >= 3">Debuggable nativement sous Firefox</p>
+
+    <p v-if="step >= 4">Extension <i>stable</i> sous Chrome</p>
   </div>
 </template>
 

@@ -50,24 +50,28 @@
     </slide>
 
     <!--WEB AUDIO API-->
-    <slide enter='bounceInRight' leave='fadeOut'>
-      <mib-web-audio-api00></mib-web-audio-api00>
+    <slide enter='bounceInRight' leave='fadeOut' :steps="4">
+      <mib-web-audio-api00 :step="step"></mib-web-audio-api00>
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut' :steps="5">
       <mib-web-audio-api01 :step="step"></mib-web-audio-api01>
     </slide>
 
-    <slide enter='bounceInRight' leave='fadeOut'>
-      <mib-web-audio-api02></mib-web-audio-api02>
+    <slide enter='bounceInRight' leave='fadeOut' :steps="8">
+      <mib-web-audio-api02 :step="step"></mib-web-audio-api02>
+    </slide>
+
+    <slide enter='bounceInRight' leave='fadeOut' :steps="4">
+      <mib-web-audio-api03 :step="step"></mib-web-audio-api03>
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut'>
-      <mib-web-audio-api03></mib-web-audio-api03>
+      <mib-web-audio-api04 :step="step"></mib-web-audio-api04>
     </slide>
 
-    <slide enter='bounceInRight' leave='fadeOut'>
-      <mib-web-audio-api04></mib-web-audio-api04>
+    <slide enter='bounceInRight' leave='fadeOut' :steps="5">
+      <mib-web-audio-api05 :step="step"></mib-web-audio-api05>
     </slide>
 
     <!--DEMO-->
@@ -126,6 +130,7 @@
   import MibWebAudioApi02 from './slides/webAudioApi/mib-web-audio-api-02'
   import MibWebAudioApi03 from './slides/webAudioApi/mib-web-audio-api-03'
   import MibWebAudioApi04 from './slides/webAudioApi/mib-web-audio-api-04'
+  import MibWebAudioApi05 from './slides/webAudioApi/mib-web-audio-api-05'
   import MibMonophonicSnippet from './slides/monophonic-synthesis/snippet.vue'
   import MibMonophonicGraph from './slides/monophonic-synthesis/graph.vue'
   import MibMonophonicDemo from './slides/monophonic-synthesis/demo.vue'
@@ -151,6 +156,7 @@
       MibWebAudioApi02,
       MibWebAudioApi03,
       MibWebAudioApi04,
+      MibWebAudioApi05,
       MibMonophonicGraph,
       MibPolyphonicGraph,
       MibAdditiveGraph,

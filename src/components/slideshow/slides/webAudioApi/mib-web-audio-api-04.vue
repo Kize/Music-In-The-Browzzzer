@@ -10,13 +10,9 @@
 <template>
   <div class="slide">
     <h2>Web Audio API</h2>
-    <h3>Debug ?</h3>
+    <h3>Utilisation</h3>
 
-    <p>Compliqué avec le <b>fire-and-forget</b></p>
-
-    <p>Debuggable nativement sous Firefox</p>
-
-    <p>Extension <i>stable</i> sous Chrome</p>
+    <img src="../../../../assets/img/caniuse.png" />
   </div>
 </template>
 
