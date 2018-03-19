@@ -1,23 +1,10 @@
 <style lang="scss" scoped>
-
-  .synth {
-    width: 75%;
-    margin: 0 auto;
-
-    .controls {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-
-      .control {
-        margin-right: 5px;
-      }
-    }
-  }
+  @import '../../../../assets/styles/slide';
 
 </style>
 
 <template>
+  <div class="slide">
     <div class="synth">
       <div class="controls">
         <mib-spin-box class="control octave"
@@ -177,7 +164,17 @@
                     :min="0"
                     :max="15"
                     :step="0.01"
+                    width="200px"
                     @change="updateLfo1Frequency"></mib-slider>
+
+        <mib-slider class="control"
+                    label="Amplitude"
+                    :init="synth.lfo1.amplitude"
+                    :min="0"
+                    :max="700"
+                    :step="0.01"
+                    width="120px"
+                    @change="updateLfo1Amplitude"></mib-slider>
       </div>
 
       <mib-visualizer class="visualizer"
@@ -185,6 +182,7 @@
                       :height="height"
                       :analyzer="output.analyzer"></mib-visualizer>
     </div>
+  </div>
 </template>
 
 <script>
@@ -266,6 +264,9 @@
       },
       updateLfo1Frequency(value) {
         this.synth.lfo1.frequency = value
+      },
+      updateLfo1Amplitude(value) {
+        this.synth.lfo1.amplitude = value
       },
     },
     computed: {

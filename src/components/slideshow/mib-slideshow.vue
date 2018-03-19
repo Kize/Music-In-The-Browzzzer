@@ -4,14 +4,16 @@
   .eg-slideshow {
     font-family: "Roboto Condensed";
     background-color: $bg-primary;
+    overflow: hidden;
     height: 99%;
     width: 99%;
-    overflow: hidden;
 
     .eg-slide {
       background-color: $bg-primary;
 
       .eg-slide-content {
+        height: 100%;
+
         .slide {
           h1 {
             font-size: 2.5em;

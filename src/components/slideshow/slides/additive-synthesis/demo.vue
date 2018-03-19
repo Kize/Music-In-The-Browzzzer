@@ -1,26 +1,5 @@
 <style lang="scss" scoped>
-
-  .slide {
-    h1 {
-      color: black;
-    }
-    .synth {
-      width:75%;
-      margin: 0 auto;
-
-      .controls {
-        display: flex;
-        justify-content: space-between;
-
-        .control {
-          margin-right: 5px;
-        }
-      }
-      .visualizer {
-
-      }
-    }
-  }
+  @import '../../../../assets/styles/slide';
 
 </style>
 
@@ -63,8 +42,8 @@
       </div>
 
       <mib-visualizer class="visualizer"
-                      :width="width"
-                      :height="height * 0.75"
+                      :width="1000"
+                      :height="400"
                       :analyzer="output.analyzer"></mib-visualizer>
     </div>
   </div>
@@ -99,14 +78,6 @@
       },
       updateOctave(value) {
         this.keyboard.octave = value
-      },
-    },
-    computed: {
-      width() {
-        return innerWidth * 0.75
-      },
-      height() {
-        return innerHeight * 0.8
       },
     },
     created() {

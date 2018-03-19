@@ -1,24 +1,11 @@
 <style lang="scss" scoped>
-
-  .synth {
-    width: 1000px;
-    margin: 0 auto;
-
-    .controls {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-
-      .control {
-        margin-right: 5px;
-      }
-    }
-  }
+  @import '../../../../assets/styles/slide';
 
 </style>
 
 <template>
-  <div class="synth">
+  <div class="slide">
+    <div class="synth">
       <div class="controls">
         <mib-spin-box class="control octave"
                       label="Octave"
@@ -163,7 +150,7 @@
                       :analyzer="output.analyzer"></mib-visualizer>
 
     </div>
-
+  </div>
 </template>
 
 <script>

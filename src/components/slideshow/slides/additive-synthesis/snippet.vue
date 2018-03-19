@@ -1,11 +1,5 @@
 <style lang="scss" scoped>
-  .slide {
-
-    .eg-code-block {
-      display: flex;
-      justify-content: center;
-    }
-  }
+  @import '../../../../assets/styles/slide';
 
 </style>
 

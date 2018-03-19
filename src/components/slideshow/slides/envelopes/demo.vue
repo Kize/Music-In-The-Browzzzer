@@ -1,24 +1,5 @@
 <style lang="scss" scoped>
-
-  .slide {
-    h1 {
-      color: black;
-    }
-    .synth {
-      width: 1000px;
-      margin: 0 auto;
-
-      .controls {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 10px;
-
-        .control {
-          margin-right: 5px;
-        }
-      }
-    }
-  }
+  @import '../../../../assets/styles/slide';
 
 </style>
 
