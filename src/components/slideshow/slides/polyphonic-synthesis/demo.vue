@@ -2,8 +2,10 @@
   @import '../../../../assets/styles/slide';
 
   .synth {
+    margin-top: -100px !important;
+
     .controls {
-      justify-content: flex-start!important;
+      justify-content: flex-start !important;
     }
   }
 </style>

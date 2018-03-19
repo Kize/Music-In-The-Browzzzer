@@ -5,7 +5,7 @@
 
 <template>
   <div class="slide">
-    <h2>Substractive Synthesis</h2>
+    <h2>Synthèse Substractive</h2>
 
     <div class="synth">
       <div class="controls">

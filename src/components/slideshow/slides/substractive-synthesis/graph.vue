@@ -5,7 +5,7 @@
 
 <template>
   <div class="slide">
-    <h2>Substractive synthesis</h2>
+    <h2>Synthèse substrative</h2>
 
     <div class="content">
       <img src="../../../../assets/img/substractive-synthesis.svg" />
