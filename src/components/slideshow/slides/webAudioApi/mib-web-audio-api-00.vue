@@ -12,9 +12,9 @@
     <h2>Web Audio API</h2>
 
     <ul>
-      <li v-if="step >= 2">API installée par défaut</li>
-      <li v-if="step >= 3">Génère et contrôle des données audio</li>
-      <li v-if="step >= 4">Possède son propre temps</li>
+      <li v-if="step >= 2">API native HTML5</li>
+      <li v-if="step >= 3">Capable de contrôler des données audio en temps réel</li>
+      <li v-if="step >= 4">Basé sur le routing modulaire</li>
     </ul>
   </div>
 </template>

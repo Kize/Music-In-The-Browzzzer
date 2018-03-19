@@ -2,6 +2,7 @@
   @import '../../assets/styles/colors.scss';
 
   .eg-slideshow {
+    font-family: "Roboto Condensed";
     background-color: $bg-primary;
     height: 99%;
     width: 99%;
@@ -40,7 +41,7 @@
 
 <template>
   <div class="eg-slideshow">
-    <slide :mouseNavigation="false">
+    <slide :mouseNavigation="false"  leave='fadeOut'>
       <mib-title></mib-title>
     </slide>
 
