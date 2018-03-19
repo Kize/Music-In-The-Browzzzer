@@ -14,7 +14,7 @@
     <ul>
       <li v-if="step >= 2">API native HTML5</li>
       <li v-if="step >= 3">Capable de contrôler des données audio en temps réel</li>
-      <li v-if="step >= 4">Basé sur le routing modulaire</li>
+      <li v-if="step >= 4">Basée sur le routing modulaire</li>
     </ul>
   </div>
 </template>
