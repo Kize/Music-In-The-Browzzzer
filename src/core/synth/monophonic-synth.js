@@ -1,7 +1,7 @@
 import { frequencyToMidi, midiToFrequency, randomWaveForm } from '@/core/utils'
 import { WaveForms } from '@/core/waveforms'
 
-export const Synth00 = (audioContext) => {
+export const MonophonicSynth = (audioContext) => {
   const output = audioContext.createGain()
   const osc = audioContext.createOscillator()
 

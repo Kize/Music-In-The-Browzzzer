@@ -1,7 +1,7 @@
 import { frequencyToMidi, midiToFrequency, randomWaveForm } from '@/core/utils'
 import { WaveForms } from '@/core/waveforms'
 
-export const Synth00 = (audioContext) => {
+export const PolyphonicSynth = (audioContext) => {
   const output = audioContext.createGain()
   let waveForm = WaveForms.SAWTOOTH
   let detune = 0

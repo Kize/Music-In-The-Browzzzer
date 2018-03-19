@@ -1,21 +1,16 @@
 <style lang="scss" scoped>
 
-  .slide {
-    h1 {
-      color: black;
-    }
-    .synth {
-      width: 75%;
-      margin: 0 auto;
+  .synth {
+    width: 75%;
+    margin: 0 auto;
 
-      .controls {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 10px;
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
 
-        .control {
-          margin-right: 5px;
-        }
+      .control {
+        margin-right: 5px;
       }
     }
   }
@@ -23,9 +18,7 @@
 </style>
 
 <template>
-  <div class="slide">
-    <h2>Envelopes</h2>
-    <div class="synth">
+  <div class="synth">
       <div class="controls">
         <mib-spin-box class="control octave"
                       label="Octave"
@@ -171,13 +164,12 @@
 
     </div>
 
-  </div>
 </template>
 
 <script>
   import { Keyboard } from '@/core/keyboard'
   import { Output } from '@/core/output'
-  import { Synth04 } from '@/core/synth/synth-04'
+  import { EnvelopesSynth } from '@/core/synth/envelopes-synth'
   import { FilterTypes } from '@/core/filter-types'
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
@@ -257,7 +249,7 @@
     },
     created() {
       this.audioContext = new AudioContext()
-      this.synth = Synth04(this.audioContext)
+      this.synth = EnvelopesSynth(this.audioContext)
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
       this.synth.waveForm1 = this.synth.waveForms.SINE

@@ -1,7 +1,7 @@
 import { WaveForms } from '@/core/waveforms'
 import { Voice } from '@/core/voice'
 
-export const Synth02 = (audioContext) => {
+export const AdditiveSynth = (audioContext) => {
   const output = audioContext.createGain()
   const voices = {}
   let waveForm1 = WaveForms.SINE

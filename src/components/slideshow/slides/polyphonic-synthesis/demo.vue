@@ -59,7 +59,7 @@
 
 <script>
   import { Keyboard } from '@/core/keyboard'
-  import { Synth00 } from '@/core/synth/synth-01'
+  import { PolyphonicSynth } from '@/core/synth/polyphonic-synth'
   import { Output } from '@/core/output'
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
@@ -92,7 +92,7 @@
     },
     created() {
       this.audioContext = new AudioContext()
-      this.synth = Synth00(this.audioContext)
+      this.synth = PolyphonicSynth(this.audioContext)
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
       this.keyboard = Keyboard(this.synth)

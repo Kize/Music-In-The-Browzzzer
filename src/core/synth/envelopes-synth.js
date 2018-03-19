@@ -4,7 +4,7 @@ import { FilterTypes } from '@/core/filter-types'
 import { AccentEnvelope } from '@/core/accent-envelope'
 import { ADSREnvelope } from '@/core/adsr-enveloppe'
 
-export const Synth04 = (audioContext) => {
+export const EnvelopesSynth = (audioContext) => {
   const voices = {}
 
   const output = audioContext.createGain()

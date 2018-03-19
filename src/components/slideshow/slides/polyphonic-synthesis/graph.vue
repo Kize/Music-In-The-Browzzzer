@@ -13,8 +13,8 @@
 
 <template>
   <div class="slide">
-    <h2>Substractive synthesis</h2>
-    <img src="../../../assets/img/substractive-synthesis.svg" />
+    <h2>Polyphonic synthesis</h2>
+    <img src="../../../../assets/img/polyphonic-synthesis.svg" />
   </div>
 </template>
 
