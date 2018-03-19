@@ -3,13 +3,15 @@ import { Voice } from '@/core/voice'
 import { FilterTypes } from '@/core/filter-types'
 import { AccentEnvelope } from '@/core/accent-envelope'
 import { ADSREnvelope } from '@/core/adsr-enveloppe'
+import { LFO } from '@/core/lfo'
 
-export const EnvelopesSynth = (audioContext) => {
+export const LFOSynth = (audioContext) => {
   const voices = {}
 
   const output = audioContext.createGain()
   const filter = audioContext.createBiquadFilter()
   const voiceGain = audioContext.createGain()
+  const lfo = LFO(audioContext)
 
   let waveForm1 = WaveForms.SQUARE
   let waveForm2 = WaveForms.SQUARE
@@ -37,6 +39,8 @@ export const EnvelopesSynth = (audioContext) => {
   let voiceRelease = 0.2
   let voiceEnvelopeActive = true
 
+  lfo.parameter = filter.Q
+
   return {
     noteOn(value, time = audioContext.currentTime) {
       if (!voices[value]) {
@@ -55,6 +59,7 @@ export const EnvelopesSynth = (audioContext) => {
         voice.detune2 = detune2
         voice.connect({ input: voiceGain })
         voice.noteOn(value, time)
+        lfo.trigger(time)
         voice.envelope.trigger(time)
         filterEnvelope.trigger(time)
       }
@@ -62,6 +67,7 @@ export const EnvelopesSynth = (audioContext) => {
     noteOff(value, time = audioContext.currentTime) {
       if (voices[value]) {
         filterEnvelope.reset(time)
+        lfo.reset(time)
         voices[value].envelope.reset(time)
         const noteOffTime = voiceEnvelopeActive ? time + voiceRelease : time
         voices[value].noteOff(noteOffTime)
@@ -119,10 +125,6 @@ export const EnvelopesSynth = (audioContext) => {
     },
     get filter() {
       return filter
-    },
-    set filterFrequency(value) {
-      filter.frequency.value = value
-      filterEnvelope.sustain = value
     },
     get filterEnvelope() {
       return filterEnvelope

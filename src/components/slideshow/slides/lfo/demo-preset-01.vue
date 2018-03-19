@@ -159,7 +159,7 @@
 
       <mib-visualizer class="visualizer"
                       :width="1000"
-                      :height="heightq"
+                      :height="height"
                       :analyzer="output.analyzer"></mib-visualizer>
 
     </div>
@@ -168,7 +168,7 @@
 <script>
   import { Keyboard } from '@/core/keyboard'
   import { Output } from '@/core/output'
-  import { EnvelopesSynth } from '@/core/synth/envelopes-synth'
+  import { LFOSynth } from '@/core/synth/lfo-synth'
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
   import MibSlider from '@/components/synth/mib-slider.vue'
@@ -216,7 +216,7 @@
         this.synth.filter.type = value
       },
       updateFilterFrequency(value) {
-        this.synth.filterFrequency = value
+        this.synth.filter.frequency.value = value
       },
       updateFilterPeak(value) {
         this.synth.filter.Q.value = value
@@ -247,7 +247,7 @@
     },
     created() {
       this.audioContext = new AudioContext()
-      this.synth = EnvelopesSynth(this.audioContext)
+      this.synth = LFOSynth(this.audioContext)
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
       this.keyboard = Keyboard(this.synth)
