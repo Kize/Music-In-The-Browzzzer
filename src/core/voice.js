@@ -1,14 +1,21 @@
-import * as R from 'ramda'
 import { WaveForms } from '@/core/waveforms'
 import { frequencyToMidi, midiToFrequency, randomWaveForm } from '@/core/utils'
 
 export const Voice = (audioContext) => {
-  let osc1
-  let osc2
-  let detune1
-  let detune2
+  const setWaveForm = (waveForm, osc) => {
+    if (waveForm === WaveForms.RANDOM) {
+      osc.setPeriodicWave(randomWaveForm(audioContext))
+    } else {
+      osc.type = waveForm
+    }
+  }
+
+  const osc1 = audioContext.createOscillator()
+  const osc2 = audioContext.createOscillator()
   let waveForm1 = WaveForms.TRIANGLE
   let waveForm2 = WaveForms.SAWTOOTH
+  setWaveForm(waveForm1, osc1)
+  setWaveForm(waveForm2, osc2)
   const gain1 = audioContext.createGain()
   const gain2 = audioContext.createGain()
   const output = audioContext.createGain()
@@ -19,28 +26,11 @@ export const Voice = (audioContext) => {
   gain1.gain.value = 0.5
   gain2.gain.value = 0.5
 
-  const setWaveForm = (waveForm, osc = audioContext.createOscillator()) => {
-    if (waveForm === WaveForms.RANDOM) {
-      osc.setPeriodicWave(randomWaveForm(audioContext))
-    } else {
-      osc.type = waveForm
-    }
-    return osc
-  }
-
   const getFrequency = midiToFrequency(440)
-
-  const createOsc = (waveForm, detune) => {
-    const osc = audioContext.createOscillator()
-    osc.detune.value = detune
-    return setWaveForm(waveForm, osc)
-  }
 
   return {
     noteOn(value, time = audioContext.currentTime) {
       const frequency = getFrequency(value)
-      osc1 = createOsc(waveForm1, detune1)
-      osc2 = createOsc(waveForm2, detune2)
       osc1.frequency.value = frequency
       osc2.frequency.value = frequency
       osc1.connect(gain1)
@@ -55,7 +45,6 @@ export const Voice = (audioContext) => {
     pitch(multiplier) {
       let newMidiValue, lastMidiValue
       [osc1, osc2]
-        .filter(R.identity)
         .forEach((osc) => {
           /* retrieve midi note value from actual frequency */
           lastMidiValue = Math.round(frequencyToMidi(440, osc.frequency.value))
@@ -71,25 +60,11 @@ export const Voice = (audioContext) => {
     connect({ input }) {
       output.connect(input)
     },
-    get detune1() {
-      return detune1
+    get osc1() {
+      return osc1
     },
-    set detune1(value) {
-      detune1 = value
-      if (!osc1) {
-        return
-      }
-      osc1.detune.value = detune1
-    },
-    get detune2() {
-      return detune2
-    },
-    set detune2(value) {
-      detune2 = value
-      if (!osc2) {
-        return
-      }
-      osc2.detune.value = detune2
+    get osc2() {
+      return osc2
     },
     get waveForm1() {
       return waveForm1

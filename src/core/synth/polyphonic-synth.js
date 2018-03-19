@@ -7,7 +7,7 @@ export const PolyphonicSynth = (audioContext) => {
   let detune = 0
   const oscs = {}
 
-  const setWaveForm = (osc) => {
+  const setWaveForm = (waveForm, osc) => {
     if (waveForm === WaveForms.RANDOM) {
       osc.setPeriodicWave(randomWaveForm(audioContext))
     } else {
@@ -23,7 +23,7 @@ export const PolyphonicSynth = (audioContext) => {
       if (!oscs[value]) {
         const osc = audioContext.createOscillator()
         const frequency = midiToFrequency(440, value)
-        setWaveForm(osc)
+        setWaveForm(waveForm, osc)
         osc.detune.setValueAtTime(detune, time)
         osc.frequency.setTargetAtTime(frequency, time, 0.001)
         osc.connect(output)

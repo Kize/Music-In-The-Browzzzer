@@ -254,7 +254,7 @@
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
       this.synth.waveForm1 = WaveForms.SINE
-      this.synth.waveForm2 = this.synth.waveForms.SINE
+      this.synth.waveForm2 = WaveForms.SINE
       this.synth.voiceEnvelope.attack = 0.1
       this.synth.voiceEnvelope.release = 0.6
       this.synth.filterEnvelope.active = false

@@ -157,11 +157,33 @@
                     @change="updateFilterDecay"></mib-slider>
       </div>
 
+      <div class="controls">
+        <mib-spin-box label="Destination"
+                      class="control"
+                      :values="synth.lfoDestinations"
+                      :init="synth.lfo1.destination"
+                      width="190px"
+                      @change="updateLfo1Destination"></mib-spin-box>
+
+        <mib-spin-box class="control"
+                      label="Waveform"
+                      :values="synth.waveForms"
+                      :init="synth.lfo1.waveForm"
+                      @change="updateLfo1WaveForm"></mib-spin-box>
+
+        <mib-slider class="control"
+                    label ="Frequency"
+                    :init="synth.lfo1.frequency"
+                    :min="0"
+                    :max="15"
+                    :step="0.01"
+                    @change="updateLfo1Frequency"></mib-slider>
+      </div>
+
       <mib-visualizer class="visualizer"
                       :width="1000"
                       :height="height"
                       :analyzer="output.analyzer"></mib-visualizer>
-
     </div>
 </template>
 
@@ -235,6 +257,15 @@
       },
       toggleFilterEnvelope(value) {
         this.synth.filterEnvelope.active = value
+      },
+      updateLfo1Destination(value) {
+        this.synth.lfo1Destination = value
+      },
+      updateLfo1WaveForm(value) {
+        this.synth.lfo1.waveForm = value
+      },
+      updateLfo1Frequency(value) {
+        this.synth.lfo1.frequency = value
       },
     },
     computed: {

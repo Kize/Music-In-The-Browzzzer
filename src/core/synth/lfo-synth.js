@@ -4,6 +4,7 @@ import { FilterTypes } from '@/core/filter-types'
 import { AccentEnvelope } from '@/core/accent-envelope'
 import { ADSREnvelope } from '@/core/adsr-enveloppe'
 import { LFO } from '@/core/lfo'
+import { LFODestinations } from '@/core/lfo-destinations'
 
 export const LFOSynth = (audioContext) => {
   const voices = {}
@@ -11,7 +12,8 @@ export const LFOSynth = (audioContext) => {
   const output = audioContext.createGain()
   const filter = audioContext.createBiquadFilter()
   const voiceGain = audioContext.createGain()
-  const lfo = LFO(audioContext)
+  const lfo1 = LFO(audioContext)
+  const lfo2 = LFO(audioContext)
 
   let waveForm1 = WaveForms.SQUARE
   let waveForm2 = WaveForms.SQUARE
@@ -39,19 +41,47 @@ export const LFOSynth = (audioContext) => {
   let voiceRelease = 0.2
   let voiceEnvelopeActive = true
 
-  lfo.parameter = filter.Q
+  lfo1.destination = LFODestinations.OFF
+  lfo2.destination = LFODestinations.OFF
+
+  const connectEnvelope = (voice) => {
+    voice.envelope = ADSREnvelope(voice.output.gain)
+    voice.envelope.attack = voiceAttack
+    voice.envelope.decay = voiceDecay
+    voice.envelope.sustain = voiceSustain
+    voice.envelope.release = voiceRelease
+    voice.envelope.active = voiceEnvelopeActive
+  }
+
+  const connectLFO = (lfo, voice) => {
+    switch (lfo.destination) {
+      case LFODestinations.OSC1_DETUNE:
+        lfo.parameter = voice.osc1.detune
+        break
+      case LFODestinations.OSC1_FREQUENCY:
+        lfo.parameter = voice.osc1.frequency
+        break
+      case LFODestinations.OSC2_DETUNE:
+        lfo.parameter = voice.osc2.detune
+        break
+      case LFODestinations.OSC2_FREQUENCY:
+        lfo.parameter = voice.osc2.frequency
+        break
+      default:
+        break
+    }
+  }
+
+  lfo1.parameter = filter.Q
 
   return {
     noteOn(value, time = audioContext.currentTime) {
       if (!voices[value]) {
         filterEnvelope.reset(time)
         const voice = Voice(audioContext)
-        voice.envelope = ADSREnvelope(voice.output.gain)
-        voice.envelope.attack = voiceAttack
-        voice.envelope.decay = voiceDecay
-        voice.envelope.sustain = voiceSustain
-        voice.envelope.release = voiceRelease
-        voice.envelope.active = voiceEnvelopeActive
+        connectEnvelope(voice)
+        connectLFO(lfo1, voice)
+        connectLFO(lfo2, voice)
         voices[value] = voice
         voice.waveForm1 = waveForm1
         voice.waveForm2 = waveForm2
@@ -59,7 +89,6 @@ export const LFOSynth = (audioContext) => {
         voice.detune2 = detune2
         voice.connect({ input: voiceGain })
         voice.noteOn(value, time)
-        lfo.trigger(time)
         voice.envelope.trigger(time)
         filterEnvelope.trigger(time)
       }
@@ -67,7 +96,6 @@ export const LFOSynth = (audioContext) => {
     noteOff(value, time = audioContext.currentTime) {
       if (voices[value]) {
         filterEnvelope.reset(time)
-        lfo.reset(time)
         voices[value].envelope.reset(time)
         const noteOffTime = voiceEnvelopeActive ? time + voiceRelease : time
         voices[value].noteOff(noteOffTime)
@@ -110,7 +138,9 @@ export const LFOSynth = (audioContext) => {
     set detune1(value) {
       detune1 = value
       Object.values(voices)
-        .forEach(voice => { voice.detune1 = detune1 })
+        .forEach(voice => {
+          voice.osc1.detune.value = detune1
+        })
     },
     get detune2() {
       return detune2
@@ -118,7 +148,9 @@ export const LFOSynth = (audioContext) => {
     set detune2(value) {
       detune2 = value
       Object.values(voices)
-        .forEach(voice => { voice.detune2 = detune2 })
+        .forEach(voice => {
+          voice.osc2.detune.value = detune2
+        })
     },
     get filterTypes() {
       return Object.values(FilterTypes)
@@ -166,6 +198,47 @@ export const LFOSynth = (audioContext) => {
           return voiceEnvelopeActive
         },
       }
+    },
+    get lfo1() {
+      return lfo1
+    },
+    get lfo2() {
+      return lfo2
+    },
+    get lfoDestinations() {
+      return Object.values(LFODestinations)
+    },
+    set lfo1Destination(value) {
+      switch (value) {
+        case LFODestinations.FILTER_FREQUENCY:
+          lfo1.parameter = filter.frequency
+          break
+        case LFODestinations.PEAK:
+          lfo1.parameter = filter.Q
+          break
+        default:
+          Object.values(voices)
+            .forEach(voice => {
+              connectLFO(lfo1, voice)
+            })
+      }
+      lfo1.destination = value
+    },
+    set lfo2Destination(value) {
+      switch (value) {
+        case LFODestinations.FILTER_FREQUENCY:
+          lfo2.parameter = filter.frequency
+          break
+        case LFODestinations.PEAK:
+          lfo2.parameter = filter.Q
+          break
+        default:
+          Object.values(voices)
+            .forEach(voice => {
+              connectLFO(lfo2, voice)
+            })
+      }
+      lfo2.destination = value
     },
   }
 }

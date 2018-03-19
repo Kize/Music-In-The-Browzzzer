@@ -159,7 +159,7 @@
 
       <mib-visualizer class="visualizer"
                       :width="1000"
-                      :height="heightq"
+                      :height="height"
                       :analyzer="output.analyzer"></mib-visualizer>
 
     </div>
