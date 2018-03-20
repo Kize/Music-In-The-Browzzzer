@@ -43,13 +43,8 @@
 
 <template>
   <div class="eg-slideshow">
-    <slide :mouseNavigation="false"  leave='fadeOut'>
+    <slide :mouseNavigation="false" leave='fadeOut'>
       <mib-title></mib-title>
-    </slide>
-
-    <!--HISTORY-->
-    <slide enter='bounceInRight' leave='fadeOut'>
-      <mib-history></mib-history>
     </slide>
 
     <!--WEB AUDIO API-->
@@ -57,27 +52,19 @@
       <mib-web-audio-api00 :step="step"></mib-web-audio-api00>
     </slide>
 
-    <slide enter='bounceInRight' leave='fadeOut' :steps="5">
-      <mib-web-audio-api01 :step="step"></mib-web-audio-api01>
-    </slide>
-
-    <slide enter='bounceInRight' leave='fadeOut' :steps="8">
-      <mib-web-audio-api02 :step="step"></mib-web-audio-api02>
-    </slide>
-
-    <slide enter='bounceInRight' leave='fadeOut' :steps="4">
-      <mib-web-audio-api03 :step="step"></mib-web-audio-api03>
+    <slide enter='bounceInRight' leave='fadeOut'>
+      <mib-web-audio-api01></mib-web-audio-api01>
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut'>
-      <mib-web-audio-api04 :step="step"></mib-web-audio-api04>
+      <mib-web-audio-api02></mib-web-audio-api02>
     </slide>
 
-    <slide enter='bounceInRight' leave='fadeOut' :steps="5">
-      <mib-web-audio-api05 :step="step"></mib-web-audio-api05>
+    <!--MONOPHONIC-->
+    <slide enter='bounceInRight' leave='fadeOut'>
+      <mib-monophonic-intro></mib-monophonic-intro>
     </slide>
 
-    <!--DEMO-->
     <slide enter='bounceInRight' leave='fadeOut'>
       <mib-monophonic-graph></mib-monophonic-graph>
     </slide>
@@ -88,6 +75,11 @@
 
     <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
       <mib-monophonic-demo></mib-monophonic-demo>
+    </slide>
+
+    <!--POLYPHONIC-->
+    <slide enter='bounceInRight' leave='fadeOut'>
+      <mib-polyphonic-intro></mib-polyphonic-intro>
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut'>
@@ -102,6 +94,11 @@
       <mib-polyphonic-demo></mib-polyphonic-demo>
     </slide>
 
+    <!--ADDITIVE-->
+    <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
+      <mib-additive-intro></mib-additive-intro>
+    </slide>
+
     <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
       <mib-additive-graph></mib-additive-graph>
     </slide>
@@ -112,6 +109,11 @@
 
     <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
       <mib-additive-demo></mib-additive-demo>
+    </slide>
+
+    <!--SUBSTRACTIVE-->
+    <slide enter='bounceInRight' leave='fadeOut'>
+      <mib-substractive-intro></mib-substractive-intro>
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut'>
@@ -136,24 +138,30 @@
 <script>
   import eagle from 'eagle.js'
   import MibTitle from './slides/mib-title.vue'
-  import MibHistory from './slides/mib-history.vue'
+
   import MibWebAudioApi00 from './slides/webAudioApi/mib-web-audio-api-00'
   import MibWebAudioApi01 from './slides/webAudioApi/mib-web-audio-api-01'
   import MibWebAudioApi02 from './slides/webAudioApi/mib-web-audio-api-02'
-  import MibWebAudioApi03 from './slides/webAudioApi/mib-web-audio-api-03'
-  import MibWebAudioApi04 from './slides/webAudioApi/mib-web-audio-api-04'
-  import MibWebAudioApi05 from './slides/webAudioApi/mib-web-audio-api-05'
+
+  import MibMonophonicIntro from './slides/monophonic-synthesis/intro'
   import MibMonophonicSnippet from './slides/monophonic-synthesis/snippet.vue'
   import MibMonophonicGraph from './slides/monophonic-synthesis/graph.vue'
   import MibMonophonicDemo from './slides/monophonic-synthesis/demo.vue'
+
+  import MibPolyphonicIntro from './slides/polyphonic-synthesis/intro'
   import MibPolyphonicSnippet from './slides/polyphonic-synthesis/snippet.vue'
   import MibPolyphonicGraph from './slides/polyphonic-synthesis/graph.vue'
   import MibPolyphonicDemo from './slides/polyphonic-synthesis/demo.vue'
+
+  import MibAdditiveIntro from './slides/additive-synthesis/intro'
   import MibAdditiveGraph from './slides/additive-synthesis/graph.vue'
   import MibAdditiveSnippet from './slides/additive-synthesis/snippet.vue'
   import MibAdditiveDemo from './slides/additive-synthesis/demo.vue'
+
+  import MibSubstractiveIntro from './slides/substractive-synthesis/intro'
   import MibSubstractiveGraph from './slides/substractive-synthesis/graph.vue'
   import MibSubstractiveDemo from './slides/substractive-synthesis/demo.vue'
+
   import MibEnvelopesDemo from './slides/envelopes/demo.vue'
   import MibLfoDemo from './slides/lfo/demo.vue'
 
@@ -163,24 +171,30 @@
     ],
     components: {
       MibTitle,
-      MibHistory,
+
       MibWebAudioApi00,
       MibWebAudioApi01,
       MibWebAudioApi02,
-      MibWebAudioApi03,
-      MibWebAudioApi04,
-      MibWebAudioApi05,
+
+      MibMonophonicIntro,
       MibMonophonicGraph,
-      MibPolyphonicGraph,
-      MibAdditiveGraph,
-      MibSubstractiveGraph,
       MibMonophonicSnippet,
-      MibPolyphonicSnippet,
-      MibAdditiveSnippet,
       MibMonophonicDemo,
+
+      MibPolyphonicIntro,
+      MibPolyphonicGraph,
+      MibPolyphonicSnippet,
       MibPolyphonicDemo,
+
+      MibAdditiveIntro,
+      MibAdditiveGraph,
+      MibAdditiveSnippet,
       MibAdditiveDemo,
+
+      MibSubstractiveIntro,
+      MibSubstractiveGraph,
       MibSubstractiveDemo,
+
       MibEnvelopesDemo,
       MibLfoDemo,
     },

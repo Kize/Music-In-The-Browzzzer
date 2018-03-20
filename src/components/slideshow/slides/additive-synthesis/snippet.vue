@@ -9,21 +9,21 @@
 
     <div class="snippet">
       <eg-code-block lang="javascript">
-        let oscs = {}
+        noteOn(frequency, time = audioContext.currentTime) {
+          osc1.type = 'sine'
+          osc2.type = 'sawtooth'
+          osc1.frequency.setValueAtTime(frequency, time)
+          osc2.frequency.setValueAtTime(frequency, time)
+          osc1.connect(output)
+          osc2.connect(output)
+          osc1.start(time)
+          osc2.start(time)
+        },
+        noteOff(time) {
+          osc1.stop(time)
+          osc2.stop(time)
+        },
 
-        function noteOn(frequency, time = audioContext.currentTime) {
-          const osc = audioContext.createOscillator()
-          osc.frequency.setTargetAtTime(frequency, time, 0.001)
-          osc.connect(output)
-          osc.start(time)
-          oscs[frequency] = osc
-        }
-
-        function noteOff(frequency, time = audioContext.currentTime) {
-          oscs[frequency].stop(time)
-        }
-
-        noteOn(440, audioContext.currentTime)
         noteOn(440, audioContext.currentTime)
         noteOff(audioContext.currentTime + 1)
       </eg-code-block>
