@@ -136,6 +136,10 @@
       <mib-envelopes-demo :step="step"></mib-envelopes-demo>
     </slide>
 
+    <slide enter='bounceInRight' :mouseNavigation="false">
+      <mib-lfo-graph></mib-lfo-graph>
+    </slide>
+
     <slide enter='bounceInRight' :mouseNavigation="false" :steps="2">
       <mib-lfo-demo :step="step"></mib-lfo-demo>
     </slide>
@@ -173,6 +177,8 @@
   import MibEnvelopesCurves from './slides/envelopes/curves.vue'
   import MibEnvelopesGraph from './slides/envelopes/graph.vue'
   import MibEnvelopesDemo from './slides/envelopes/demo.vue'
+
+  import MibLfoGraph from './slides/lfo/graph.vue'
   import MibLfoDemo from './slides/lfo/demo.vue'
 
   export default {
@@ -209,6 +215,7 @@
       MibEnvelopesCurves,
       MibEnvelopesGraph,
 
+      MibLfoGraph,
       MibLfoDemo,
     },
   }
