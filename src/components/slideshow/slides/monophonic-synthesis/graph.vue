@@ -7,7 +7,7 @@
   <div class="slide">
     <h2>Synthèse monophonique</h2>
     <div class="content">
-      <img src="../../../../assets/img/monophonic-synthesis.svg"/>
+      <img src="../../../../assets/img/monophonic-synthesis.svg" height="500px"/>
     </div>
   </div>
 </template>
