@@ -1,17 +1,14 @@
 <style lang="scss" scoped>
-  .slide {
-    h1 {
-      color: black;
-    }
-
-  }
+  @import '../../../../assets/styles/slide';
 
 </style>
 
 <template>
   <div class="slide">
-    <h2>Monophonic synthesis</h2>
-    <img src="../../../../assets/img/monophonic-synthesis.svg"/>
+    <h2>Synthèse monophonique</h2>
+    <div class="content">
+      <img src="../../../../assets/img/monophonic-synthesis.svg"/>
+    </div>
   </div>
 </template>
 

@@ -144,11 +144,43 @@
                     @change="updateFilterDecay"></mib-slider>
       </div>
 
+      <div class="controls">
+        <mib-spin-box label="Destination"
+                      class="control"
+                      :values="synth.lfoDestinations"
+                      :init="synth.lfo1.destination"
+                      width="190px"
+                      @change="updateLfo1Destination"></mib-spin-box>
+
+        <mib-spin-box class="control"
+                      label="Waveform"
+                      :values="synth.waveForms"
+                      :init="synth.lfo1.waveForm"
+                      @change="updateLfo1WaveForm"></mib-spin-box>
+
+        <mib-slider class="control"
+                    label ="Frequency"
+                    :init="synth.lfo1.frequency"
+                    :min="0"
+                    :max="15"
+                    :step="0.01"
+                    width="200px"
+                    @change="updateLfo1Frequency"></mib-slider>
+
+        <mib-slider class="control"
+                    label="Amplitude"
+                    :init="synth.lfo1.amplitude"
+                    :min="0"
+                    :max="700"
+                    :step="0.01"
+                    width="120px"
+                    @change="updateLfo1Amplitude"></mib-slider>
+      </div>
+
       <mib-visualizer class="visualizer"
                       :width="1000"
                       :height="height"
                       :analyzer="output.analyzer"></mib-visualizer>
-
     </div>
   </div>
 </template>
@@ -156,7 +188,7 @@
 <script>
   import { Keyboard } from '@/core/keyboard'
   import { Output } from '@/core/output'
-  import { EnvelopesSynth } from '@/core/synth/envelopes-synth'
+  import { LFOSynth } from '@/core/synth/lfo-synth'
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
   import MibSlider from '@/components/synth/mib-slider.vue'
@@ -204,7 +236,7 @@
         this.synth.filter.type = value
       },
       updateFilterFrequency(value) {
-        this.synth.filterFrequency = value
+        this.synth.filter.frequency.value = value
       },
       updateFilterPeak(value) {
         this.synth.filter.Q.value = value
@@ -224,6 +256,18 @@
       toggleFilterEnvelope(value) {
         this.synth.filterEnvelope.active = value
       },
+      updateLfo1Destination(value) {
+        this.synth.lfo1Destination = value
+      },
+      updateLfo1WaveForm(value) {
+        this.synth.lfo1.waveForm = value
+      },
+      updateLfo1Frequency(value) {
+        this.synth.lfo1.frequency = value
+      },
+      updateLfo1Amplitude(value) {
+        this.synth.lfo1.amplitude = value
+      },
     },
     computed: {
       width() {
@@ -235,7 +279,7 @@
     },
     created() {
       this.audioContext = new AudioContext()
-      this.synth = EnvelopesSynth(this.audioContext)
+      this.synth = LFOSynth(this.audioContext)
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
       this.keyboard = Keyboard(this.synth)

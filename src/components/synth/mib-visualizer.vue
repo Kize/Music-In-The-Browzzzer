@@ -35,7 +35,7 @@
         this.canvasContext.fillStyle = 'rgb(255, 255, 255)'
         this.canvasContext.fillRect(0, 0, this.width, this.height)
         this.canvasContext.lineWidth = 2
-        this.canvasContext.strokeStyle = '#42b983'
+        this.canvasContext.strokeStyle = '#af1e3a'
         this.canvasContext.beginPath()
         this.buffer.forEach((v, i) => {
           const y = (v / 128) * (this.height / 2)

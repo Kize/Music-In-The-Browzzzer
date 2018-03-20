@@ -1,30 +1,12 @@
 <style lang="scss" scoped>
-
-  .slide {
-    h1 {
-      color: black;
-    }
-    .synth {
-      width: 75%;
-      margin: 0 auto;
-
-      .controls {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 10px;
-
-        .control {
-          margin-right: 5px;
-        }
-      }
-    }
-  }
+  @import '../../../../assets/styles/slide';
 
 </style>
 
 <template>
   <div class="slide">
-    <h2>Substractive Synthesis</h2>
+    <h2>Synthèse Substractive</h2>
+
     <div class="synth">
       <div class="controls">
         <mib-spin-box class="control octave"
@@ -85,6 +67,7 @@
                     :step="0.1"
                     width="230px"
                     @change="updateFilterPeak"></mib-slider>
+
         <mib-slider class="control"
                     label ="Filter detune"
                     :init="synth.filter.detune.value"
@@ -93,8 +76,8 @@
       </div>
 
       <mib-visualizer class="visualizer"
-                      :width="width"
-                      :height="height * 0.75"
+                      :width="1000"
+                      :height="400"
                       :analyzer="output.analyzer"></mib-visualizer>
 
     </div>

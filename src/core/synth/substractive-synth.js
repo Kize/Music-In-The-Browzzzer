@@ -71,7 +71,9 @@ export const SubstractiveSynth = (audioContext) => {
     set detune1(value) {
       detune1 = value
       Object.values(voices)
-        .forEach(voice => { voice.detune1 = detune1 })
+        .forEach(voice => {
+          voice.osc1.detune.value = detune1
+        })
     },
     get detune2() {
       return detune2
@@ -79,7 +81,9 @@ export const SubstractiveSynth = (audioContext) => {
     set detune2(value) {
       detune2 = value
       Object.values(voices)
-        .forEach(voice => { voice.detune2 = detune2 })
+        .forEach(voice => {
+          voice.osc2.detune.value = detune2
+        })
     },
     get filterTypes() {
       return Object.values(FilterTypes)

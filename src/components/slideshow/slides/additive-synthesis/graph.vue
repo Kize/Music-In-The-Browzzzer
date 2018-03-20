@@ -1,20 +1,19 @@
 <style lang="scss" scoped>
+  @import '../../../../assets/styles/slide';
+
   .slide {
-    h1 {
-      color: black;
-    }
-    img {
-      height: 600px;
-      width: auto;
+    .content {
+      margint-top: 200px!important;
     }
   }
-
 </style>
 
 <template>
   <div class="slide">
-    <h2>Additive synthesis</h2>
-    <img src="../../../../assets/img/additive-synthesis.svg" />
+    <h2>Synthèse additive</h2>
+    <div class="content">
+      <img src="../../../../assets/img/additive-synthesis.svg" />
+    </div>
   </div>
 </template>
 

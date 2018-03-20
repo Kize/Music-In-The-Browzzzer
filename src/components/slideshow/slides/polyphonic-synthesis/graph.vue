@@ -1,20 +1,14 @@
 <style lang="scss" scoped>
-  .slide {
-    h1 {
-      color: black;
-    }
-    img {
-      height: 600px;
-      width: auto;
-    }
-  }
+  @import '../../../../assets/styles/slide';
 
 </style>
 
 <template>
   <div class="slide">
-    <h2>Polyphonic synthesis</h2>
-    <img src="../../../../assets/img/polyphonic-synthesis.svg" />
+    <h2>Synthèse polyphonique</h2>
+    <div class="content">
+      <img src="../../../../assets/img/polyphonic-synthesis.svg" />
+    </div>
   </div>
 </template>
 

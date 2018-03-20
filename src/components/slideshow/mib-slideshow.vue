@@ -4,14 +4,16 @@
   .eg-slideshow {
     font-family: "Roboto Condensed";
     background-color: $bg-primary;
+    overflow: hidden;
     height: 99%;
     width: 99%;
-    overflow: hidden;
 
     .eg-slide {
       background-color: $bg-primary;
 
       .eg-slide-content {
+        height: 100%;
+
         .slide {
           h1 {
             font-size: 2.5em;
@@ -89,11 +91,15 @@
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut'>
-      <mib-polyphonic-snippet></mib-polyphonic-snippet>
+      <mib-polyphonic-graph></mib-polyphonic-graph>
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut'>
       <mib-polyphonic-snippet></mib-polyphonic-snippet>
+    </slide>
+
+    <slide enter='bounceInRight' leave='fadeOut'>
+      <mib-polyphonic-demo></mib-polyphonic-demo>
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
@@ -119,6 +125,11 @@
     <slide enter='bounceInRight' :mouseNavigation="false" :steps="2">
       <mib-envelopes-demo :step="step"></mib-envelopes-demo>
     </slide>
+
+    <slide enter='bounceInRight' :mouseNavigation="false" :steps="2">
+      <mib-lfo-demo :step="step"></mib-lfo-demo>
+    </slide>
+
   </div>
 </template>
 
@@ -144,6 +155,7 @@
   import MibSubstractiveGraph from './slides/substractive-synthesis/graph.vue'
   import MibSubstractiveDemo from './slides/substractive-synthesis/demo.vue'
   import MibEnvelopesDemo from './slides/envelopes/demo.vue'
+  import MibLfoDemo from './slides/lfo/demo.vue'
 
   export default {
     mixins: [
@@ -170,6 +182,7 @@
       MibAdditiveDemo,
       MibSubstractiveDemo,
       MibEnvelopesDemo,
+      MibLfoDemo,
     },
   }
 </script>

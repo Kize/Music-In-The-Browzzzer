@@ -1,24 +1,11 @@
 <style lang="scss" scoped>
-
-  .synth {
-    width: 75%;
-    margin: 0 auto;
-
-    .controls {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-
-      .control {
-        margin-right: 5px;
-      }
-    }
-  }
+  @import '../../../../assets/styles/slide';
 
 </style>
 
 <template>
-  <div class="synth">
+  <div class="slide">
+    <div class="synth">
       <div class="controls">
         <mib-spin-box class="control octave"
                       label="Octave"
@@ -158,12 +145,12 @@
       </div>
 
       <mib-visualizer class="visualizer"
-                      :width="width"
-                      :height="height * 0.75"
+                      :width="1000"
+                      :height="height"
                       :analyzer="output.analyzer"></mib-visualizer>
 
     </div>
-
+  </div>
 </template>
 
 <script>
@@ -171,6 +158,7 @@
   import { Output } from '@/core/output'
   import { EnvelopesSynth } from '@/core/synth/envelopes-synth'
   import { FilterTypes } from '@/core/filter-types'
+  import { WaveForms } from '@/core/waveforms'
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
   import MibSlider from '@/components/synth/mib-slider.vue'
@@ -218,7 +206,7 @@
         this.synth.filter.type = value
       },
       updateFilterFrequency(value) {
-        this.synth.filter.frequency.value = value
+        this.synth.filterFrequency = value
       },
       updateFilterPeak(value) {
         this.synth.filter.Q.value = value
@@ -244,7 +232,7 @@
         return innerWidth * 0.75
       },
       height() {
-        return innerHeight * 0.8
+        return innerHeight * 0.3
       },
     },
     created() {
@@ -252,13 +240,13 @@
       this.synth = EnvelopesSynth(this.audioContext)
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
-      this.synth.waveForm1 = this.synth.waveForms.SINE
-      this.synth.waveForm2 = this.synth.waveForms.SINE
+      this.synth.waveForm1 = WaveForms.SINE
+      this.synth.waveForm2 = WaveForms.SINE
       this.synth.voiceEnvelope.attack = 0.1
       this.synth.voiceEnvelope.release = 0.6
       this.synth.filterEnvelope.active = false
-      this.synth.filter.type = FilterTypes.HIGH_PASS
-      this.synth.filter.frequency.value = 2500
+      this.synth.filter.type = FilterTypes.BAND_PASS
+      this.synth.filter.frequency.value = 9000
       this.synth.filter.Q.value = 0
       this.keyboard = Keyboard(this.synth)
       this.keyboard.octave = 6

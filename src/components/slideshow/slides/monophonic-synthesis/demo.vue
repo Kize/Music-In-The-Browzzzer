@@ -1,31 +1,18 @@
 <style lang="scss" scoped>
+  @import '../../../../assets/styles/slide';
 
-  .slide {
-    h1 {
-      color: black;
-    }
+  .synth {
+    margin-top: -100px !important;
 
-    .synth {
-      width: 600px;
-      margin: 0 auto;
-
-      .controls {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-
-        .control {
-          margin-right: 5px;
-        }
-      }
+    .controls {
+      justify-content: flex-start !important;
     }
   }
-
 </style>
 
 <template>
   <div class="slide">
-    <h2>Monophonic Synthesis</h2>
+    <h2>Synthèse monophonique</h2>
     <div class="synth">
       <div class="controls">
         <mib-spin-box class="control octave"
@@ -50,7 +37,7 @@
       </div>
 
       <mib-visualizer class="visualizer"
-                      :width="600"
+                      :width="1000"
                       :height="400"
                       :analyzer="output.analyzer"></mib-visualizer>
     </div>
@@ -80,14 +67,6 @@
       },
       updateOctave(value) {
         this.keyboard.octave = value
-      },
-    },
-    computed: {
-      width() {
-        return innerWidth * 0.5
-      },
-      height() {
-        return innerHeight * 0.8
       },
     },
     created() {
