@@ -124,6 +124,14 @@
       <mib-substractive-demo></mib-substractive-demo>
     </slide>
 
+    <slide enter='bounceInRight' :mouseNavigation="false">
+      <mib-envelopes-curves></mib-envelopes-curves>
+    </slide>
+
+    <slide enter='bounceInRight' :mouseNavigation="false">
+      <mib-envelopes-graph></mib-envelopes-graph>
+    </slide>
+
     <slide enter='bounceInRight' :mouseNavigation="false" :steps="2">
       <mib-envelopes-demo :step="step"></mib-envelopes-demo>
     </slide>
@@ -162,6 +170,8 @@
   import MibSubstractiveGraph from './slides/substractive-synthesis/graph.vue'
   import MibSubstractiveDemo from './slides/substractive-synthesis/demo.vue'
 
+  import MibEnvelopesCurves from './slides/envelopes/curves.vue'
+  import MibEnvelopesGraph from './slides/envelopes/graph.vue'
   import MibEnvelopesDemo from './slides/envelopes/demo.vue'
   import MibLfoDemo from './slides/lfo/demo.vue'
 
@@ -196,6 +206,9 @@
       MibSubstractiveDemo,
 
       MibEnvelopesDemo,
+      MibEnvelopesCurves,
+      MibEnvelopesGraph,
+
       MibLfoDemo,
     },
   }
