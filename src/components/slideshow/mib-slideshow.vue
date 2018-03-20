@@ -132,6 +132,11 @@
       <mib-lfo-demo :step="step"></mib-lfo-demo>
     </slide>
 
+
+    <!--END-->
+    <slide enter='bounceInRight' :mouseNavigation="false" :steps="2">
+      <mib-the-end></mib-the-end>
+    </slide>
   </div>
 </template>
 
@@ -165,6 +170,8 @@
   import MibEnvelopesDemo from './slides/envelopes/demo.vue'
   import MibLfoDemo from './slides/lfo/demo.vue'
 
+  import MibTheEnd from './slides/mib-the-end'
+
   export default {
     mixins: [
       eagle.slideshow,
@@ -197,6 +204,8 @@
 
       MibEnvelopesDemo,
       MibLfoDemo,
+
+      MibTheEnd,
     },
   }
 </script>
