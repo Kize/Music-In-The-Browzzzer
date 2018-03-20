@@ -10,7 +10,7 @@
   <div class="slide">
     <h2>Synthèse substractive</h2>
     <div class="content">
-      <img src="../../../../assets/img/filter.jpg" />
+      <img src="../../../../assets/img/filter.jpg" height="500px"/>
     </div>
   </div>
 </template>

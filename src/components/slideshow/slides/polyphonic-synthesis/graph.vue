@@ -7,7 +7,7 @@
   <div class="slide">
     <h2>Synthèse polyphonique</h2>
     <div class="content">
-      <img src="../../../../assets/img/polyphonic-synthesis.svg" />
+      <img src="../../../../assets/img/polyphonic-synthesis.svg" height="500px" />
     </div>
   </div>
 </template>
