@@ -148,7 +148,6 @@
       <mib-lfo-demo :step="step"></mib-lfo-demo>
     </slide>
 
-
     <!--END-->
     <slide enter='bounceInRight' :mouseNavigation="false" :steps="2">
       <mib-the-end></mib-the-end>
