@@ -1,7 +1,17 @@
 <style lang="scss" scoped>
+  @import '../../../../assets/styles/slide';
+
   .slide {
     h1 {
       color: black;
+    }
+
+    .content ul {
+      font-size: 2em;
+
+      li:last-child {
+        margin-bottom: 250px;
+      }
     }
   }
 
@@ -11,11 +21,13 @@
   <div class="slide">
     <h2>Web Audio API</h2>
 
-    <ul>
-      <li v-if="step >= 2">API native HTML5</li>
-      <li v-if="step >= 3">Capable de contrôler des données audio en temps réel</li>
-      <li v-if="step >= 4">Basée sur le routing modulaire</li>
-    </ul>
+    <div class="content">
+      <ul>
+        <li v-if="step >= 2">Native</li>
+        <li v-if="step >= 3">Temps réel</li>
+        <li v-if="step >= 4">Modulaire</li>
+      </ul>
+    </div>
   </div>
 </template>
 
