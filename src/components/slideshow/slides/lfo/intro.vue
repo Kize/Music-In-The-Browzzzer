@@ -1,16 +1,13 @@
 <style lang="scss" scoped>
   @import '../../../../assets/styles/slide';
 
-  .eg-slideshow .eg-slide .eg-slide-content .slide h1 {
-    font-size: 5em;
-  }
 </style>
 
 <template>
   <div class="slide">
-    <h2>Synthèse substractive</h2>
+    <h2>Low Frequency Oscillators</h2>
     <div class="content">
-      <img src="../../../../assets/img/filter.jpg" />
+      <img src="../../../../assets/img/lfo.png" height="50%" width="50%"/>
     </div>
   </div>
 </template>

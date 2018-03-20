@@ -19,7 +19,7 @@ export const AccentEnvelope = (parameter) => {
         parameter.exponentialRampToValueAtTime(sustainValue, time + attackTime + decayTime)
       }
     },
-    reset(time) {
+    disconnect(time) {
       if (isActive) {
         parameter.setValueAtTime(sustainValue, time)
         parameter.cancelScheduledValues(time)

@@ -12,6 +12,8 @@ export const Voice = (audioContext) => {
 
   const osc1 = audioContext.createOscillator()
   const osc2 = audioContext.createOscillator()
+  const allOscsFrequencySource = audioContext.createConstantSource()
+
   let waveForm1 = WaveForms.TRIANGLE
   let waveForm2 = WaveForms.SAWTOOTH
   setWaveForm(waveForm1, osc1)
@@ -23,8 +25,14 @@ export const Voice = (audioContext) => {
   gain1.connect(output)
   gain2.connect(output)
 
+  allOscsFrequencySource.connect(osc1.frequency)
+  allOscsFrequencySource.connect(osc2.frequency)
+
   gain1.gain.value = 0.5
   gain2.gain.value = 0.5
+
+  allOscsFrequencySource.offset.value = 0
+  allOscsFrequencySource.start(audioContext.currentTime)
 
   const getFrequency = midiToFrequency(440)
 
@@ -65,6 +73,9 @@ export const Voice = (audioContext) => {
     },
     get osc2() {
       return osc2
+    },
+    get allOscsFrequencySource() {
+      return allOscsFrequencySource
     },
     get waveForm1() {
       return waveForm1

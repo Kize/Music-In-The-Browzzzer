@@ -14,7 +14,6 @@ export const LFOSynth = (audioContext) => {
   const voiceGain = audioContext.createGain()
   const lfo1 = LFO(audioContext)
   const lfo2 = LFO(audioContext)
-
   let waveForm1 = WaveForms.SQUARE
   let waveForm2 = WaveForms.SQUARE
   let detune1 = 12
@@ -55,17 +54,20 @@ export const LFOSynth = (audioContext) => {
 
   const connectLFO = (lfo, voice) => {
     switch (lfo.destination) {
+      case LFODestinations.ALL_FREQUENCY:
+        lfo.connect(voice.allOscsFrequencySource.offset)
+        break
       case LFODestinations.OSC1_DETUNE:
-        lfo.parameter = voice.osc1.detune
+        lfo.connect(voice.osc1.detune)
         break
       case LFODestinations.OSC1_FREQUENCY:
-        lfo.parameter = voice.osc1.frequency
+        lfo.connect(voice.osc1.frequency)
         break
       case LFODestinations.OSC2_DETUNE:
-        lfo.parameter = voice.osc2.detune
+        lfo.connect(voice.osc2.detune)
         break
       case LFODestinations.OSC2_FREQUENCY:
-        lfo.parameter = voice.osc2.frequency
+        lfo.connect(voice.osc2.frequency)
         break
       default:
         break
@@ -77,7 +79,7 @@ export const LFOSynth = (audioContext) => {
   return {
     noteOn(value, time = audioContext.currentTime) {
       if (!voices[value]) {
-        filterEnvelope.reset(time)
+        filterEnvelope.disconnect(time)
         const voice = Voice(audioContext)
         connectEnvelope(voice)
         connectLFO(lfo1, voice)
@@ -95,8 +97,8 @@ export const LFOSynth = (audioContext) => {
     },
     noteOff(value, time = audioContext.currentTime) {
       if (voices[value]) {
-        filterEnvelope.reset(time)
-        voices[value].envelope.reset(time)
+        filterEnvelope.disconnect(time)
+        voices[value].envelope.disconnect(time)
         const noteOffTime = voiceEnvelopeActive ? time + voiceRelease : time
         voices[value].noteOff(noteOffTime)
         delete voices[value]
@@ -211,10 +213,13 @@ export const LFOSynth = (audioContext) => {
     set lfo1Destination(value) {
       switch (value) {
         case LFODestinations.FILTER_FREQUENCY:
-          lfo1.parameter = filter.frequency
+          lfo1.connect(filter.frequency)
           break
         case LFODestinations.PEAK:
-          lfo1.parameter = filter.Q
+          lfo1.connect(filter.Q)
+          break
+        case LFODestinations.OFF:
+          lfo1.disconnect()
           break
         default:
           Object.values(voices)
@@ -227,10 +232,13 @@ export const LFOSynth = (audioContext) => {
     set lfo2Destination(value) {
       switch (value) {
         case LFODestinations.FILTER_FREQUENCY:
-          lfo2.parameter = filter.frequency
+          lfo2.connect(filter.frequency)
           break
         case LFODestinations.PEAK:
-          lfo2.parameter = filter.Q
+          lfo2.connect(filter.Q)
+          break
+        case LFODestinations.OFF:
+          lfo2.disconnect()
           break
         default:
           Object.values(voices)

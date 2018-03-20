@@ -8,8 +8,9 @@
 
 <template>
   <div class="slide">
+    <h2>Synthèse additive</h2>
     <div class="content">
-      <h1>Synthèse additive</h1>
+      <img src="../../../../assets/img/additive.jpg" />
     </div>
   </div>
 </template>

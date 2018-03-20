@@ -44,7 +44,7 @@
                     @change="toggleVoiceEnvelope"></mib-toggle>
 
         <mib-slider class="control"
-                    label ="Attack"
+                    label="Attack"
                     :init="synth.voiceEnvelope.attack"
                     :min="0"
                     :max="1"
@@ -53,7 +53,7 @@
                     @change="updateVoiceAttack"></mib-slider>
 
         <mib-slider class="control"
-                    label ="Decay"
+                    label="Decay"
                     :init="synth.voiceEnvelope.decay"
                     :min="0"
                     :max="1"
@@ -62,7 +62,7 @@
                     @change="updateVoiceDecay"></mib-slider>
 
         <mib-slider class="control"
-                    label ="Sustain"
+                    label="Sustain"
                     :init="synth.voiceEnvelope.sustain"
                     :min="0"
                     :max="1"
@@ -70,7 +70,7 @@
                     :step="0.1"
                     @change="updateVoiceSustain"></mib-slider>
         <mib-slider class="control"
-                    label ="Release"
+                    label="Release"
                     :init="synth.voiceEnvelope.release"
                     :min="0.1"
                     :max="2"
@@ -105,7 +105,7 @@
                     width="230px"
                     @change="updateFilterPeak"></mib-slider>
         <mib-slider class="control"
-                    label ="Filter detune"
+                    label="Filter detune"
                     :init="synth.filter.detune.value"
                     width="180px"
                     @change="updateFilterDetune"></mib-slider>
@@ -117,7 +117,7 @@
                     @change="toggleFilterEnvelope"></mib-toggle>
 
         <mib-slider class="control"
-                    label ="Attack"
+                    label="Attack"
                     :init="synth.filterEnvelope.attack"
                     :min="0"
                     :max="2"
@@ -125,7 +125,7 @@
                     @change="updateFilterAttack"></mib-slider>
 
         <mib-slider class="control"
-                    label ="Accent"
+                    label="Accent"
                     :init="synth.filterEnvelope.accent"
                     :min="0"
                     :max="15000"
@@ -134,7 +134,7 @@
                     @change="updateFilterAccent"></mib-slider>
 
         <mib-slider class="control"
-                    label ="Decay"
+                    label="Decay"
                     :init="synth.filterEnvelope.decay"
                     :min="0.1"
                     :max="2"
@@ -159,7 +159,7 @@
                       @change="updateLfo1WaveForm"></mib-spin-box>
 
         <mib-slider class="control"
-                    label ="Frequency"
+                    label="Frequency"
                     :init="synth.lfo1.frequency"
                     :min="0"
                     :max="15"
@@ -175,6 +175,39 @@
                     :step="0.01"
                     width="230px"
                     @change="updateLfo1Amplitude"></mib-slider>
+      </div>
+
+      <div class="controls">
+        <mib-spin-box label="Destination"
+                      class="control"
+                      :values="synth.lfoDestinations"
+                      :init="synth.lfo2.destination"
+                      width="190px"
+                      @change="updateLfo1Destination"></mib-spin-box>
+
+        <mib-spin-box class="control"
+                      label="Waveform"
+                      :values="synth.waveForms"
+                      :init="synth.lfo2.waveForm"
+                      @change="updateLfo1WaveForm"></mib-spin-box>
+
+        <mib-slider class="control"
+                    label="Frequency"
+                    :init="synth.lfo2.frequency"
+                    :min="0"
+                    :max="15"
+                    :step="0.01"
+                    width="230px"
+                    @change="updateLfo2Frequency"></mib-slider>
+
+        <mib-slider class="control"
+                    label="Amplitude"
+                    :init="synth.lfo2.amplitude"
+                    :min="0"
+                    :max="700"
+                    :step="0.01"
+                    width="230px"
+                    @change="updateLfo2Amplitude"></mib-slider>
       </div>
 
       <mib-visualizer class="visualizer"
@@ -266,7 +299,13 @@
         this.synth.lfo1.frequency = value
       },
       updateLfo1Amplitude(value) {
+        this.synth.lfo2.frequency = value
+      },
+      updateLfo2Frequency(value) {
         this.synth.lfo1.amplitude = value
+      },
+      updateLfo2Amplitude(value) {
+        this.synth.lfo2.amplitude = value
       },
     },
     computed: {
