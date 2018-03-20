@@ -164,7 +164,7 @@
                     :min="0"
                     :max="15"
                     :step="0.01"
-                    width="200px"
+                    width="230px"
                     @change="updateLfo1Frequency"></mib-slider>
 
         <mib-slider class="control"
@@ -173,7 +173,7 @@
                     :min="0"
                     :max="700"
                     :step="0.01"
-                    width="120px"
+                    width="230px"
                     @change="updateLfo1Amplitude"></mib-slider>
       </div>
 
@@ -197,7 +197,7 @@
                     :min="0"
                     :max="15"
                     :step="0.01"
-                    width="200px"
+                    width="230px"
                     @change="updateLfo2Frequency"></mib-slider>
 
         <mib-slider class="control"
@@ -206,7 +206,7 @@
                     :min="0"
                     :max="700"
                     :step="0.01"
-                    width="120px"
+                    width="230px"
                     @change="updateLfo2Amplitude"></mib-slider>
       </div>
 

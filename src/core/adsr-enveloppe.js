@@ -19,7 +19,7 @@ export const ADSREnvelope = (parameter) => {
         parameter.linearRampToValueAtTime(sustainValue, time + attackTime + decayTime)
       }
     },
-    reset(time) {
+    disconnect(time) {
       if (isActive) {
         parameter.linearRampToValueAtTime(initValue, time + releaseTime)
       }

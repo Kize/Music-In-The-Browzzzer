@@ -129,11 +129,19 @@
     </slide>
 
     <slide enter='bounceInRight' :mouseNavigation="false">
+      <mib-envelopes-intro></mib-envelopes-intro>
+    </slide>
+
+    <slide enter='bounceInRight' :mouseNavigation="false">
       <mib-envelopes-graph></mib-envelopes-graph>
     </slide>
 
     <slide enter='bounceInRight' :mouseNavigation="false" :steps="2">
       <mib-envelopes-demo :step="step"></mib-envelopes-demo>
+    </slide>
+
+    <slide enter='bounceInRight' :mouseNavigation="false">
+      <mib-lfo-intro></mib-lfo-intro>
     </slide>
 
     <slide enter='bounceInRight' :mouseNavigation="false">
@@ -174,10 +182,12 @@
   import MibSubstractiveGraph from './slides/substractive-synthesis/graph.vue'
   import MibSubstractiveDemo from './slides/substractive-synthesis/demo.vue'
 
+  import MibEnvelopesIntro from './slides/envelopes/intro.vue'
   import MibEnvelopesCurves from './slides/envelopes/curves.vue'
   import MibEnvelopesGraph from './slides/envelopes/graph.vue'
   import MibEnvelopesDemo from './slides/envelopes/demo.vue'
 
+  import MibLfoIntro from './slides/lfo/intro.vue'
   import MibLfoGraph from './slides/lfo/graph.vue'
   import MibLfoDemo from './slides/lfo/demo.vue'
 
@@ -211,10 +221,12 @@
       MibSubstractiveGraph,
       MibSubstractiveDemo,
 
+      MibEnvelopesIntro,
       MibEnvelopesDemo,
       MibEnvelopesCurves,
       MibEnvelopesGraph,
 
+      MibLfoIntro,
       MibLfoGraph,
       MibLfoDemo,
     },

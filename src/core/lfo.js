@@ -26,12 +26,13 @@ export const LFO = (audioContext) => {
   osc.start(audioContext.currentTime)
 
   return {
-    set parameter(audioParam) {
+    connect(audioParam) {
       parameter = audioParam
-      if (destination !== LFODestinations.OFF) {
-        gain.disconnect()
-        gain.connect(parameter)
-      }
+      gain.disconnect()
+      gain.connect(parameter)
+    },
+    disconnect() {
+      gain.disconnect()
     },
     set frequency(value) {
       osc.frequency.value = value
@@ -47,11 +48,6 @@ export const LFO = (audioContext) => {
     },
     set destination(value) {
       destination = value
-      if (destination === LFODestinations.OFF) {
-        gain.disconnect()
-      } else {
-        gain.connect(parameter)
-      }
     },
     get destination() {
       return destination

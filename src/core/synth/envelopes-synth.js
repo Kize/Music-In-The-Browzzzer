@@ -40,7 +40,7 @@ export const EnvelopesSynth = (audioContext) => {
   return {
     noteOn(value, time = audioContext.currentTime) {
       if (!voices[value]) {
-        filterEnvelope.reset(time)
+        filterEnvelope.disconnect(time)
         const voice = Voice(audioContext)
         voice.envelope = ADSREnvelope(voice.output.gain)
         voice.envelope.attack = voiceAttack
@@ -61,8 +61,8 @@ export const EnvelopesSynth = (audioContext) => {
     },
     noteOff(value, time = audioContext.currentTime) {
       if (voices[value]) {
-        filterEnvelope.reset(time)
-        voices[value].envelope.reset(time)
+        filterEnvelope.disconnect(time)
+        voices[value].envelope.disconnect(time)
         const noteOffTime = voiceEnvelopeActive ? time + voiceRelease : time
         voices[value].noteOff(noteOffTime)
         delete voices[value]

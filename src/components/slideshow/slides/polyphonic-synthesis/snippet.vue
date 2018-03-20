@@ -13,7 +13,7 @@
 
         function noteOn(frequency, time = audioContext.currentTime) {
           const osc = audioContext.createOscillator()
-          osc.frequency.setTargetAtTime(frequency, time, 0.001)
+          osc.frequency.setValueAtTime(frequency, time)
           osc.connect(output)
           osc.start(time)
           oscs[frequency] = osc
