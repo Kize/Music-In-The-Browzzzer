@@ -56,10 +56,6 @@
       <mib-web-audio-api01></mib-web-audio-api01>
     </slide>
 
-    <slide enter='bounceInRight' leave='fadeOut'>
-      <mib-web-audio-api02></mib-web-audio-api02>
-    </slide>
-
     <!--MONOPHONIC-->
     <slide enter='bounceInRight' leave='fadeOut'>
       <mib-monophonic-intro></mib-monophonic-intro>
@@ -166,7 +162,6 @@
 
   import MibWebAudioApi00 from './slides/webAudioApi/mib-web-audio-api-00'
   import MibWebAudioApi01 from './slides/webAudioApi/mib-web-audio-api-01'
-  import MibWebAudioApi02 from './slides/webAudioApi/mib-web-audio-api-02'
 
   import MibMonophonicIntro from './slides/monophonic-synthesis/intro'
   import MibMonophonicSnippet from './slides/monophonic-synthesis/snippet.vue'
@@ -207,7 +202,6 @@
 
       MibWebAudioApi00,
       MibWebAudioApi01,
-      MibWebAudioApi02,
 
       MibMonophonicIntro,
       MibMonophonicGraph,
