@@ -56,6 +56,10 @@
       <mib-web-audio-api01></mib-web-audio-api01>
     </slide>
 
+    <slide enter='bounceInRight' leave='fadeOut'>
+      <mib-web-audio-snippet></mib-web-audio-snippet>
+    </slide>
+
     <!--MONOPHONIC-->
     <slide enter='bounceInRight' leave='fadeOut'>
       <mib-monophonic-intro></mib-monophonic-intro>
@@ -120,12 +124,13 @@
       <mib-substractive-demo></mib-substractive-demo>
     </slide>
 
+    <!--ENVELOPES-->
     <slide enter='bounceInRight' :mouseNavigation="false">
-      <mib-envelopes-curves></mib-envelopes-curves>
+      <mib-envelopes-intro></mib-envelopes-intro>
     </slide>
 
     <slide enter='bounceInRight' :mouseNavigation="false">
-      <mib-envelopes-intro></mib-envelopes-intro>
+      <mib-envelopes-curves></mib-envelopes-curves>
     </slide>
 
     <slide enter='bounceInRight' :mouseNavigation="false">
@@ -136,6 +141,7 @@
       <mib-envelopes-demo :step="step"></mib-envelopes-demo>
     </slide>
 
+    <!--LFO-->
     <slide enter='bounceInRight' :mouseNavigation="false">
       <mib-lfo-intro></mib-lfo-intro>
     </slide>
@@ -161,7 +167,7 @@
 
   import MibWebAudioApi00 from './slides/webAudioApi/mib-web-audio-api-00'
   import MibWebAudioApi01 from './slides/webAudioApi/mib-web-audio-api-01'
-
+  import MibWebAudioSnippet from './slides/webAudioApi/snippet'
   import MibMonophonicIntro from './slides/monophonic-synthesis/intro'
   import MibMonophonicSnippet from './slides/monophonic-synthesis/snippet.vue'
   import MibMonophonicGraph from './slides/monophonic-synthesis/graph.vue'
@@ -201,6 +207,7 @@
 
       MibWebAudioApi00,
       MibWebAudioApi01,
+      MibWebAudioSnippet,
 
       MibMonophonicIntro,
       MibMonophonicGraph,

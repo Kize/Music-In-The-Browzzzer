@@ -17,9 +17,8 @@
 <template>
   <div class="slide">
     <h2>Web Audio API</h2>
-    <h3>Le contexte</h3>
     <div class="content">
-      <img src="../../../../assets/img/audio-ctx.svg"/>
+      <img src="../../../../assets/img/audio-ctx.svg" height="500px"/>
     </div>
 
   </div>

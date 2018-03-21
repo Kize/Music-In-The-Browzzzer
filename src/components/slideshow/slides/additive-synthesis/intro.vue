@@ -10,7 +10,7 @@
   <div class="slide">
     <h2>Synthèse additive</h2>
     <div class="content">
-      <img src="../../../../assets/img/additive.jpg" />
+      <img src="../../../../assets/img/additive.jpg" height="500px" />
     </div>
   </div>
 </template>

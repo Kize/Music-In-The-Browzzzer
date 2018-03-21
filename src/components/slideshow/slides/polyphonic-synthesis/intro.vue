@@ -11,7 +11,7 @@
     <h2>Synthèse polyphonique</h2>
 
     <div class="content">
-      <img src="../../../../assets/img/poly-synth.jpg" height="500px"/>
+      <img src="../../../../assets/img/poly-synth.jpg" height="600px"/>
     </div>
   </div>
 </template>

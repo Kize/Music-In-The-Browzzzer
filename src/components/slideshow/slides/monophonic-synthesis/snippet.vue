@@ -9,13 +9,6 @@
 
     <div class="snippet">
       <eg-code-block lang="javascript">
-        const audioContext = new AudioContext()
-        const osc = audioContext.createOscillator()
-        const output = audioContext.createGain()
-
-        /* routing */
-        osc.connect(gain).connect(audioContext.destination)
-
         osc.type = 'sawtooth'
         output.gain.value = 0
         osc.start(time)
