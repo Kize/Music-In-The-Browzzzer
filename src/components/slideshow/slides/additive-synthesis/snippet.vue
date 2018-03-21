@@ -1,6 +1,11 @@
 <style lang="scss" scoped>
   @import '../../../../assets/styles/slide';
 
+  .slide {
+    .snippet {
+      margin-top: -100px;
+    }
+  }
 </style>
 
 <template>

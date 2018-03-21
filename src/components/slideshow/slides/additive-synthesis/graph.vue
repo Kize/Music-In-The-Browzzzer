@@ -3,7 +3,10 @@
 
   .slide {
     .content {
-      margint-top: 200px!important;
+      img {
+        margin-top: -100px!important;
+
+      }
     }
   }
 </style>
@@ -12,7 +15,7 @@
   <div class="slide">
     <h2>Synthèse additive</h2>
     <div class="content">
-      <img src="../../../../assets/img/additive-synthesis.svg" height="600px" />
+      <img src="../../../../assets/img/additive-synthesis.svg" height="650px" />
     </div>
   </div>
 </template>
