@@ -77,7 +77,7 @@
              :step="step"/>
       <input type="text" readonly
              :style = "{ width : valueWidth }"
-             v-model.number="value"/>
+             v-model.number="formattedValue"/>
     </div>
   </div>
 </template>
@@ -121,6 +121,11 @@
       return {
         value: this.init,
       }
+    },
+    computed: {
+      formattedValue() {
+        return this.value % 1 === 0 ? this.value : this.value.toFixed(1)
+      },
     },
     methods: {
       onChange() {

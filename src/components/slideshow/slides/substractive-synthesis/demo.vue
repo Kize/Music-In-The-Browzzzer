@@ -66,6 +66,7 @@
                     :max="29"
                     :step="0.1"
                     width="230px"
+                    valueWidth="80px"
                     @change="updateFilterPeak"></mib-slider>
 
         <mib-slider class="control"

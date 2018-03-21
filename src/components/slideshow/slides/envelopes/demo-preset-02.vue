@@ -103,6 +103,7 @@
                     :max="29"
                     :step="0.1"
                     width="230px"
+                    valueWidth="80px"
                     @change="updateFilterPeak"></mib-slider>
         <mib-slider class="control"
                     label ="Filter detune"
@@ -248,7 +249,7 @@
       this.synth.voiceEnvelope.sustain = 0.3
       this.synth.filterEnvelope.active = false
       this.synth.filter.type = FilterTypes.BAND_PASS
-      this.synth.filter.Q.value = 0.2
+      this.synth.filter.Q.value = 0
       this.synth.filter.frequency.value = 9000
       this.keyboard = Keyboard(this.synth)
       this.keyboard.octave = 6
