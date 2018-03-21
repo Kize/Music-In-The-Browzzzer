@@ -8,7 +8,7 @@
     <h2>Synthèse substrative</h2>
 
     <div class="content">
-      <img src="../../../../assets/img/substractive-synthesis.svg" height="500px"/>
+      <img src="../../../../assets/img/substractive-synthesis.svg" height="600px"/>
     </div>
   </div>
 </template>

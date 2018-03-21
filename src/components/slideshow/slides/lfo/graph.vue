@@ -7,7 +7,7 @@
   <div class="slide">
     <h2>Low Frequency Oscillators</h2>
     <div class="content">
-      <img src="../../../../assets/img/lfo.svg" height="500px" />
+      <img src="../../../../assets/img/lfo.svg" height="600px" />
     </div>
   </div>
 </template>

@@ -7,7 +7,7 @@
   <div class="slide">
     <h2>Enveloppes</h2>
     <div class="content">
-      <img src="../../../../assets/img/envelopes-graph.svg" height="500px"/>
+      <img src="../../../../assets/img/envelopes-graph.svg" height="650px"/>
     </div>
   </div>
 </template>
