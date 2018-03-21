@@ -16,6 +16,10 @@ export const Voice = (audioContext) => {
 
   let waveForm1 = WaveForms.TRIANGLE
   let waveForm2 = WaveForms.SAWTOOTH
+
+  let detune1
+  let detune2
+
   setWaveForm(waveForm1, osc1)
   setWaveForm(waveForm2, osc2)
   const gain1 = audioContext.createGain()
@@ -41,6 +45,8 @@ export const Voice = (audioContext) => {
       const frequency = getFrequency(value)
       osc1.frequency.value = frequency
       osc2.frequency.value = frequency
+      osc1.detune.value = detune1
+      osc2.detune.value = detune2
       osc1.connect(gain1)
       osc2.connect(gain2)
       osc1.start(time)
@@ -86,6 +92,14 @@ export const Voice = (audioContext) => {
     },
     get waveForm2() {
       return waveForm2
+    },
+    set detune1(value) {
+      detune1 = value
+      osc1.detune.value = detune1
+    },
+    set detune2(value) {
+      detune2 = value
+      osc2.detune.value = detune2
     },
     set waveForm2(value) {
       waveForm2 = value

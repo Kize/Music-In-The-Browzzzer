@@ -105,7 +105,7 @@ export const EnvelopesSynth = (audioContext) => {
       detune1 = value
       Object.values(voices)
         .forEach(voice => {
-          voice.osc1.detune.value = detune1
+          voice.detune1 = detune1
         })
     },
     get detune2() {
@@ -115,7 +115,7 @@ export const EnvelopesSynth = (audioContext) => {
       detune2 = value
       Object.values(voices)
         .forEach(voice => {
-          voice.osc2.detune.value = detune2
+          voice.detune2 = detune2
         })
     },
     get filterTypes() {

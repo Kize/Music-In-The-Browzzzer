@@ -4,7 +4,7 @@ import { Voice } from '@/core/voice'
 export const AdditiveSynth = (audioContext) => {
   const output = audioContext.createGain()
   const voices = {}
-  let waveForm1 = WaveForms.SINE
+  let waveForm1 = WaveForms.SQUARE
   let waveForm2 = WaveForms.SQUARE
   let detune1 = 0
   let detune2 = 0
@@ -67,7 +67,7 @@ export const AdditiveSynth = (audioContext) => {
       detune1 = value
       Object.values(voices)
         .forEach(voice => {
-          voice.osc1.detune.value = detune1
+          voice.detune1 = detune1
         })
     },
     get detune2() {
@@ -77,7 +77,7 @@ export const AdditiveSynth = (audioContext) => {
       detune2 = value
       Object.values(voices)
         .forEach(voice => {
-          voice.osc2.detune.value = detune2
+          voice.detune2 = detune2
         })
     },
   }
