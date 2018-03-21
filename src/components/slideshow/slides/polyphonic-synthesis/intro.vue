@@ -1,8 +1,13 @@
 <style lang="scss" scoped>
   @import '../../../../assets/styles/slide';
 
-  img {
-    display: inline-block !important;
+  .slide  {
+    .content {
+      img {
+        display: inline-block !important;
+        margin-top: 20px;
+      }
+    }
   }
 </style>
 
