@@ -65,7 +65,9 @@ export const PolyphonicSynth = (audioContext) => {
     set waveForm(value) {
       waveForm = value
       Object.values(oscs)
-        .forEach(setWaveForm)
+        .forEach(osc => {
+          setWaveForm(waveForm, osc)
+      })
     },
     get detune() {
       return detune

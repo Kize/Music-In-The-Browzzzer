@@ -48,6 +48,7 @@
   import { Keyboard } from '@/core/keyboard'
   import { PolyphonicSynth } from '@/core/synth/polyphonic-synth'
   import { Output } from '@/core/output'
+  import { WaveForms } from '@/core/waveforms'
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
   import MibSlider from '@/components/synth/mib-slider.vue'
@@ -80,6 +81,7 @@
     created() {
       this.audioContext = new AudioContext()
       this.synth = PolyphonicSynth(this.audioContext)
+      this.synth.waveForm = WaveForms.SAWTOOTH
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
       this.keyboard = Keyboard(this.synth)

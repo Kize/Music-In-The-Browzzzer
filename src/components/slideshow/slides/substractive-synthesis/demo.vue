@@ -138,6 +138,9 @@
     created() {
       this.audioContext = new AudioContext()
       this.synth = SubstractiveSynth(this.audioContext)
+      this.synth.filter.frequency.value = 1450
+      this.synth.filter.Q.value = 16
+      this.synth.detune2 = 12
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
       this.keyboard = Keyboard(this.synth)

@@ -240,14 +240,16 @@
       this.synth = EnvelopesSynth(this.audioContext)
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
-      this.synth.waveForm1 = WaveForms.SINE
+      this.synth.waveForm1 = WaveForms.TRIANGLE
       this.synth.waveForm2 = WaveForms.SINE
-      this.synth.voiceEnvelope.attack = 0.1
-      this.synth.voiceEnvelope.release = 0.6
+      this.synth.detune1 = 0
+      this.synth.voiceEnvelope.attack = 0
+      this.synth.voiceEnvelope.release = 0.8
+      this.synth.voiceEnvelope.sustain = 0.3
       this.synth.filterEnvelope.active = false
       this.synth.filter.type = FilterTypes.BAND_PASS
+      this.synth.filter.Q.value = 0.2
       this.synth.filter.frequency.value = 9000
-      this.synth.filter.Q.value = 0
       this.keyboard = Keyboard(this.synth)
       this.keyboard.octave = 6
       this.keyboard.init()

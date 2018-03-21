@@ -189,6 +189,9 @@
   import { Keyboard } from '@/core/keyboard'
   import { Output } from '@/core/output'
   import { LFOSynth } from '@/core/synth/lfo-synth'
+  import { WaveForms } from '@/core/waveforms'
+  import { FilterTypes } from '@/core/filter-types'
+  import { LFODestinations } from '@/core/lfo-destinations'
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
   import MibSlider from '@/components/synth/mib-slider.vue'
@@ -282,6 +285,14 @@
       this.synth = LFOSynth(this.audioContext)
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
+      this.synth.lfo1.frequency = 1
+      this.synth.lfo1.amplitude = 350
+      this.synth.lfo1.waveForm = WaveForms.SQUARE
+      this.synth.filterEnvelope.active = false
+      this.synth.filter.type = FilterTypes.BAND_PASS
+      this.synth.filter.Q.value = 0.1
+      this.synth.filter.frequency.value = 1400
+      this.synth.lfo1Destination = LFODestinations.ALL_FREQUENCY
       this.keyboard = Keyboard(this.synth)
       this.keyboard.octave = 3
       this.keyboard.init()

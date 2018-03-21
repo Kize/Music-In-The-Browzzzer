@@ -7,7 +7,7 @@ export const SubstractiveSynth = (audioContext) => {
   const filter = audioContext.createBiquadFilter()
   filter.connect(output)
   const voices = {}
-  let waveForm1 = WaveForms.TRIANGLE
+  let waveForm1 = WaveForms.SQUARE
   let waveForm2 = WaveForms.SAWTOOTH
   let detune1 = 0
   let detune2 = 0
