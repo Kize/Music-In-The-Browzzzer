@@ -230,6 +230,8 @@
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
   import MibSlider from '@/components/synth/mib-slider.vue'
   import MibToggle from '@/components/synth/mib-toggle.vue'
+  import { createMidiTrack } from '@/core/midi/midi-track'
+  import { arkanoid } from '../../../../core/midi/midi-events/arkanoid-events'
 
   export default {
     components: {
@@ -340,7 +342,8 @@
       this.synth.lfo2.amplitude = 700
       this.synth.lfo2.waveForm = WaveForms.SQUARE
 
-      this.keyboard = Keyboard(this.synth)
+      this.midiTrack = createMidiTrack(this.audioContext, arkanoid).setSlave(this.synth)
+      this.keyboard = Keyboard(this.synth, this.midiTrack)
       this.keyboard.octave = 3
       this.keyboard.init()
     },

@@ -47,19 +47,20 @@
 <script>
   import { Keyboard } from '@/core/keyboard'
   import { MonophonicSynth } from '@/core/synth/monophonic-synth'
+  import { createMidiTrack } from '@/core/midi/midi-track'
+  import { pacman } from '../../../../core/midi/midi-events/pacman-events'
   import { Output } from '@/core/output'
   import { WaveForms } from '@/core/waveforms'
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
   import MibSlider from '@/components/synth/mib-slider.vue'
-  import { setSariasSongMapping, resetSariasSongMapping } from '../../../../core/utils/gamepad-service'
 
   export default {
     components: {
       MibVisualizer,
       MibSpinBox,
       MibSlider,
-    },
+      },
     methods: {
       updateWaveForm(value) {
         this.synth.waveForm = value
@@ -77,18 +78,15 @@
       this.synth.waveForm = WaveForms.SINE
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
-      this.keyboard = Keyboard(this.synth)
+      this.midiTrack = createMidiTrack(this.audioContext, pacman).setSlave(this.synth)
+      this.keyboard = Keyboard(Object.assign(this.synth, this.midiTrack))
       this.keyboard.init()
-
-      setSariasSongMapping(this.synth.noteOn, this.synth.noteOff)
     },
     destroyed() {
       this.audioContext.close()
         .then(() => {
           this.keyboard.destroy()
         })
-
-      resetSariasSongMapping()
     },
   }
 </script>

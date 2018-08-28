@@ -48,6 +48,8 @@
   import { Keyboard } from '@/core/keyboard'
   import { PolyphonicSynth } from '@/core/synth/polyphonic-synth'
   import { Output } from '@/core/output'
+  import { createMidiTrack } from '@/core/midi/midi-track'
+  import { arkanoid } from '../../../../core/midi/midi-events/arkanoid-events'
   import { WaveForms } from '@/core/waveforms'
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
@@ -58,7 +60,7 @@
       MibVisualizer,
       MibSpinBox,
       MibSlider,
-    },
+      },
     methods: {
       updateWaveForm(value) {
         this.synth.waveForm = value
@@ -84,7 +86,8 @@
       this.synth.waveForm = WaveForms.SAWTOOTH
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
-      this.keyboard = Keyboard(this.synth)
+      this.midiTrack = createMidiTrack(this.audioContext, arkanoid).setSlave(this.synth)
+      this.keyboard = Keyboard(Object.assign(this.synth, this.midiTrack))
       this.keyboard.init()
     },
     destroyed() {

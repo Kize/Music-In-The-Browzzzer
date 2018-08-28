@@ -10,12 +10,17 @@
 
 <template>
   <div id="app">
-    <router-view/>
+    <mib-slide-show/>
   </div>
 </template>
 
 <script>
+  import MibSlideShow from './components/slideshow/mib-slideshow.vue'
+
   export default {
     name: 'App',
+    components: {
+      MibSlideShow,
+    },
   }
 </script>

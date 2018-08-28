@@ -1,10 +1,12 @@
 import * as R from 'ramda'
 import { DOM } from 'rx-dom'
 
-export const Keyboard = ({ noteOn, noteOff, pitch }) => {
+export const Keyboard = ({ start, stop, noteOn, noteOff, pitch }) => {
   const subscriptions = []
   const keyMapping = ['q', 'a', 's', 'z', 'd', 'f', 'e', 'g', 'r', 'h', 't', 'j']
+  const playKey = ' '
   let octave = 5
+  let isStarted = false
 
   const getShiftedNote = (key, octave) => keyMapping.indexOf(key) + 12 * octave
 
@@ -41,6 +43,18 @@ export const Keyboard = ({ noteOn, noteOff, pitch }) => {
           .subscribe(({ key }) => {
             noteOff(getShiftedNote(key, octave))
           })
+      )
+      subscriptions.push(
+        DOM.keyup(document)
+        .filter(({ key }) => key === playKey)
+        .subscribe(() => {
+          if(isStarted) {
+            stop()
+          } else {
+            start()
+          }
+          isStarted = !isStarted
+        }),
       )
     },
     destroy() {

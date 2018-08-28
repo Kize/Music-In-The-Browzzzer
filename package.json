@@ -14,14 +14,13 @@
   "dependencies": {
     "@types/webaudioapi": "^0.0.27",
     "eagle.js": "^0.1.5",
-    "gamepad-handler": "2.0.0",
     "material-design-icons": "^3.0.1",
+    "midi-parse": "^0.0.5",
     "qwerty-hancock": "^0.6.0",
     "ramda": "^0.25.0",
     "rx-dom": "^7.0.3",
     "rxjs": "^5.5.6",
-    "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue": "^2.5.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

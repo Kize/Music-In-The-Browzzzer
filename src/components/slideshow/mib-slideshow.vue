@@ -164,7 +164,7 @@
 <script>
   import eagle from 'eagle.js'
   import MibTitle from './slides/mib-title.vue'
-  import { gamepadHandler } from '../../core/utils/gamepad-service'
+  import { GamepadHandler } from '../../core/utils/gamepad-handler'
 
   import MibWebAudioApi00 from './slides/webAudioApi/mib-web-audio-api-00'
   import MibWebAudioApi01 from './slides/webAudioApi/mib-web-audio-api-01'
@@ -198,8 +198,6 @@
   import MibLfoDemo from './slides/lfo/demo.vue'
 
   import MibTheEnd from './slides/mib-the-end'
-
-  const btnMapping = gamepadHandler.gamepadsMapping[0].buttonsMapping
 
   export default {
     mixins: [
@@ -243,38 +241,10 @@
       MibTheEnd,
     },
     created: function () {
-      this.updateSlides()
-
-      btnMapping[8].mode = 'ACTION'
-      btnMapping[8].action = () => {
-        this.previousStep()
-      }
-      btnMapping[9].mode = 'ACTION'
-      btnMapping[9].action = () => {
-        this.nextStep()
-      }
-
-      gamepadHandler.start()
-    },
-    methods: {
-      updateSlides() {
-        this.currentSlideIndex = +this.$route.params.slide
-        this.$nextTick(() => {
-          this.step = +this.$route.params.step
-        })
-      },
-      updateURL() {
-        this.$router.push(`/${this.currentSlideIndex}/${this.step}`)
-      },
-    },
-    watch: {
-      $route: 'updateSlides',
-      step: 'updateURL',
-      currentSlideIndex: 'updateURL',
-    },
-    destroyed() {
-      btnMapping[8].mode = 'KEYBOARD_EVENT'
-      btnMapping[9].mode = 'KEYBOARD_EVENT'
+      GamepadHandler({
+        select: this.previousStep,
+        start: this.nextStep,
+      }).setLoops()
     },
   }
 </script>

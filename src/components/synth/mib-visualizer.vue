@@ -24,12 +24,18 @@
       height: {
         type: Number,
       },
+      mode: {
+        type: String,
+      },
       analyzer: {
         type: AnalyserNode,
       },
     },
     methods: {
       draw() {
+        requestAnimationFrame(this.drawOscilloscope)
+      },
+      drawOscilloscope() {
         const sliceWidth = this.width * 1.0 / this.analyzer.fftSize
         this.analyzer.getByteTimeDomainData(this.buffer)
         this.canvasContext.fillStyle = 'rgb(255, 255, 255)'
@@ -47,7 +53,23 @@
           )(i)
         })
         this.canvasContext.stroke()
-        requestAnimationFrame(this.draw)
+        requestAnimationFrame(this.drawOscilloscope)
+      },
+      drawSpectrum() {
+        this.analyzer.fftSize = 256
+        const data = new Uint8Array(this.analyzer.frequencyBinCount)
+        this.analyzer.getByteFrequencyData(data)
+        this.canvasContext.fillStyle = 'rgb(255, 255, 255)'
+        this.canvasContext.fillRect(0, 0, this.width, this.height)
+        this.canvasContext.lineWidth = 2
+        this.canvasContext.strokeStyle = '#af1e3a'
+        this.canvasContext.beginPath()
+        const width = this.width / data.length
+        data.forEach((freq, i) => {
+          this.canvasContext.fillStyle = `rgb(${freq + 100},50,50)`
+          this.canvasContext.fillRect(i * width, this.height - freq, width, freq / 1)
+        })
+        requestAnimationFrame(this.drawSpectrum)
       },
     },
   }
