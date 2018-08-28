@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import Eagle from 'eagle.js'
 import App from './App'
+import router from './router'
 
 // import eagle.js default styles
 import 'eagle.js/dist/eagle.css'
@@ -18,6 +19,7 @@ Vue.config.productionTip = false
 Vue.use(Eagle)
 /* eslint-disable no-new */
 new Vue({
+  router,
   el: '#app',
   components: {
     App,

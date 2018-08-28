@@ -164,7 +164,6 @@
 <script>
   import eagle from 'eagle.js'
   import MibTitle from './slides/mib-title.vue'
-  import { GamepadHandler } from '../../core/utils/gamepad-handler'
 
   import MibWebAudioApi00 from './slides/webAudioApi/mib-web-audio-api-00'
   import MibWebAudioApi01 from './slides/webAudioApi/mib-web-audio-api-01'
@@ -241,10 +240,23 @@
       MibTheEnd,
     },
     created: function () {
-      GamepadHandler({
-        select: this.previousStep,
-        start: this.nextStep,
-      }).setLoops()
+      this.updateSlides()
+    },
+    methods: {
+      updateSlides() {
+        this.currentSlideIndex = +this.$route.params.slide
+        this.$nextTick(() => {
+          this.step = +this.$route.params.step
+        })
+      },
+      updateURL() {
+        this.$router.push(`/${this.currentSlideIndex}/${this.step}`)
+      },
+    },
+    watch: {
+      $route: 'updateSlides',
+      step: 'updateURL',
+      currentSlideIndex: 'updateURL',
     },
   }
 </script>

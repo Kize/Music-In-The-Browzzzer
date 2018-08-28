@@ -19,7 +19,8 @@
     "ramda": "^0.25.0",
     "rx-dom": "^7.0.3",
     "rxjs": "^5.5.6",
-    "vue": "^2.5.2"
+    "vue": "^2.5.2",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
