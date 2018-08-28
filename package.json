@@ -14,6 +14,7 @@
   "dependencies": {
     "@types/webaudioapi": "^0.0.27",
     "eagle.js": "^0.1.5",
+    "gamepad-handler": "2.0.0",
     "material-design-icons": "^3.0.1",
     "qwerty-hancock": "^0.6.0",
     "ramda": "^0.25.0",

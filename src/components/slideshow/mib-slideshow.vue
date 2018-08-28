@@ -164,6 +164,7 @@
 <script>
   import eagle from 'eagle.js'
   import MibTitle from './slides/mib-title.vue'
+  import { gamepadHandler } from '../../core/utils/gamepad-service'
 
   import MibWebAudioApi00 from './slides/webAudioApi/mib-web-audio-api-00'
   import MibWebAudioApi01 from './slides/webAudioApi/mib-web-audio-api-01'
@@ -197,6 +198,8 @@
   import MibLfoDemo from './slides/lfo/demo.vue'
 
   import MibTheEnd from './slides/mib-the-end'
+
+  const btnMapping = gamepadHandler.gamepadsMapping[0].buttonsMapping
 
   export default {
     mixins: [
@@ -241,6 +244,17 @@
     },
     created: function () {
       this.updateSlides()
+
+      btnMapping[8].mode = 'ACTION'
+      btnMapping[8].action = () => {
+        this.previousStep()
+      }
+      btnMapping[9].mode = 'ACTION'
+      btnMapping[9].action = () => {
+        this.nextStep()
+      }
+
+      gamepadHandler.start()
     },
     methods: {
       updateSlides() {
@@ -257,6 +271,10 @@
       $route: 'updateSlides',
       step: 'updateURL',
       currentSlideIndex: 'updateURL',
+    },
+    destroyed() {
+      btnMapping[8].mode = 'KEYBOARD_EVENT'
+      btnMapping[9].mode = 'KEYBOARD_EVENT'
     },
   }
 </script>

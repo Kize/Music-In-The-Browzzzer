@@ -52,13 +52,14 @@
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
   import MibSlider from '@/components/synth/mib-slider.vue'
+  import { setSariasSongMapping, resetSariasSongMapping } from '../../../../core/utils/gamepad-service'
 
   export default {
     components: {
       MibVisualizer,
       MibSpinBox,
       MibSlider,
-      },
+    },
     methods: {
       updateWaveForm(value) {
         this.synth.waveForm = value
@@ -78,12 +79,16 @@
       this.synth.connect(this.output)
       this.keyboard = Keyboard(this.synth)
       this.keyboard.init()
+
+      setSariasSongMapping(this.synth.noteOn, this.synth.noteOff)
     },
     destroyed() {
       this.audioContext.close()
         .then(() => {
           this.keyboard.destroy()
         })
+
+      resetSariasSongMapping()
     },
   }
 </script>
