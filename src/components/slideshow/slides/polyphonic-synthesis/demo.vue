@@ -58,7 +58,7 @@
       MibVisualizer,
       MibSpinBox,
       MibSlider,
-      },
+    },
     methods: {
       updateWaveForm(value) {
         this.synth.waveForm = value
