@@ -53,6 +53,8 @@
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
   import MibSlider from '@/components/synth/mib-slider.vue'
   import { setSariasSongMapping, resetSariasSongMapping } from '../../../../core/utils/gamepad-service'
+  import { createMidiTrack } from '@/core/midi/midi-track'
+  import { pacman } from '../../../../core/midi/midi-events/pacman-events'
 
   export default {
     components: {
@@ -77,6 +79,8 @@
       this.synth.waveForm = WaveForms.SINE
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
+      this.midiTrack = createMidiTrack(this.audioContext, pacman).setSlave(this.synth)
+      this.keyboard = Keyboard(Object.assign(this.synth, this.midiTrack))
       this.keyboard = Keyboard(this.synth)
       this.keyboard.init()
 
