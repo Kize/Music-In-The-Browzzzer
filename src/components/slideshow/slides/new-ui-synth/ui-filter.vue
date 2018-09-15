@@ -14,11 +14,6 @@
 
     .knobs {
       width: 60%;
-
-      .knob {
-        display: block;
-        margin: 10px auto 0 auto;
-      }
     }
 
     .toggles {
@@ -30,8 +25,8 @@
 <template>
   <div class="card filters">
     <div class="knobs">
-      <knob class="knob" label="frequency" :value="1" :width="180"></knob>
-      <knob class="knob small" label="peak" :value="1" :width="130"></knob>
+      <knob label="frequency" :value="1" :width="180"></knob>
+      <knob label="peak" :value="1" :width="130"></knob>
     </div>
     <div class="toggles">
       <selector :values="['square', 'triangle', 'sine']"></selector>

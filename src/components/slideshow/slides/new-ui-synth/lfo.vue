@@ -5,8 +5,6 @@
     width: 25vw;
     margin: $margin-int $margin-ext $margin-ext $margin-int;
     display: flex;
-    /*align-items: center;*/
-    /*justify-content: center;*/
 
     & > div {
       margin: auto;
@@ -16,11 +14,6 @@
 
     .knobs {
       width: 60%;
-
-      .knob {
-        display: block;
-        margin: 10px auto 0 auto;
-      }
     }
 
     .toggles {
@@ -32,8 +25,8 @@
 <template>
   <div class="card lfo">
     <div class="knobs">
-      <knob class="knob" label="amount" :value="1" :width="180"></knob>
-      <knob class="knob small" label="rate" :value="1" :width="130"></knob>
+      <knob label="amount" :value="1" :width="180"></knob>
+      <knob label="rate" :value="1" :width="130"></knob>
     </div>
     <div class="toggles">
       <selector :values="['lowpass', 'highpass', 'bandpass']"></selector>

@@ -27,19 +27,19 @@
   <div class="card">
     <div class="knobs">
       <span class="osc-title">Osc1</span>
-      <knob class="knob" label="square" :value="1" :width="180" @update="setSquareGainValue"></knob>
-      <knob class="knob small" label="detune" :value="1" :width="130"></knob>
+      <knob label="square" :value="1" :width="180" @update="setSquareGainValue"></knob>
+      <knob label="detune" :value="1" :width="130"></knob>
     </div>
 
     <div class="knobs">
       <span class="osc-title">Osc2</span>
-      <knob class="knob" label="sawtooth" :value="1" :width="180" @update="setSawGainValue"></knob>
-      <knob class="knob small" label="detune" :value="1" :width="130"></knob>
+      <knob label="sawtooth" :value="1" :width="180" @update="setSawGainValue"></knob>
+      <knob label="detune" :value="1" :width="130"></knob>
     </div>
 
     <div class="knobs">
-      <knob class="knob" label="fm amount" :value="1" :width="180" @update="setFmAmount"></knob>
-      <knob class="knob" label="fm ratio" :value="1" :width="130" @update="setFmRatio"></knob>
+      <knob class="fm-amount" label="fm amount" :value="1" :width="180" @update="setFmAmount"></knob>
+      <knob class="fm-ratio" label="fm ratio" :value="1" :width="130" @update="setFmRatio"></knob>
     </div>
   </div>
 </template>

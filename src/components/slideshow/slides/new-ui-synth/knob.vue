@@ -1,4 +1,5 @@
 <style lang="scss" type="text/scss" scoped>
+  @import '../../../../assets/styles/colors';
 
   .container {
     user-select: none;
@@ -11,20 +12,6 @@
       margin: auto;
       position: relative;
       top: -1vh;
-
-      .background {
-        fill: #4B6F8B;
-      }
-      .handle {
-        fill: #D3DEE7;
-      }
-      .curse {
-        fill: #A3B8C8;
-      }
-      .cursor {
-        stroke: #FFF;
-        stroke-width: 4px;
-      }
     }
 
     .label {

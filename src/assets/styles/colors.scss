@@ -7,3 +7,43 @@ $ui-bg-active: #fdfdfd;
 $text-primary: #34495e;
 
 $button-box-shadow: #999;
+
+
+
+
+
+.container {
+  .knob {
+    .background {
+      fill: #4B6F8B;
+    }
+    .handle {
+      fill: #D3DEE7;
+    }
+    .curse {
+      fill: #A3B8C8;
+    }
+    .cursor {
+      stroke: #FFF;
+      stroke-width: 4px;
+    }
+  }
+
+  &.fm-amount, &.fm-ratio {
+    .knob {
+      .background {
+        fill: #BB7365;
+      }
+      .handle {
+        fill: #DEADA1;
+      }
+      .curse {
+        fill: #FF8362;
+      }
+      .cursor {
+        stroke: #FFF;
+        stroke-width: 4px;
+      }
+    }
+  }
+}
