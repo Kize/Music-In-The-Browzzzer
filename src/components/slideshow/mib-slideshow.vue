@@ -44,6 +44,10 @@
 <template>
   <div class="eg-slideshow">
     <slide :mouseNavigation="false" leave='fadeOut'>
+      <synthesizer-demo :options="{test: true}"></synthesizer-demo>
+    </slide>
+
+    <slide :mouseNavigation="false" leave='fadeOut'>
       <mib-title></mib-title>
     </slide>
 
@@ -74,8 +78,7 @@
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
-      <!--<mib-monophonic-demo></mib-monophonic-demo>-->
-      <new-ui-synth :options="{test: true}"></new-ui-synth>
+      <synthesizer-demo :options="{test: true}"></synthesizer-demo>
     </slide>
 
     <!--POLYPHONIC-->
@@ -92,7 +95,7 @@
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut'>
-      <mib-polyphonic-demo></mib-polyphonic-demo>
+      <synthesizer-demo :options="{test: true}"></synthesizer-demo>
     </slide>
 
     <!--ADDITIVE-->
@@ -109,7 +112,7 @@
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
-      <mib-additive-demo></mib-additive-demo>
+      <synthesizer-demo :options="{test: true}"></synthesizer-demo>
     </slide>
 
     <!--SUBSTRACTIVE-->
@@ -122,7 +125,7 @@
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
-      <mib-substractive-demo></mib-substractive-demo>
+      <synthesizer-demo :options="{test: true}"></synthesizer-demo>
     </slide>
 
     <!--ENVELOPES-->
@@ -139,7 +142,7 @@
     </slide>
 
     <slide enter='bounceInRight' :mouseNavigation="false" :steps="2">
-      <mib-envelopes-demo :step="step"></mib-envelopes-demo>
+      <synthesizer-demo :options="{test: true}"></synthesizer-demo>
     </slide>
 
     <!--LFO-->
@@ -152,7 +155,7 @@
     </slide>
 
     <slide enter='bounceInRight' :mouseNavigation="false" :steps="2">
-      <mib-lfo-demo :step="step"></mib-lfo-demo>
+      <synthesizer-demo :options="{test: true}"></synthesizer-demo>
     </slide>
 
     <!--END-->
@@ -175,7 +178,7 @@
   import MibMonophonicSnippet from './slides/monophonic-synthesis/snippet.vue'
   import MibMonophonicGraph from './slides/monophonic-synthesis/graph.vue'
   import MibMonophonicDemo from './slides/monophonic-synthesis/demo.vue'
-  import NewUiSynth from './slides/new-ui-synth/demo.vue'
+  import SynthesizerDemo from './slides/new-ui-synth/demo.vue'
 
   import MibPolyphonicIntro from './slides/polyphonic-synthesis/intro'
   import MibPolyphonicSnippet from './slides/polyphonic-synthesis/snippet.vue'
@@ -220,7 +223,7 @@
       MibMonophonicSnippet,
       MibMonophonicDemo,
 
-      NewUiSynth,
+      SynthesizerDemo,
 
       MibPolyphonicIntro,
       MibPolyphonicGraph,
