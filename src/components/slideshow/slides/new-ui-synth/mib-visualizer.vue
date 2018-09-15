@@ -1,18 +1,15 @@
 <style lang="scss" scoped>
+  @import '../../../../assets/styles/synth-card';
+
   .card {
-    width: 400px;
-    height: 300px;
-    /*border-right: gray 4px solid;*/
-    background-color: #fdfdfd;
-    border-radius: 15px;
+    width: 50vw;
+    margin: $margin-ext $margin-ext $margin-int $margin-int;
     display: flex;
-    align-items: center;
-    justify-content: center;
+
     .canvas {
       width: 80%;
       height: 80%;
-      margin: auto auto;
-      /*border-radius: 15px;*/
+      margin: auto;
       background-color: #2c3e50;
     }
   }

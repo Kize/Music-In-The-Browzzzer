@@ -3,9 +3,15 @@
   .container {
     user-select: none;
     outline: none;
+    margin: auto;
+    position: relative;
+
     .knob {
       display: block;
       margin: auto;
+      position: relative;
+      top: -1vh;
+
       .background {
         fill: #4B6F8B;
       }
@@ -27,13 +33,16 @@
         stroke-miterlimit: 10;
       }
     }
+
     .label {
-      font-size: 13px;
-      text-align: center;
       display: block;
+      position: relative;
+      bottom: 24px;
+      font-family: "Lucida Console", Monaco, monospace;
+      font-size: 26px;
+      text-align: center;
       margin: 0 auto;
       color: gray;
-      font-family: "Lucida Console", Monaco, monospace;
     }
   }
 
@@ -58,12 +67,14 @@
             <line class="cursor" x1="71" y1="46" x2="71" y2="55"></line>
 
           </g>
-          <ellipse transform="matrix(0.2359 -0.9718 0.9718 0.2359 -19.1643 125.6766)" class="curse" cx="70.3"
-                   cy="75" rx="20.6" ry="20.6"></ellipse>
+          <ellipse class="curse" cx="70.3" cy="75" rx="20.6" ry="20.6"
+                   transform="matrix(0.2359 -0.9718 0.9718 0.2359 -19.1643 125.6766)">
+          </ellipse>
 
         </g>
       </g>
     </svg>
+
     <span class="label">{{label}}</span>
   </div>
 </template>

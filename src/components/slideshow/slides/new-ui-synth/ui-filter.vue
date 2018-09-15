@@ -1,36 +1,37 @@
 <style lang="scss" scoped>
-  .filters {
-    width: 200px;
-    height: 300px;
-    background-color: #fdfdfd;
-    border-radius: 15px;
+  @import '../../../../assets/styles/synth-card';
+
+  .card.filters {
+    width: 25vw;
+    margin: $margin-int $margin-int $margin-ext $margin-ext;
     display: flex;
-    justify-content: space-evenly;
+
+    & > div {
+      margin: auto;
+      height: 100%;
+      box-sizing: border-box;
+    }
+
     .knobs {
+      width: 60%;
+
       .knob {
         display: block;
-        /*width: 100px;*/
         margin: 10px auto 0 auto;
-        &.small {
-          /*width: 60px;*/
-        }
       }
     }
+
     .toggles {
-      height: 200px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      align-self: center;
+      width: 40%;
     }
   }
 </style>
 
 <template>
-  <div class="filters">
+  <div class="card filters">
     <div class="knobs">
-      <knob class="knob" label="frequency" :value="1" :width="100"></knob>
-      <knob class="knob small" label="peak" :value="1" :width="80"></knob>
+      <knob class="knob" label="frequency" :value="1" :width="180"></knob>
+      <knob class="knob small" label="peak" :value="1" :width="130"></knob>
     </div>
     <div class="toggles">
       <selector :values="['square', 'triangle', 'sine']"></selector>
@@ -39,8 +40,8 @@
 </template>
 
 <script>
-  import Knob from '../../../synth/knob.vue'
-  import Toggle from '../../../synth/toggle.vue'
+  import Knob from './knob.vue'
+  import Toggle from './toggle.vue'
   import Selector from './selector.vue'
 
   export default {

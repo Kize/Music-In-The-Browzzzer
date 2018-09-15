@@ -1,4 +1,6 @@
 <style lang="scss" type="text/scss" scoped>
+  @import '../../../../assets/styles/synth-card';
+
   .slider {
     .background {
       fill: #995574;
@@ -31,7 +33,7 @@
       stroke-linecap: round;
     }
     .label {
-      font-size: 13px;
+      font-size: $input-label-size;
       text-align: center;
       display: block;
       margin: 0 auto;

@@ -1,52 +1,45 @@
 <style lang="scss" scoped>
-  .card {
-    width: 400px;
-    height: 300px;
-    /*border-right: gray 4px solid;*/
-    background-color: #fdfdfd;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  @import '../../../../assets/styles/synth-card';
 
-    .osc {
-      .waves {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        .knobs {
-          .knob {
-            display: block;
-            margin: 10px auto 0 auto;
-          }
-        }
+  .card {
+    width: 50vw;
+    margin: $margin-ext $margin-int $margin-int $margin-ext;
+    display: flex;
+
+    .knobs {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+
+      .osc-title {
+        font-size: $input-label-size;
+        position: absolute;
+        left: 18px;
+        top: 15px;
       }
     }
+
   }
 
 </style>
 
 <template>
   <div class="card">
-    <div class="osc">
-      <div class="waves">
-        <div class="knobs">
-          <knob class="knob" label="square" :value="1" :width="100" @update="setSquareGainValue"></knob>
-          <knob class="knob small" label="detune" :value="1" :width="60"></knob>
-        </div>
-        <div class="knobs">
-          <knob class="knob" label="sawtooth" :value="1" :width="100" @update="setSawGainValue"></knob>
-          <knob class="knob small" label="detune" :value="1" :width="60"></knob>
-        </div>
-        <div class="knobs">
-          <knob class="knob" label="fm amount" :value="1" :width="100" @update="setFmAmount"></knob>
-          <knob class="knob" label="fm ratio" :value="1" :width="60" @update="setFmRatio"></knob>
+    <div class="knobs">
+      <span class="osc-title">Osc1</span>
+      <knob class="knob" label="square" :value="1" :width="180" @update="setSquareGainValue"></knob>
+      <knob class="knob small" label="detune" :value="1" :width="130"></knob>
+    </div>
 
-          <!--<knob class="knob small" label="detune" :value="1" :width="60"></knob>-->
-        </div>
-        <div class="knobs">
-          <!--<knob class="knob small" label="detune" :value="1" :width="60"></knob>-->
-        </div>
-      </div>
+    <div class="knobs">
+      <span class="osc-title">Osc2</span>
+      <knob class="knob" label="sawtooth" :value="1" :width="180" @update="setSawGainValue"></knob>
+      <knob class="knob small" label="detune" :value="1" :width="130"></knob>
+    </div>
+
+    <div class="knobs">
+      <knob class="knob" label="fm amount" :value="1" :width="180" @update="setFmAmount"></knob>
+      <knob class="knob" label="fm ratio" :value="1" :width="130" @update="setFmRatio"></knob>
     </div>
   </div>
 </template>

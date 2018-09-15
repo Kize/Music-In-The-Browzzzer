@@ -75,7 +75,7 @@
 
     <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
       <!--<mib-monophonic-demo></mib-monophonic-demo>-->
-      <new-ui-synth></new-ui-synth>
+      <new-ui-synth :options="{test: true}"></new-ui-synth>
     </slide>
 
     <!--POLYPHONIC-->

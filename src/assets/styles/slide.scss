@@ -36,23 +36,4 @@
     }
   }
 
-  .synth {
-    width: 1000px;
-    margin: 0 auto;
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    .controls {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-
-      .control {
-        margin-right: 5px;
-      }
-    }
-  }
-
 }

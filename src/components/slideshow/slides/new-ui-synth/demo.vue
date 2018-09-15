@@ -2,24 +2,16 @@
   @import '../../../../assets/styles/slide';
 
   .synth {
+    position: fixed;
     background: #dbdbdb;
-    padding: 20px;
-    width: 100%!important;
-    height: 840px!important;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    .upper-row {
-      width: 900px;
+    width: 100vw;
+    height: 100vh;
+
+    .upper-row, .lower-row {
+      height: 50vh;
       display: flex;
-      justify-content: space-evenly;
     }
-    .lower-row {
-      margin-top: 20px;
-      width: 900px;
-      display: flex;
-      justify-content: space-evenly;
-    }
+
   }
 </style>
 
@@ -28,10 +20,10 @@
     <div class="synth">
       <div class="upper-row">
         <osc></osc>
-        <mib-visualizer :width="300" :height="200" :analyzer="output.analyzer"></mib-visualizer>
+        <mib-visualizer :width="700" :height="320" :analyzer="output.analyzer"></mib-visualizer>
       </div>
       <div class="lower-row">
-        <ui-filter ></ui-filter>
+        <ui-filter></ui-filter>
         <envelope type="adsr"></envelope>
         <envelope></envelope>
         <lfo></lfo>
@@ -73,6 +65,11 @@
         this.keyboard.octave = value
       },
     },
+    props: {
+      options: {
+        type: Object,
+      },
+    },
     created() {
       this.audioContext = new AudioContext()
       this.synth = Synth(this.audioContext)
@@ -81,6 +78,8 @@
       this.midiTrack = createMidiTrack(this.audioContext, arkanoid).setSlave(this.synth)
       this.keyboard = Keyboard(Object.assign(this.synth, this.midiTrack))
       this.keyboard.init()
+
+      console.log(this.options)
 
       setSariasSongMapping(this.synth.noteOn, this.synth.noteOff)
     },
