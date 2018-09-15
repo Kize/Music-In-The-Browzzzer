@@ -6,7 +6,7 @@ export function Keyboard({ start, stop, noteOn, noteOff, pitch }) {
   const keyMapping = ['q', 'a', 's', 'z', 'd', 'f', 'e', 'g', 'r', 'h', 't', 'j']
   const playKey = ' '
 
-  let octave = 5
+  let octave = 4
   let isStarted = false
 
   const getShiftedNote = (key, octave) => keyMapping.indexOf(key) + 12 * octave
@@ -51,7 +51,9 @@ export function Keyboard({ start, stop, noteOn, noteOff, pitch }) {
         .filter(({ key }) => key === playKey)
         .filter(() => start && stop)
         .do(() => isStarted ? stop() : start())
-        .subscribe(() => { isStarted = !isStarted })
+        .subscribe(() => {
+          isStarted = !isStarted
+        }),
       )
     },
     destroy() {

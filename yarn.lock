@@ -2228,9 +2228,9 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-standard@^10.2.1:
-  version "10.2.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-10.2.1.tgz#c061e4d066f379dc17cd562c64e819b4dd454591"
+eslint-config-standard@^12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-12.0.0.tgz#638b4c65db0bd5a41319f96bba1f15ddad2107d9"
 
 eslint-friendly-formatter@^3.0.0:
   version "3.0.0"
@@ -2810,9 +2810,9 @@ functional-red-black-tree@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
 
-gamepad-handler@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/gamepad-handler/-/gamepad-handler-1.1.0.tgz#6538c1f0f31350a624ab59ee95e1f1583d7c0f00"
+gamepad-handler@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/gamepad-handler/-/gamepad-handler-2.0.0.tgz#cf2351bbeda0a9d2af76893d6f0fef7b4a6f218f"
 
 gauge@~2.7.3:
   version "2.7.4"
@@ -4024,6 +4024,13 @@ micromatch@^3.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+midi-parse@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/midi-parse/-/midi-parse-0.0.5.tgz#a5352b3de8f07bf52de89a8f61a411febb3485de"
+  dependencies:
+    ramda "^0.25.0"
+    rxjs "^5.5.6"
+
 miller-rabin@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/miller-rabin/-/miller-rabin-4.0.1.tgz#f080351c865b0dc562a8462966daa53543c78a4d"
@@ -5009,6 +5016,10 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
+prettier@^1.14.2:
+  version "1.14.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.14.2.tgz#0ac1c6e1a90baa22a62925f41963c841983282f9"
+
 prettier@^1.7.0:
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.11.1.tgz#61e43fc4cd44e68f2b0dfc2c38cd4bb0fccdcc75"
@@ -5130,6 +5141,10 @@ querystringify@~1.0.0:
 qwerty-hancock@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/qwerty-hancock/-/qwerty-hancock-0.6.0.tgz#1cae4821ff5f44c5b58e118fd8c0a754ca1880cf"
+
+ramda@^0.24.1:
+  version "0.24.1"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.24.1.tgz#c3b7755197f35b8dc3502228262c4c91ddb6b857"
 
 ramda@^0.25.0:
   version "0.25.0"
@@ -5544,6 +5559,12 @@ rx-lite@*, rx-lite@^4.0.8:
 rx@*:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
+
+rxjs@^5.4.3:
+  version "5.5.12"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.12.tgz#6fa61b8a77c3d793dbaf270bee2f43f652d741cc"
+  dependencies:
+    symbol-observable "1.0.1"
 
 rxjs@^5.5.6:
   version "5.5.6"
@@ -6536,6 +6557,14 @@ vue@^2.5.2:
   version "2.5.14"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.14.tgz#74cb248a471053939abf6cdf2c406d4c311ab5a7"
 
+wasa@0.0.27:
+  version "0.0.27"
+  resolved "https://registry.yarnpkg.com/wasa/-/wasa-0.0.27.tgz#57de7bb264caea469d0c17bb90063852d0251fcd"
+  dependencies:
+    ramda "^0.24.1"
+    rxjs "^5.4.3"
+    worker-timer "^1.1.0"
+
 watchpack@^1.4.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.5.0.tgz#231e783af830a22f8966f65c4c4bacc814072eed"
@@ -6701,6 +6730,10 @@ worker-farm@^1.5.2:
   resolved "https://registry.yarnpkg.com/worker-farm/-/worker-farm-1.6.0.tgz#aecc405976fab5a95526180846f0dba288f3a4a0"
   dependencies:
     errno "~0.1.7"
+
+worker-timer@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/worker-timer/-/worker-timer-1.1.0.tgz#7331120c90fff477a82b1530b580210153302056"
 
 wrap-ansi@^2.0.0:
   version "2.1.0"

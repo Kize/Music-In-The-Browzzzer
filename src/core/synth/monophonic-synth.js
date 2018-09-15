@@ -14,7 +14,7 @@ export const MonophonicSynth = (audioContext) => {
     return osc
   }
 
-  let waveForm = WaveForms.TRIANGLE
+  let waveForm = WaveForms.SQUARE
   let detune = 0
 
   const notes = []

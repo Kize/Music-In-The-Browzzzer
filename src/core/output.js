@@ -4,8 +4,8 @@ export const Output = (audioContext) => {
   analyzer.fftSize = 2048
 
   compressor
-    .connect(analyzer)
-    .connect(audioContext.destination)
+  .connect(analyzer)
+  .connect(audioContext.destination)
 
   compressor.threshold.value = -50
   compressor.knee.value = 40

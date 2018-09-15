@@ -15,6 +15,7 @@
     <h2>Synthèse monophonique</h2>
     <div class="synth">
       <div class="controls">
+
         <mib-spin-box class="control octave"
                       label="Octave"
                       width="50px"

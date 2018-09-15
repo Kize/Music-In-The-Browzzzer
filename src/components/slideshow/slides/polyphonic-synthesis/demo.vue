@@ -52,6 +52,8 @@
   import MibVisualizer from '@/components/synth/mib-visualizer.vue'
   import MibSpinBox from '@/components/synth/mib-spinbox.vue'
   import MibSlider from '@/components/synth/mib-slider.vue'
+  import { createMidiTrack } from '@/core/midi/midi-track'
+  import { arkanoid } from '../../../../core/midi/midi-events/arkanoid-events'
 
   export default {
     components: {
@@ -84,7 +86,8 @@
       this.synth.waveForm = WaveForms.SAWTOOTH
       this.output = Output(this.audioContext)
       this.synth.connect(this.output)
-      this.keyboard = Keyboard(this.synth)
+      this.midiTrack = createMidiTrack(this.audioContext, arkanoid).setSlave(this.synth)
+      this.keyboard = Keyboard(Object.assign(this.synth, this.midiTrack))
       this.keyboard.init()
     },
     destroyed() {

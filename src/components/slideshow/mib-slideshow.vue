@@ -74,7 +74,8 @@
     </slide>
 
     <slide enter='bounceInRight' leave='fadeOut' :mouseNavigation="false">
-      <mib-monophonic-demo></mib-monophonic-demo>
+      <!--<mib-monophonic-demo></mib-monophonic-demo>-->
+      <new-ui-synth></new-ui-synth>
     </slide>
 
     <!--POLYPHONIC-->
@@ -169,10 +170,12 @@
   import MibWebAudioApi00 from './slides/webAudioApi/mib-web-audio-api-00'
   import MibWebAudioApi01 from './slides/webAudioApi/mib-web-audio-api-01'
   import MibWebAudioSnippet from './slides/webAudioApi/snippet'
+
   import MibMonophonicIntro from './slides/monophonic-synthesis/intro'
   import MibMonophonicSnippet from './slides/monophonic-synthesis/snippet.vue'
   import MibMonophonicGraph from './slides/monophonic-synthesis/graph.vue'
   import MibMonophonicDemo from './slides/monophonic-synthesis/demo.vue'
+  import NewUiSynth from './slides/new-ui-synth/demo.vue'
 
   import MibPolyphonicIntro from './slides/polyphonic-synthesis/intro'
   import MibPolyphonicSnippet from './slides/polyphonic-synthesis/snippet.vue'
@@ -216,6 +219,8 @@
       MibMonophonicGraph,
       MibMonophonicSnippet,
       MibMonophonicDemo,
+
+      NewUiSynth,
 
       MibPolyphonicIntro,
       MibPolyphonicGraph,

@@ -10,12 +10,12 @@ function toTimedEvents({ events }) {
   })
 }
 
-export function createMidiTrack (audioContext, { tracks }) {
-  let slave
+export function createMidiTrack(audioContext, { tracks }) {
   const tempo = 100
   const division = 96
-
   const events = toTimedEvents(tracks[0])
+
+  let slave, startTime
 
   const noteOn = (time, note) => {
     if (!isNil(slave)) {
@@ -31,7 +31,7 @@ export function createMidiTrack (audioContext, { tracks }) {
 
   return {
     start() {
-      const startTime = audioContext.currentTime
+      startTime = audioContext.currentTime
       events.forEach((event) => {
         let time = startTime + event.time * (60 / (tempo * division))
         switch (event.type) {
