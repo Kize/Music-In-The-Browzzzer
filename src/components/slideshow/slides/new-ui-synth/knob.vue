@@ -15,22 +15,15 @@
       .background {
         fill: #4B6F8B;
       }
+      .handle {
+        fill: #D3DEE7;
+      }
       .curse {
         fill: #A3B8C8;
       }
       .cursor {
         stroke: #FFF;
         stroke-width: 4px;
-      }
-      .handle {
-        fill: #D3DEE7;
-      }
-      .grad {
-        fill: none;
-        stroke: #995574;
-        stroke-width: 1px;
-        stroke-linecap: round;
-        stroke-miterlimit: 10;
       }
     }
 

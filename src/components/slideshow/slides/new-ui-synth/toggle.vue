@@ -16,6 +16,7 @@
         box-shadow: 0 0 5px 0 #ff5574;
       }
     }
+
     .label {
       font-size: 9px;
       text-align: center;

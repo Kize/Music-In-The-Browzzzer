@@ -2,16 +2,6 @@
   @import '../../../../assets/styles/synth-card';
 
   .slider {
-    .background {
-      fill: #995574;
-    }
-
-    .background {
-      fill: none;
-      stroke: #995574;
-      stroke-width: 1px;
-      stroke-miterlimit: 10;
-    }
 
     .curse {
       fill: none;
@@ -21,17 +11,11 @@
       stroke-miterlimit: 10;
     }
 
-    .cursor {
-      fill: none;
-      stroke: #FFF;
-      stroke-width: 2px;
-      stroke-miterlimit: 10;
-    }
-
     .handle {
       fill: #A3B8C8;
       stroke-linecap: round;
     }
+
     .label {
       font-size: $input-label-size;
       text-align: center;
@@ -103,7 +87,7 @@
         x: 0,
         y: 0,
         width: 50,
-        height: 200,
+        height: 160,
       },
     }),
     methods: {

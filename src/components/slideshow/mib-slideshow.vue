@@ -5,8 +5,8 @@
     font-family: "Roboto Condensed";
     background-color: $bg-primary;
     overflow: hidden;
-    height: 99%;
-    width: 99%;
+    height: 100%;
+    width: 100%;
 
     .eg-slide {
       background-color: $bg-primary;
