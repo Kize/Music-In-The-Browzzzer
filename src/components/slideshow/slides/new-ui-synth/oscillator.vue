@@ -28,12 +28,12 @@
     <div class="knobs">
       <span class="osc-title">Osc1</span>
       <knob class="osc-1" label="square" :value="1" :width="180" @update="setSquareGainValue"></knob>
-      <knob class="osc-2" label="detune" :value="1" :width="130"></knob>
+      <knob label="detune" :value="1" :width="130"></knob>
     </div>
 
     <div class="knobs">
       <span class="osc-title">Osc2</span>
-      <knob label="sawtooth" :value="1" :width="180" @update="setSawGainValue"></knob>
+      <knob class="osc-2 disabled" label="sawtooth" :value="1" :width="180" @update="setSawGainValue"></knob>
       <knob label="detune" :value="1" :width="130"></knob>
     </div>
 

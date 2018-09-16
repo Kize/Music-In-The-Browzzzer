@@ -40,6 +40,12 @@ $knob-handle-yellow: #FFFF66;
 $knob-curse-yellow: #FF9900;
 $knob-cursor-yellow: #FF0000;
 
+/*Grey knob*/
+$knob-background-grey: #dedede;
+$knob-handle-grey: #d6cbc4;
+$knob-curse-grey: #dfd4cf;
+$knob-cursor-grey: #666666;
+
 .container {
   .knob {
     .background {
@@ -124,6 +130,24 @@ $knob-cursor-yellow: #FF0000;
       }
       .cursor {
         stroke: $knob-cursor-yellow;
+        stroke-width: 4px;
+      }
+    }
+  }
+
+  &.disabled {
+    .knob {
+      .background {
+        fill: $knob-background-grey;
+      }
+      .handle {
+        fill: $knob-handle-grey;
+      }
+      .curse {
+        fill: $knob-curse-grey;
+      }
+      .cursor {
+        stroke: $knob-cursor-grey;
         stroke-width: 4px;
       }
     }
