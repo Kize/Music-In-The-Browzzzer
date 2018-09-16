@@ -27,8 +27,8 @@
   <div class="card">
     <div class="knobs">
       <span class="osc-title">Osc1</span>
-      <knob label="square" :value="1" :width="180" @update="setSquareGainValue"></knob>
-      <knob label="detune" :value="1" :width="130"></knob>
+      <knob class="osc-1" label="square" :value="1" :width="180" @update="setSquareGainValue"></knob>
+      <knob class="osc-2" label="detune" :value="1" :width="130"></knob>
     </div>
 
     <div class="knobs">

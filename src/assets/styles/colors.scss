@@ -9,39 +9,121 @@ $text-primary: #34495e;
 $button-box-shadow: #999;
 
 
+// Knob colors
+/*Blue knob*/
+$knob-background-blue: #859acc;
+$knob-handle-blue: #4B6F8B;
+$knob-curse-blue: #A3B8C8;
+$knob-cursor-blue: #FFF;
 
+/*Red brick knob*/
+$knob-background-red: #ffbb9f;
+$knob-handle-red: #FF8362;
+$knob-curse-red: #DEADA1;
+$knob-cursor-red: #FFF;
 
+/*Green knob*/
+$knob-background-green: #8feb9c;
+$knob-handle-green: #41924B;
+$knob-curse-green: #AFEAAA;
+$knob-cursor-green: #FFF;
+
+/*Violet knob*/
+$knob-background-violet: #9C8AA5;
+$knob-handle-violet: #732C7B;
+$knob-curse-violet: #BDAEC6;
+$knob-cursor-violet: #FFFFFF;
+
+/*Yellow knob*/
+$knob-background-yellow: #FFCC00;
+$knob-handle-yellow: #FFFF66;
+$knob-curse-yellow: #FF9900;
+$knob-cursor-yellow: #FF0000;
 
 .container {
   .knob {
     .background {
-      fill: #4B6F8B;
+      fill: $knob-background-blue;
     }
     .handle {
-      fill: #D3DEE7;
+      fill: $knob-handle-blue;
     }
     .curse {
-      fill: #A3B8C8;
+      fill: $knob-curse-blue;
     }
     .cursor {
-      stroke: #FFF;
+      stroke: $knob-cursor-blue;
       stroke-width: 4px;
     }
   }
 
-  &.fm-amount, &.fm-ratio {
+  &.osc-1 {
     .knob {
       .background {
-        fill: #BB7365;
+        fill: $knob-background-violet;
       }
       .handle {
-        fill: #DEADA1;
+        fill: $knob-handle-violet;
       }
       .curse {
-        fill: #FF8362;
+        fill: $knob-curse-violet;
       }
       .cursor {
-        stroke: #FFF;
+        stroke: $knob-cursor-violet;
+        stroke-width: 4px;
+      }
+    }
+  }
+
+  &.fm-amount {
+    .knob {
+      .background {
+        fill: $knob-background-red;
+      }
+      .handle {
+        fill: $knob-handle-red;
+      }
+      .curse {
+        fill: $knob-curse-red;
+      }
+      .cursor {
+        stroke: $knob-cursor-red;
+        stroke-width: 4px;
+      }
+    }
+  }
+
+  &.fm-ratio {
+    .knob {
+      .background {
+        fill: $knob-background-green;
+      }
+      .handle {
+        fill: $knob-handle-green;
+      }
+      .curse {
+        fill: $knob-curse-green;
+      }
+      .cursor {
+        stroke: $knob-cursor-green;
+        stroke-width: 4px;
+      }
+    }
+  }
+
+  &.filter-frequency {
+    .knob {
+      .background {
+        fill: $knob-background-yellow;
+      }
+      .handle {
+        fill: $knob-handle-yellow;
+      }
+      .curse {
+        fill: $knob-curse-yellow;
+      }
+      .cursor {
+        stroke: $knob-cursor-yellow;
         stroke-width: 4px;
       }
     }

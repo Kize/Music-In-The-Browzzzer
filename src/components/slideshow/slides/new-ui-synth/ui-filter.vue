@@ -25,7 +25,7 @@
 <template>
   <div class="card filters">
     <div class="knobs">
-      <knob label="frequency" :value="1" :width="180"></knob>
+      <knob class="filter-frequency" label="frequency" :value="1" :width="180"></knob>
       <knob label="peak" :value="1" :width="130"></knob>
     </div>
     <div class="toggles">
